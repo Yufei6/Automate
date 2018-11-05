@@ -23,8 +23,11 @@ namespace fa {
 
   class Automaton{
         public:
-            
-            
+            std::set<int> getterStates() const;
+            std::set<int> getterInitialStates() const;
+            std::set<int> getterFinalStates() const;
+            std::set<struct trans> getterTransitions() const;
+            std::set<char> alphabets getterAlphabets() const;
 
             // Ici, on place les signatures des méthodes de la classe Automaton, par exemple pour addState et removeState :
             void addState(int state);
