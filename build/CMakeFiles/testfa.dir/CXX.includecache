@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/ae/Desktop/s5/TL/automate/Automaton.cc
+Automaton.h
+/Users/ae/Desktop/s5/TL/automate/Automaton.h
+cassert
+-
+
+/Users/ae/Desktop/s5/TL/automate/Automaton.h
+cstddef
+-
+iostream
+-
+set
+-
+map
+-
+vector
+-
+ctime
+-
+cstdlib
+-
+
