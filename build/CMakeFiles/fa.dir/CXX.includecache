@@ -6,13 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/Users/ae/Desktop/s5/TL/automate/Automaton.cc
+/Users/ae/Desktop/s5/TL/git/Automate/Automaton.cc
 Automaton.h
-/Users/ae/Desktop/s5/TL/automate/Automaton.h
+/Users/ae/Desktop/s5/TL/git/Automate/Automaton.h
 cassert
 -
 
-/Users/ae/Desktop/s5/TL/automate/Automaton.h
+/Users/ae/Desktop/s5/TL/git/Automate/Automaton.h
 cstddef
 -
 iostream

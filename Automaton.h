@@ -27,7 +27,7 @@ namespace fa {
             std::set<int> getterInitialStates() const;
             std::set<int> getterFinalStates() const;
             std::set<struct trans> getterTransitions() const;
-            std::set<char> alphabets getterAlphabets() const;
+            std::set<char> getterAlphabets() const;
 
             // Ici, on place les signatures des méthodes de la classe Automaton, par exemple pour addState et removeState :
             void addState(int state);

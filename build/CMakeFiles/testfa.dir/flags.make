@@ -6,5 +6,5 @@ CXX_FLAGS = -Wall -std=c++11 -O2 -g -isysroot /Applications/Xcode.app/Contents/D
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/ae/Desktop/s5/TL/automate/googletest/googletest/include -I/Users/ae/Desktop/s5/TL/automate/googletest/googletest 
+CXX_INCLUDES = -I/Users/ae/Desktop/s5/TL/git/Automate/googletest/googletest/include -I/Users/ae/Desktop/s5/TL/git/Automate/googletest/googletest 
 

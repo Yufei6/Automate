@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/ae/Desktop/s5/TL/automate/Automaton.cc" "/Users/ae/Desktop/s5/TL/automate/build/CMakeFiles/fa.dir/Automaton.cc.o"
-  "/Users/ae/Desktop/s5/TL/automate/fa.cc" "/Users/ae/Desktop/s5/TL/automate/build/CMakeFiles/fa.dir/fa.cc.o"
+  "/Users/ae/Desktop/s5/TL/git/Automate/Automaton.cc" "/Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles/fa.dir/Automaton.cc.o"
+  "/Users/ae/Desktop/s5/TL/git/Automate/fa.cc" "/Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles/fa.dir/fa.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 

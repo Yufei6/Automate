@@ -59,10 +59,10 @@ RM = /usr/local/Cellar/cmake/3.12.3/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/ae/Desktop/s5/TL/automate
+CMAKE_SOURCE_DIR = /Users/ae/Desktop/s5/TL/git/Automate
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/ae/Desktop/s5/TL/automate/build
+CMAKE_BINARY_DIR = /Users/ae/Desktop/s5/TL/git/Automate/build
 
 #=============================================================================
 # Target rules for target CMakeFiles/fa.dir
@@ -71,7 +71,7 @@ CMAKE_BINARY_DIR = /Users/ae/Desktop/s5/TL/automate/build
 CMakeFiles/fa.dir/all:
 	$(MAKE) -f CMakeFiles/fa.dir/build.make CMakeFiles/fa.dir/depend
 	$(MAKE) -f CMakeFiles/fa.dir/build.make CMakeFiles/fa.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/ae/Desktop/s5/TL/automate/build/CMakeFiles --progress-num=1,2,3 "Built target fa"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles --progress-num=1,2,3 "Built target fa"
 .PHONY : CMakeFiles/fa.dir/all
 
 # Include target in all.
@@ -81,9 +81,9 @@ all: CMakeFiles/fa.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/fa.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ae/Desktop/s5/TL/automate/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles 3
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/fa.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ae/Desktop/s5/TL/automate/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles 0
 .PHONY : CMakeFiles/fa.dir/rule
 
 # Convenience name for target.
@@ -108,7 +108,7 @@ clean: CMakeFiles/fa.dir/clean
 CMakeFiles/testfa.dir/all:
 	$(MAKE) -f CMakeFiles/testfa.dir/build.make CMakeFiles/testfa.dir/depend
 	$(MAKE) -f CMakeFiles/testfa.dir/build.make CMakeFiles/testfa.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/ae/Desktop/s5/TL/automate/build/CMakeFiles --progress-num=4,5,6,7 "Built target testfa"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles --progress-num=4,5,6,7 "Built target testfa"
 .PHONY : CMakeFiles/testfa.dir/all
 
 # Include target in all.
@@ -118,9 +118,9 @@ all: CMakeFiles/testfa.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/testfa.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ae/Desktop/s5/TL/automate/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/testfa.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ae/Desktop/s5/TL/automate/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles 0
 .PHONY : CMakeFiles/testfa.dir/rule
 
 # Convenience name for target.

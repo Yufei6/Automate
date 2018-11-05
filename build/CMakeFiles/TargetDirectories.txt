@@ -1,4 +1,4 @@
-/Users/ae/Desktop/s5/TL/automate/build/CMakeFiles/rebuild_cache.dir
-/Users/ae/Desktop/s5/TL/automate/build/CMakeFiles/edit_cache.dir
-/Users/ae/Desktop/s5/TL/automate/build/CMakeFiles/fa.dir
-/Users/ae/Desktop/s5/TL/automate/build/CMakeFiles/testfa.dir
+/Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles/rebuild_cache.dir
+/Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles/edit_cache.dir
+/Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles/fa.dir
+/Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles/testfa.dir

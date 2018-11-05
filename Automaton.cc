@@ -4,7 +4,6 @@
 
 
 namespace fa {
-
 	// Complexity: O(log n)
   	void fa::Automaton::addState(int state){
 	    // Ici, on écrit le code pour ajouter un état à l'automate
@@ -381,9 +380,31 @@ namespace fa {
 		// new_automaton.addTransition(101,'𝛜',102)
 	}
 
-	bool fa::Automaton::hasEmptyIntersectionWith(const Automaton& other) const{
+	// bool fa::Automaton::hasEmptyIntersectionWith(const Automaton& other) const{
 		
+	// }
+
+
+
+	std::set<int> fa::Automaton::getterStates() const{
+		return states;
 	}
+
+    std::set<int> fa::Automaton::getterInitialStates() const{
+    	return initialStates;
+    }
+
+    std::set<int> fa::Automaton::getterFinalStates() const{
+    	return finalStates;
+    }
+
+    std::set<struct trans> fa::Automaton::getterTransitions() const{
+    	return transitions;
+    }
+
+    std::set<char> fa::Automaton::getterAlphabets() const{
+    	return alphabets;
+    }
 
 
 
