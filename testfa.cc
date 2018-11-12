@@ -91,6 +91,7 @@ int main(int argc, char **argv) {
     }
     else{
         std::cout << "KO for Complete" << std::endl;
+        std::cout << getTheBiggestState() << std::endl;
     }
 
 

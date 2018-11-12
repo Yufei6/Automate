@@ -357,6 +357,22 @@ namespace fa {
 
 	Automaton fa::Automaton::createProduct(const Automaton& lhs, const Automaton& rhs){
 		fa::Automaton new_automaton;
+		std::set<int> lhs_init=lhs.getterInitialStates();
+		std::set<int> rhs_init=rhs.getterInitialStates();
+		std::set<int>::iterator left_initStates = lhs_init.begin();
+		std::set<int>::iterator right_initStates = rhs_init.begin();
+		std::size_t n2 = rhs.countStates();
+		while(left_initStates != lhs_init.end()){
+			while(right_initStates != rhs_init.end()){
+				new_automaton.setStateInitial((*left_initStates * n2) + (*right_initStates));
+				right_initStates++;
+			}
+			left_initStates++;
+		}
+
+
+
+
 		new_automaton.initialStates.insert(lhs.initialStates.begin() , lhs.initialStates.end());
 		new_automaton.finalStates.insert(rhs.finalStates.begin() , rhs.finalStates.end());
 		new_automaton.alphabets.insert(lhs.alphabets.begin() , lhs.alphabets.end());
@@ -406,7 +422,9 @@ namespace fa {
     	return alphabets;
     }
 
-
+    int fa::Automaton::getTheBiggestState() const{
+    	return states[countStates()-1];
+    }
 
 
 
