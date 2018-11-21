@@ -8,6 +8,7 @@
 #include <vector>
 #include <ctime>	
 #include <cstdlib>
+#include <algorithm>
 
 
 
@@ -23,11 +24,11 @@ namespace fa {
 
   class Automaton{
         public:
-            std::set<int> getterStates() const;
-            std::set<int> getterInitialStates() const;
-            std::set<int> getterFinalStates() const;
-            std::set<struct trans> getterTransitions() const;
-            std::set<char> getterAlphabets() const;
+            std::set<int> getStates() const;
+            std::set<int> getInitialStates() const;
+            std::set<int> getFinalStates() const;
+            std::set<struct trans> getTransitions() const;
+            std::set<char> getAlphabets() const;
             int getTheBiggestState() const;
 
             // Ici, on place les signatures des méthodes de la classe Automaton, par exemple pour addState et removeState :

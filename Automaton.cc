@@ -364,8 +364,7 @@ namespace fa {
 		std::set<int>::iterator right_initStates = rhs_init.begin();
 		std::set<int>::iterator left_States = lhs.getStates().begin();
 		std::set<int>::iterator right_States = rhs.getStates().begin();
-		std::map<int,std::map<char,std::set<int>>> transitions_left = lhs.getTransitions();
-		std::map<int,std::map<char,std::set<int>>> transitions_right = rhs.getTransitions();
+
 
 		std::size_t n2 = rhs.getTheBiggestState() + 1;
 
@@ -378,21 +377,26 @@ namespace fa {
 			left_initStates++;
 		}
 
-		//create transitions
-		new_automaton.alphabets.insert(lhs.alphabets.begin() , lhs.alphabets.end());
-		new_automaton.alphabets.insert(rhs.alphabets.begin() , rhs.alphabets.end());
-		std::set<char>::iterator iter_alpha=new_automaton.alphabets.begin();
-		std::set<int>::iterator iter_new_initStates=new_automaton.initialStates.begin();
-		while(iter_new_initStates!= new_automaton.initialStates.end()){
-			while(iter_alpha != new_automaton.alphabets.end()){
-				std::int s1 = *iter_new_initStates/n2;
-				std::int s2 = *iter_new_initStates%n2;
-				std::set<int>::iterator for_s1 = transitions.find(s1).find(*iter_alpha).begin();
-				std::set<int>::iterator for_s2 = transitions.find(s2).find(*iter_alpha).begin();
-				while()
+		//create les alphabets communes
+		std::set<char> s3 ;
+   		std::set<char>::iterator iter = s3.begin() ;
+   		set_intersection(lhs.alphabets.begin(),lhs.alphabets.end(),rhs.alphabets.begin(),rhs.alphabets.end(),inserter(s3,iter));
 
-			}
-		}
+		//create transitions
+		// new_automaton.alphabets.insert(lhs.alphabets.begin() , lhs.alphabets.end());
+		// new_automaton.alphabets.insert(rhs.alphabets.begin() , rhs.alphabets.end());
+		// std::set<char>::iterator iter_alpha=new_automaton.alphabets.begin();
+		// std::set<int>::iterator iter_new_initStates=new_automaton.initialStates.begin();
+		// while(iter_new_initStates!= new_automaton.initialStates.end()){
+		// 	while(iter_alpha != new_automaton.alphabets.end()){
+		// 		std::int s1 = *iter_new_initStates/n2;
+		// 		std::int s2 = *iter_new_initStates%n2;
+		// 		std::set<int>::iterator for_s1 = transitions.find(s1).find(*iter_alpha).begin();
+		// 		std::set<int>::iterator for_s2 = transitions.find(s2).find(*iter_alpha).begin();
+		// 		while()
+
+		// 	}
+		// }
 
 		
 
@@ -420,9 +424,10 @@ namespace fa {
 		// 	}
 		// 	left_final++;
 		// }
-		// return new_automaton;
+		
 
 		// new_automaton.addTransition(101,'𝛜',102)
+		return new_automaton;
 	}
 
 	bool fa::Automaton::hasEmptyIntersectionWith(const Automaton& other) const{
