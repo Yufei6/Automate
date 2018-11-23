@@ -6,14 +6,15 @@
 #include <set> // Inclure ceci pour utiliser des ensembles (voir la déclaration d'attribut "std::set<int> states;" ci-dessous par exemple)
 #include <map>
 #include <vector>
-#include <ctime>	
+#include <ctime>
 #include <cstdlib>
 #include <algorithm>
+#include <list>
 
 
 
 namespace fa {
-    
+
     struct trans {
         bool operator<(const trans& other) const;
         int from;
@@ -55,12 +56,15 @@ namespace fa {
 
             void makeComplete();
             void makeComplement();
-            bool isLanguageEmpty() const;
+            bool isLanguageEmpty();
+            void removeNonAccessibleStates();
 
 
             //tp4
             static Automaton createProduct(const Automaton& lhs, const Automaton& rhs);
             bool hasEmptyIntersectionWith(const Automaton& other) const;
+
+
 
         private:
             // Ici, on place les déclarations d'attributs, par exemple :
@@ -70,8 +74,14 @@ namespace fa {
             std::set<int> finalStates; // L'ensemble des états initiaux de l'automate
             std::set<struct trans> transitions;
             std::set<char> alphabets;
+
+            std::set<int> from(int state);
+            bool depthFirstSearch(std::set<int> *visited, int current);
+
+
             // Autres déclaration d'attributs (par exemple les transitions, pour lesquelles je vous conseille de créer une autre classe "Transition")...
-            
+
+
     };
 
 } // namespace fa

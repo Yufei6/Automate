@@ -71,9 +71,9 @@ namespace fa {
 		iter=finalStates.find(state);
 		return iter!=finalStates.end();
 	}
-	
 
-        
+
+
     bool fa::trans::operator<(const trans& other) const {
         return std::tie(from, to, alpha) < std::tie(other.from, other.to, other.alpha);
     }
@@ -92,7 +92,7 @@ namespace fa {
 	}
 
 
-	// Complexity: 
+	// Complexity:
 	void fa::Automaton::removeTransition(int from, char alpha, int to){
         trans trans_to_delete;
         trans_to_delete.from = from;
@@ -206,7 +206,7 @@ namespace fa {
 			os << *iter_init_state << "[ style = filled, color=lightgrey ];" << std::endl;
 			iter_init_state++;
 		}
-		
+
 
 		std::set<int>::iterator iter_final_state;
 		iter_final_state=finalStates.begin();
@@ -332,7 +332,7 @@ namespace fa {
 	}
 
 
-	// Complexity: 
+	// Complexity:
 	void fa::Automaton::makeComplement(){
 		std::set<int>::iterator iter=states.begin();
 		while(iter != states.end()){
@@ -345,13 +345,6 @@ namespace fa {
 			iter++ ;
 		}
 	}
-
-
-	// Comolexity: 
-	bool fa::Automaton::isLanguageEmpty() const{
-		return false;
-	}
-
 
 
 
@@ -398,7 +391,7 @@ namespace fa {
 		// 	}
 		// }
 
-		
+
 
 
 
@@ -424,7 +417,7 @@ namespace fa {
 		// 	}
 		// 	left_final++;
 		// }
-		
+
 
 		// new_automaton.addTransition(101,'𝛜',102)
 		return new_automaton;
@@ -465,8 +458,64 @@ namespace fa {
     	return *first;
     }
 
+    std::set<int> fa::Automaton::from(int state) {
+        std::set<int> to_set;
+        std::set<struct trans>::iterator trans_iter = transitions.begin();
+        while(trans_iter != transitions.end()){
+            struct trans transition = *trans_iter;
+            if (transition.from == state) {
+                to_set.insert(transition.to);
+            }
+            trans_iter++;
+        }
+        return to_set;
+    }
 
+    bool fa::Automaton::depthFirstSearch(std::set<int> *visited, int current) {
+        if ((*visited).find(current) != (*visited).end()) {
+            return false;
+        }
+        std::set<int> destinations = from(current);
+        (*visited).insert(current);
+        bool path_found = false;
+        if ( ! destinations.empty() ) {
+            std::set<int>::iterator dest_iter = destinations.begin();
+            while (dest_iter != destinations.end()) {
+                path_found = depthFirstSearch(visited, *dest_iter) || path_found;
+                dest_iter++;
+            }
+        }
+        if (finalStates.find(current) != finalStates.end()) {
+            return true;
+        }
+        return path_found;
+    }
 
-
+    bool fa::Automaton::isLanguageEmpty() {   // ! const
+        std::set<int> visited_states;
+        bool path_found = false;
+        std::set<int>::iterator init_iter = initialStates.begin();
+        while (init_iter != initialStates.end() && !path_found) {
+            path_found = depthFirstSearch(&visited_states, *init_iter);
+            init_iter++;
+        }
+        return !path_found;
+    }
+    
+    void fa::Automaton::removeNonAccessibleStates() {
+        std::set<int> visited_states;
+        std::set<int>::iterator init_iter = initialStates.begin();
+        while (init_iter != initialStates.end()) {
+            depthFirstSearch(&visited_states, *init_iter);
+            init_iter++;
+        }
+        std::set<int>::iterator states_iter = states.begin();
+        while (states_iter != states.end()) {
+            if (visited_states.find(*states_iter) == visited_states.end()) {
+                removeState(*states_iter);
+            }
+            states_iter++;
+        }
+    }
 
 }
