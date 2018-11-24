@@ -384,7 +384,8 @@ namespace fa {
 	}
 
 	bool fa::Automaton::hasEmptyIntersectionWith(const Automaton& other) const{
-		return false;
+		fa::Automaton new_automate = createProduct(this,other);
+		return new_automate.alphabets==0 || new_automate.countTransitions ==0 || new_automate.countStates ==0;
 	}
 
 
