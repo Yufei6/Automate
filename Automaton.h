@@ -29,7 +29,6 @@ namespace fa {
             std::set<int> getFinalStates() const;
             std::set<struct trans> getTransitions() const;
             std::set<char> getAlphabets() const;
-            int getTheBiggestState() const;
 
             // Ici, on place les signatures des méthodes de la classe Automaton, par exemple pour addState et removeState :
             void addState(int state);
@@ -70,7 +69,10 @@ namespace fa {
             std::set<int> finalStates; // L'ensemble des états initiaux de l'automate
             std::set<struct trans> transitions;
             std::set<char> alphabets;
-            // Autres déclaration d'attributs (par exemple les transitions, pour lesquelles je vous conseille de créer une autre classe "Transition")...
+
+            int getTheBiggestState() const;
+            int getToWithFromAndAlpha(int from, char alpha) const;
+
             
     };
 
