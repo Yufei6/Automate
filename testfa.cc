@@ -38,7 +38,6 @@ int main(int argc, char **argv) {
 
 
 
-
     automaton.addTransition(1,'b',3);
     automaton.addTransition(0,'a',1);
     automaton.addTransition(0,'a',2);
@@ -50,6 +49,18 @@ int main(int argc, char **argv) {
     automaton.addTransition(4,'a',4);
     automaton.addTransition(4,'a',4);
     // transitions.removeTransition(4,'a',4);
+
+    //std::cout << "hi" << std::endl;
+
+    //TEMP : //
+    // std::set<int> set = automaton.from(0);
+    // std::set<int>::iterator it = set.begin();
+    // std::cout << "hello" << std::endl;
+    // while(it != set.end()) {
+    //     std::cout << (*it) << std::endl;
+    //     it++;
+    // }
+    //////////
 
 
     automaton.prettyPrint(std::cout);
@@ -93,6 +104,46 @@ int main(int argc, char **argv) {
         std::cout << "KO for Complete" << std::endl;
     }
 
+    if(automaton.isLanguageEmpty()) {
+        std::cout << "OK for IsLanguageEmpty" << std::endl;
+    }
+    else {
+        std::cout << "KO for IsLanguageEmpty" << std::endl;
+    }
+
+    fa::Automaton empty_automaton;
+    empty_automaton.addState(0);
+    empty_automaton.addState(1);
+    empty_automaton.addState(2);
+    empty_automaton.setStateInitial(0);
+    empty_automaton.setStateFinal(2);
+    empty_automaton.addTransition(0, 'a', 1);
+
+    if(empty_automaton.isLanguageEmpty()) {
+        std::cout << "OK for IsLanguageEmpty" << std::endl;
+    }
+    else {
+        std::cout << "KO for IsLanguageEmpty" << std::endl;
+    }
+
+    fa::Automaton non_accessible_states_automaton;
+    non_accessible_states_automaton.addState(0);
+    non_accessible_states_automaton.addState(1);
+    non_accessible_states_automaton.addState(2);
+    non_accessible_states_automaton.addState(3);
+    non_accessible_states_automaton.addState(4);
+    non_accessible_states_automaton.setStateInitial(0);
+    non_accessible_states_automaton.addTransition(2, 'a', 3);
+    non_accessible_states_automaton.addTransition(0, 'b', 4);
+    non_accessible_states_automaton.setStateFinal(4);
+
+    std::cout << "Before removing non-accessible states : " << std::endl;
+    non_accessible_states_automaton.prettyPrint(std::cout);
+
+    non_accessible_states_automaton.removeNonAccessibleStates();
+
+    std::cout << "After removing non-accessible states : " << std::endl;
+    non_accessible_states_automaton.prettyPrint(std::cout);
 
 
 
