@@ -1,0 +1,11 @@
+digraph automaton {
+size = "8.5, 11";
+fontsize = 10;
+0[ style = filled, color=lightgrey ];
+4[ shape = doublecircle ];
+
+0->4 [ label = "b" ]; 
+
+
+
+}
