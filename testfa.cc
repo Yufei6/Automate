@@ -123,7 +123,11 @@ int main(int argc, char **argv) {
     a3 = a3.createProduct(a1,a2);
     a3.prettyPrint(std::cout);
 
+    if(!a1.hasEmptyIntersectionWith(a2)){
+        std::cout << "OK for Intersection" << std::endl;
+    }
 
+    
 
 
 

@@ -284,7 +284,7 @@ cxxabi.h
 acxx_demangle.h
 -
 
-/home/augustin/Bureau/Depot Automate/Automate/Automaton.h
+/Users/ae/Desktop/s5/TL/git/Automate/Automaton.h
 cstddef
 -
 iostream
@@ -304,7 +304,7 @@ algorithm
 list
 -
 
-/home/augustin/Bureau/Depot Automate/Automate/testfa.cc
+/Users/ae/Desktop/s5/TL/git/Automate/testfa.cc
 iostream
 -
 iomanip
@@ -312,7 +312,7 @@ iomanip
 fstream
 -
 gtest/gtest.h
-/home/augustin/Bureau/Depot Automate/Automate/gtest/gtest.h
+/Users/ae/Desktop/s5/TL/git/Automate/gtest/gtest.h
 Automaton.h
-/home/augustin/Bureau/Depot Automate/Automate/Automaton.h
+/Users/ae/Desktop/s5/TL/git/Automate/Automaton.h
 

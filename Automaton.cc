@@ -325,7 +325,7 @@ namespace fa {
 
 
 
-
+//********************************************* TP4 ***************************************************
 	Automaton fa::Automaton::createProduct(const Automaton& lhs, const Automaton& rhs){
 		fa::Automaton new_automaton;
 		std::set<int> lhs_init=lhs.getInitialStates();
@@ -384,10 +384,20 @@ namespace fa {
 	}
 
 	bool fa::Automaton::hasEmptyIntersectionWith(const Automaton& other) const{
-		fa::Automaton new_automate = createProduct(this,other);
-		return new_automate.alphabets==0 || new_automate.countTransitions ==0 || new_automate.countStates ==0;
+		fa::Automaton new_automate = createProduct(*this,other);
+		return new_automate.getAlphabetSize()==0 || new_automate.countTransitions() ==0 || new_automate.countStates() ==0;
 	}
 
+
+  //********************************************** fin de TP4 ***********************************
+
+
+
+
+  //*************************************   tp6   ***********************************
+  // Automaton fa::Automaton::createMinimalMoore(const Automaton& automaton){
+  //
+  // }
 
 
 	std::set<int> fa::Automaton::getStates() const{
@@ -435,6 +445,9 @@ namespace fa {
 
     }
 
+
+
+
     std::set<int> fa::Automaton::from(int state) {
         std::set<int> to_set;
         std::set<struct trans>::iterator trans_iter = transitions.begin();
@@ -478,7 +491,7 @@ namespace fa {
         }
         return !path_found;
     }
-    
+
     void fa::Automaton::removeNonAccessibleStates() {
         std::set<int> visited_states;
         std::set<int>::iterator init_iter = initialStates.begin();
@@ -494,5 +507,7 @@ namespace fa {
             states_iter++;
         }
     }
+
+
 
 }
