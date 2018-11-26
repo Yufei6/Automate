@@ -408,6 +408,8 @@ namespace fa {
         map0.insert(std::pair<int,int>(*states_iter,1));
       }
     }
+
+    
     return new_automate;
   }
 
