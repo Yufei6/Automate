@@ -395,9 +395,21 @@ namespace fa {
 
 
   //*************************************   tp6   ***********************************
-  // Automaton fa::Automaton::createMinimalMoore(const Automaton& automaton){
-  //
-  // }
+  Automaton fa::Automaton::createMinimalMoore(const Automaton& automaton){
+    fa::Automaton new_automate;
+    std::map<int,int> map0;
+    std::set<int> states = automaton.getStates();
+    std::set<int>::iterator states_iter = states.begin();
+    while(states_iter != states.end()){
+      if(automaton.isStateFinal(*states_iter)){
+        map0.insert(std::pair<int,int>(*states_iter,2));
+      }
+      else{
+        map0.insert(std::pair<int,int>(*states_iter,1));
+      }
+    }
+    return new_automate;
+  }
 
 
 	std::set<int> fa::Automaton::getStates() const{

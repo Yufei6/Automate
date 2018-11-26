@@ -63,6 +63,9 @@ namespace fa {
             static Automaton createProduct(const Automaton& lhs, const Automaton& rhs);
             bool hasEmptyIntersectionWith(const Automaton& other) const;
 
+            //tp6
+            static Automaton createMinimalMoore(const Automaton& automaton);
+
 
 
         private:
