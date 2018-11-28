@@ -19,6 +19,7 @@ int main(int argc, char **argv) {
   	std::ofstream fout("diagramme.dot");
   	std::ofstream fout2("diagramme2.dot");
   	std::ofstream fout3("diagramme3.dot");
+    std::ofstream fout_non_acc("diagramme_na.dot");
     fa::Automaton automaton;
 
 
@@ -146,6 +147,21 @@ int main(int argc, char **argv) {
     std::cout << "After removing non-accessible states : " << std::endl;
     non_accessible_states_automaton.prettyPrint(std::cout);
 
+    non_accessible_states_automaton.dotPrint(fout_non_acc);
+
+    fa::Automaton zero_non_accessible;
+    zero_non_accessible.addState(0);
+    zero_non_accessible.addState(1);
+    zero_non_accessible.setStateInitial(1);
+    zero_non_accessible.setStateFinal(1);
+    if (zero_non_accessible.isLanguageEmpty()) {
+        std::cout << "Test islanguageEmptyInitialAndFinal : KO" << std::endl;
+    }
+    else {
+        std::cout << "Test islanguageEmptyInitialAndFinal : OK" << std::endl;
+    }
+    zero_non_accessible.removeNonAccessibleStates();
+    zero_non_accessible.prettyPrint(std::cout);
 
     // std::cout << "new------------------------------------------------------" << std::endl;
     // fa::Automaton automaton2;
