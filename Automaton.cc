@@ -402,7 +402,7 @@ namespace fa {
     // if(!automaton.isDeterministic()){
     //   automaton.Deterministic();
     // }
-    
+
     fa::Automaton new_automate;
     std::map<int,int> map0;
     std::set<int> states = automaton.getStates();
@@ -488,6 +488,11 @@ namespace fa {
             return false;
         }
         std::set<int> destinations = from(current);
+        // std::cout << "From " << current << ": ";
+        // for (std::set<int>::iterator it = destinations.begin(); it != destinations.end(); it++) {
+        //     std::cout << *it << " ";
+        // }
+        // std::cout << std::endl;
         (*visited).insert(current);
         bool path_found = false;
         if ( ! destinations.empty() ) {
@@ -516,20 +521,25 @@ namespace fa {
 
     void fa::Automaton::removeNonAccessibleStates() {
         std::set<int> visited_states;
+        std::cout << std::endl;
         std::set<int>::iterator init_iter = initialStates.begin();
         while (init_iter != initialStates.end()) {
             depthFirstSearch(&visited_states, *init_iter);
             init_iter++;
         }
-        std::set<int>::iterator states_iter = states.begin();
-        while (states_iter != states.end()) {
+        for (std::set<int>::iterator states_iter = states.begin(); states_iter != states.end(); states_iter++) {
             if (visited_states.find(*states_iter) == visited_states.end()) {
                 removeState(*states_iter);
+                states_iter--;   //Pour éviter le saut d'indice lorsqu'un élément du set est supprimé
             }
-            states_iter++;
         }
     }
 
+    void fa::Automaton::removeNonCoAccessibleStates() {
 
+    }
 
+    void fa::Automaton::coAccessibleStatesFinder(std::set<int> *states, std::set<int> *co_acc_states, std::set<int> *non_co_acc_state, std::set<int> current_path, int current_position) {
+
+    }
 }

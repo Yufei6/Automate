@@ -25,6 +25,6 @@ fontsize = 10;
 
 4->4 [ label = "a" ]; 
 
-4->4 [ label = "b" ]; 
+4->5 [ label = "b" ]; 
 
 }
