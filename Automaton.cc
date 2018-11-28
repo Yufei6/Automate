@@ -396,11 +396,13 @@ namespace fa {
 
   //*************************************   tp6   ***********************************
   Automaton fa::Automaton::createMinimalMoore(const Automaton& automaton){
-    if(!automaton.isComplete()){
-      automaton.makeComplete();
+    fa::Automaton tmp_automate;
+    tmp_automate = automaton;
+    if(!tmp_automate.isComplete()){
+      tmp_automate.makeComplete();
     }
-    // if(!automaton.isDeterministic()){
-    //   automaton.Deterministic();
+    // if(!tmp_automate.isDeterministic()){
+    //   tmp_automate.Deterministic();
     // }
 
     fa::Automaton new_automate;
