@@ -454,7 +454,7 @@ namespace fa {
       while(tmp_transtions_iter != tmp_transitions.end()){
         // int nb = pow（a,b）;
         map1.insert(std::pair<int,int>(tmp_transtions_iter->from,map0[tmp_transtions_iter->to]*nb));
-        map2.
+        // map2.
         tmp_transtions_iter++;
       }
     }while(!CompareMap(map0,map1));
