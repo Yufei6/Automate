@@ -452,7 +452,7 @@ namespace fa {
     do{
       tmp_transtions_iter = tmp_transitions.begin();
       while(tmp_transtions_iter != tmp_transitions.end()){
-        // int nb =
+        // int nb = pow（a,b）;
         map1.insert(std::pair<int,int>(tmp_transtions_iter->from,map0[tmp_transtions_iter->to]*nb));
         map2.
         tmp_transtions_iter++;
