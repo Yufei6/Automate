@@ -65,6 +65,7 @@ namespace fa {
             bool hasEmptyIntersectionWith(const Automaton& other) const;
 
             //tp6
+            bool CompareMap(std::map<int,int> &mapSrc, std::map<int,int> &mapDst);
             static Automaton createMinimalMoore(const Automaton& automaton);
 
 

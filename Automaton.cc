@@ -395,6 +395,28 @@ namespace fa {
 
 
   //*************************************   tp6   ***********************************
+  bool fa::CompareMap(std::map<int,int> &mapSrc, std::map<int,int> &mapDst){
+  	if ( mapSrc.size() != mapDst.size() ){
+  		return false;
+  	}
+
+  	std::map<int,int>::iterator it = mapSrc.begin();
+  	while( it != mapSrc.end()){
+  		std::map<int,int>::iterator itDst = mapDst.find(it->first);
+  		if (itDst != mapDst.end()){
+  			if (itDst->second != it->second){
+  				return false;
+  			}
+  		}
+  		else{
+  			return false;
+  		}
+  		it++;
+  	}
+  	return true;
+  }
+
+
   Automaton fa::Automaton::createMinimalMoore(const Automaton& automaton){
     fa::Automaton tmp_automate;
     tmp_automate = automaton;
@@ -405,18 +427,37 @@ namespace fa {
     //   tmp_automate.Deterministic();
     // }
 
+
     fa::Automaton new_automate;
-    std::map<int,int> map0;
-    std::set<int> states = automaton.getStates();
-    std::set<int>::iterator states_iter = states.begin();
-    while(states_iter != states.end()){
+    std::map<int,int> map0,map1;
+    std::map<int,int> map2;
+
+    std::set<trans> tmp_transitions = tmp_automate.getTransitions();
+    std::set<trans>::iterator tmp_transtions_iter;
+    std::set<int> tmp_states = tmp_automate.getStates();
+    std::set<int>::iterator tmp_states_iter = tmp_states.begin();
+    while(tmp_states_iter != tmp_states.end()){
       if(automaton.isStateFinal(*states_iter)){
         map0.insert(std::pair<int,int>(*states_iter,2));
       }
       else{
         map0.insert(std::pair<int,int>(*states_iter,1));
       }
+      tmp_states++;
     }
+
+    int nbState = tmp_automate.countStates() + 1;
+    int nbAlpha = tmp_automate.getAlphabetSize();
+
+    do{
+      tmp_transtions_iter = tmp_transitions.begin();
+      while(tmp_transtions_iter != tmp_transitions.end()){
+        // int nb =
+        map1.insert(std::pair<int,int>(tmp_transtions_iter->from,map0[tmp_transtions_iter->to]*nb));
+        map2.
+        tmp_transtions_iter++;
+      }
+    }while(!CompareMap(map0,map1));
 
 
 
