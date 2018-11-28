@@ -107,12 +107,8 @@ namespace fa {
             trans trans_to_search;
             trans_to_search.from = from;
             trans_to_search.to = to;
-            trans_to_search.from = from;
+            trans_to_search.alpha = alpha;
             return transitions.find(trans_to_search) != transitions.end() ;
-            // if (transitions.find(trans_to_search) != transitions.end()) {
-            //     return true;
-            // }
-            // return false;
 	}
 
 
@@ -121,26 +117,7 @@ namespace fa {
 	}
 
 
-	// void fa::Automaton::addAlphabet(char alpha){
-	// 	alphabets.insert(alpha);
-	// 	// std::cout << "Après insertion de l'alphabet " << alpha << ", l'alphabets possède " << alphabets.size() << " caractere(s)." << std::endl;
-	// }
 
-	// void fa::Automaton::removeAlphabet(char alpha){
-	// 	alphabets.erase(alpha);
-	// 	// std::cout << "Après suppression de l'alphabet " << alpha << ", l'alphabets possède " << alphabets.size() << " caractere(s)." << std::endl;
-	// }
-
-	// bool fa::Automaton::hasAlphabet(char alpha){
-	// 	std::set<char>::iterator iter;
-	// 	iter=alphabets.find(alpha);
-	// 	if(iter!=alphabets.end()){
-	// 		return true;
-	// 	}
-	// 	else{
-	// 		return false;
-	// 	}
-	// }
 
 
 	std::size_t fa::Automaton::getAlphabetSize() const{
@@ -348,15 +325,14 @@ namespace fa {
 
 
 
-
+//********************************************* TP4 ***************************************************
 	Automaton fa::Automaton::createProduct(const Automaton& lhs, const Automaton& rhs){
 		fa::Automaton new_automaton;
 		std::set<int> lhs_init=lhs.getInitialStates();
 		std::set<int> rhs_init=rhs.getInitialStates();
 		std::set<int>::iterator left_initStates = lhs_init.begin();
 		std::set<int>::iterator right_initStates = rhs_init.begin();
-		std::set<int>::iterator left_States = lhs.getStates().begin();
-		std::set<int>::iterator right_States = rhs.getStates().begin();
+
 
 
 		std::size_t n2 = rhs.getTheBiggestState() + 1;
@@ -365,6 +341,7 @@ namespace fa {
 		while(left_initStates != lhs_init.end()){
 			while(right_initStates != rhs_init.end()){
 				new_automaton.setStateInitial((*left_initStates * n2) + (*right_initStates));
+				new_automaton.addState((*left_initStates * n2) + (*right_initStates));
 				right_initStates++;
 			}
 			left_initStates++;
@@ -374,59 +351,67 @@ namespace fa {
 		std::set<char> s3 ;
    		std::set<char>::iterator iter = s3.begin() ;
    		set_intersection(lhs.alphabets.begin(),lhs.alphabets.end(),rhs.alphabets.begin(),rhs.alphabets.end(),inserter(s3,iter));
+   		new_automaton.alphabets=s3;
+		// create transitions
+		std::set<int>::iterator iter_new_States=new_automaton.states.begin();
+		while(iter_new_States!= new_automaton.states.end()){
+			std::set<char>::iterator iter_alpha=new_automaton.alphabets.begin();
+			while(iter_alpha != new_automaton.alphabets.end()){
+				int s1 = *iter_new_States/n2;
+				int s2 = *iter_new_States%n2;
+				int res_l = lhs.getToWithFromAndAlpha(s1,*iter_alpha);
+				int res_r = rhs.getToWithFromAndAlpha(s2,*iter_alpha);
 
-		//create transitions
-		// new_automaton.alphabets.insert(lhs.alphabets.begin() , lhs.alphabets.end());
-		// new_automaton.alphabets.insert(rhs.alphabets.begin() , rhs.alphabets.end());
-		// std::set<char>::iterator iter_alpha=new_automaton.alphabets.begin();
-		// std::set<int>::iterator iter_new_initStates=new_automaton.initialStates.begin();
-		// while(iter_new_initStates!= new_automaton.initialStates.end()){
-		// 	while(iter_alpha != new_automaton.alphabets.end()){
-		// 		std::int s1 = *iter_new_initStates/n2;
-		// 		std::int s2 = *iter_new_initStates%n2;
-		// 		std::set<int>::iterator for_s1 = transitions.find(s1).find(*iter_alpha).begin();
-		// 		std::set<int>::iterator for_s2 = transitions.find(s2).find(*iter_alpha).begin();
-		// 		while()
-
-		// 	}
-		// }
-
-
-
-
-
-
-
-
-		// "<Produit> de deux automates"
-		// new_automaton.initialStates.insert(lhs.initialStates.begin() , lhs.initialStates.end());
-		// new_automaton.finalStates.insert(rhs.finalStates.begin() , rhs.finalStates.end());
-		// new_automaton.alphabets.insert(lhs.alphabets.begin() , lhs.alphabets.end());
-		// new_automaton.alphabets.insert(rhs.alphabets.begin() , rhs.alphabets.end());
-		// new_automaton.states.insert(lhs.states.begin(),lhs.states.end());
-		// new_automaton.states.insert(rhs.states.begin(),rhs.states.end());
-		// new_automaton.transitions.insert(lhs.transitions.begin() , lhs.transitions.end());
-		// new_automaton.transitions.insert(rhs.transitions.begin() , rhs.transitions.end());
-		// std::set<int>::iterator left_final= lhs.finalStates.begin();
-		// std::set<int>::iterator	right_init;
-		// while(left_final!=lhs.finalStates.end()){
-		// 	right_init=rhs.initialStates.begin();
-		// 	while(right_init!=rhs.initialStates.end()){
-		// 		new_automaton.addTransition(*left_final, '^', *right_init);
-		// 		right_init++;
-		// 	}
-		// 	left_final++;
-		// }
-
-
-		// new_automaton.addTransition(101,'𝛜',102)
+				if( res_l ==0 || res_r ==0){
+					iter_alpha++;
+				}
+				else{
+					int new_state = (res_l * n2) + res_r;
+					if (!new_automaton.hasState(new_state)){
+						new_automaton.addState(new_state);
+						new_automaton.addTransition(*iter_new_States, *iter_alpha, new_state);
+						if(lhs.isStateFinal(res_l) && rhs.isStateFinal(res_r)){
+							new_automaton.setStateFinal(new_state);
+						}
+					}
+					new_automaton.addTransition(*iter_new_States, *iter_alpha, new_state);
+					iter_alpha++;
+				}
+			}
+			iter_new_States++;
+		}
 		return new_automaton;
 	}
 
 	bool fa::Automaton::hasEmptyIntersectionWith(const Automaton& other) const{
-		return false;
+		fa::Automaton new_automate = createProduct(*this,other);
+		return new_automate.getAlphabetSize()==0 || new_automate.countTransitions() ==0 || new_automate.countStates() ==0;
 	}
 
+
+  //********************************************** fin de TP4 ***********************************
+
+
+
+
+  //*************************************   tp6   ***********************************
+  Automaton fa::Automaton::createMinimalMoore(const Automaton& automaton){
+    fa::Automaton new_automate;
+    std::map<int,int> map0;
+    std::set<int> states = automaton.getStates();
+    std::set<int>::iterator states_iter = states.begin();
+    while(states_iter != states.end()){
+      if(automaton.isStateFinal(*states_iter)){
+        map0.insert(std::pair<int,int>(*states_iter,2));
+      }
+      else{
+        map0.insert(std::pair<int,int>(*states_iter,1));
+      }
+    }
+
+
+    return new_automate;
+  }
 
 
 	std::set<int> fa::Automaton::getStates() const{
@@ -457,6 +442,25 @@ namespace fa {
     	}
     	return *first;
     }
+
+    int fa::Automaton::getToWithFromAndAlpha(int from, char alpha) const{
+    	std::set<int>::iterator iter_to = states.begin();
+    	while(iter_to != states.end()){
+    		struct trans try_transition;
+    		try_transition.from = from;
+    		try_transition.alpha = alpha;
+    		try_transition.to = *iter_to;
+    		if(transitions.find(try_transition) != transitions.end()){
+    			return *iter_to;
+    		}
+    		iter_to ++;
+    	}
+    	return 0;
+
+    }
+
+
+
 
     std::set<int> fa::Automaton::from(int state) {
         std::set<int> to_set;

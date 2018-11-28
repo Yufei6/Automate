@@ -30,7 +30,6 @@ namespace fa {
             std::set<int> getFinalStates() const;
             std::set<struct trans> getTransitions() const;
             std::set<char> getAlphabets() const;
-            int getTheBiggestState() const;
 
             // Ici, on place les signatures des méthodes de la classe Automaton, par exemple pour addState et removeState :
             void addState(int state);
@@ -45,13 +44,13 @@ namespace fa {
             bool isDeterministic() const;
             bool isComplete() const;
             void addTransition(int from, char alpha, int to);   // <-
-   			void removeTransition(int from, char alpha, int to);   // <-
-   			bool hasTransition(int from, char alpha, int to) const;     // <-
-   			std::size_t countTransitions() const;
+   			    void removeTransition(int from, char alpha, int to);   // <-
+   			    bool hasTransition(int from, char alpha, int to) const;     // <-
+   			    std::size_t countTransitions() const;
 
 
-        	std::size_t getAlphabetSize() const;
-        	void prettyPrint(std::ostream& os) const;
+        	  std::size_t getAlphabetSize() const;
+        	  void prettyPrint(std::ostream& os) const;
             void dotPrint(std::ostream& os) const;
 
             void makeComplete();
@@ -65,6 +64,9 @@ namespace fa {
             static Automaton createProduct(const Automaton& lhs, const Automaton& rhs);
             bool hasEmptyIntersectionWith(const Automaton& other) const;
 
+            //tp6
+            static Automaton createMinimalMoore(const Automaton& automaton);
+
 
 
         private:
@@ -75,7 +77,8 @@ namespace fa {
             std::set<int> finalStates; // L'ensemble des états initiaux de l'automate
             std::set<struct trans> transitions;
             std::set<char> alphabets;
-
+            int getTheBiggestState() const;
+            int getToWithFromAndAlpha(int from, char alpha) const;
             std::set<int> from(int state);
             bool depthFirstSearch(std::set<int> *visited, int current);
             void coAccessibleStatesFinder(std::set<int> *states, std::set<int> *co_acc_states, std::set<int> *non_co_acc_state, std::set<int> current_path, int current_position);
