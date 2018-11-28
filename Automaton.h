@@ -66,7 +66,6 @@ namespace fa {
             bool hasEmptyIntersectionWith(const Automaton& other) const;
 
             //tp6
-            bool CompareMap(std::map<int,int> &mapSrc, std::map<int,int> &mapDst);
             static Automaton createMinimalMoore(const Automaton& automaton);
 
 
@@ -84,6 +83,8 @@ namespace fa {
             std::set<int> from(int state);
             bool depthFirstSearch(std::set<int> *visited, int current);
             void coAccessibleStatesFinder(std::set<int> *states, std::set<int> *co_acc_states, std::set<int> *non_co_acc_state, std::set<int> current_path, int current_position);
+            static bool CompareMap(std::map<int,int> &mapSrc, std::map<int,int> &mapDst);
+
 
 
             // Autres déclaration d'attributs (par exemple les transitions, pour lesquelles je vous conseille de créer une autre classe "Transition")...

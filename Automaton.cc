@@ -311,6 +311,12 @@ namespace fa {
 
 	// Complexity:
 	void fa::Automaton::makeComplement(){
+    if(!isComplete()){
+      makeComplete();
+    }
+    // if(!Deterministic()){
+    //   this=createDeterministic(this);
+    // }
 		std::set<int>::iterator iter=states.begin();
 		while(iter != states.end()){
 			if(isStateFinal(*iter)){
@@ -395,7 +401,7 @@ namespace fa {
 
 
   //*************************************   tp6   ***********************************
-  bool fa::CompareMap(std::map<int,int> &mapSrc, std::map<int,int> &mapDst){
+  bool fa::Automaton::CompareMap(std::map<int,int> &mapSrc, std::map<int,int> &mapDst){
   	if ( mapSrc.size() != mapDst.size() ){
   		return false;
   	}
@@ -430,35 +436,73 @@ namespace fa {
 
     fa::Automaton new_automate;
     std::map<int,int> map0,map1;
-    std::map<int,int> map2;
-
+    std::map<int,int> map2, map3;
+    std::set<char> tmp_alphabets = tmp_automate.getAlphabets();
     std::set<trans> tmp_transitions = tmp_automate.getTransitions();
     std::set<trans>::iterator tmp_transtions_iter;
     std::set<int> tmp_states = tmp_automate.getStates();
     std::set<int>::iterator tmp_states_iter = tmp_states.begin();
+    int nbState = tmp_automate.countStates() + 1;
+
+
     while(tmp_states_iter != tmp_states.end()){
-      if(automaton.isStateFinal(*states_iter)){
-        map0.insert(std::pair<int,int>(*states_iter,2));
+      if(automaton.isStateFinal(*tmp_states_iter)){
+        map0.insert(std::pair<int,int>(*tmp_states_iter,2));
+        map1.insert(std::pair<int,int>(*tmp_states_iter,2));
       }
       else{
-        map0.insert(std::pair<int,int>(*states_iter,1));
+        map0.insert(std::pair<int,int>(*tmp_states_iter,1));
+        map1.insert(std::pair<int,int>(*tmp_states_iter,1));
       }
-      tmp_states++;
+      tmp_states_iter++;
     }
 
-    int nbState = tmp_automate.countStates() + 1;
-    int nbAlpha = tmp_automate.getAlphabetSize();
 
-    do{
+
+    while(1){
       tmp_transtions_iter = tmp_transitions.begin();
       while(tmp_transtions_iter != tmp_transitions.end()){
-        // int nb = pow（a,b）;
-        map1.insert(std::pair<int,int>(tmp_transtions_iter->from,map0[tmp_transtions_iter->to]*nb));
-        // map2.
+        //nb_0 est la position de alpha dans automate
+        //nb est multiplier pour calculer et séparer dans map1
+        int nb_0 = std::distance( tmp_alphabets.begin(), std::find( tmp_alphabets.begin(), tmp_alphabets.end(),tmp_transtions_iter->alpha)) + 2;
+        int nb = pow(nbState, nb_0);
+        map1.insert(std::pair<int,int>(tmp_transtions_iter->from,map1[tmp_transtions_iter->from]+map0[tmp_transtions_iter->to]*nb));
         tmp_transtions_iter++;
       }
-    }while(!CompareMap(map0,map1));
+      int current = 1;
+      tmp_states_iter = tmp_states.begin();
+      while(tmp_states_iter != tmp_states.end()){
+        if(map3.find(map1[*tmp_states_iter]) != map3.end()){
+          map2.insert(std::pair<int,int>((*tmp_states_iter),map2[*tmp_states_iter]));
+        }
+        else{
+          map2.insert(std::pair<int,int>(*tmp_states_iter,current));
+          map3.insert(std::pair<int,int>(*tmp_states_iter, map1[*tmp_states_iter]));
+          current++;
+        }
+        if(CompareMap(map0,map2)){
+          break;
+        }
+        else{
+          map0=map2;
+          map2.clear();
+          map1.clear();
+          map3.clear();
+        }
+    }
+  }
 
+    std::map<int,int>::iterator map2_it = map2.begin();
+
+    while(map2_it != map2.end()){
+      new_automate.addState((*map2_it).first);
+      if(tmp_automate.isStateFinal((*map2_it).first)){
+        new_automate.setStateFinal((*map2_it).first);
+      }
+      if(tmp_automate.isStateInitial((*map2_it).first)){
+        new_automate.setStateInitial((*map2_it).first);
+      }
+    }
 
 
     return new_automate;
