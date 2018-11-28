@@ -396,6 +396,13 @@ namespace fa {
 
   //*************************************   tp6   ***********************************
   Automaton fa::Automaton::createMinimalMoore(const Automaton& automaton){
+    if(!automaton.isComplete()){
+      automaton.makeComplete();
+    }
+    // if(!automaton.isDeterministic()){
+    //   automaton.Deterministic();
+    // }
+    
     fa::Automaton new_automate;
     std::map<int,int> map0;
     std::set<int> states = automaton.getStates();
@@ -409,7 +416,8 @@ namespace fa {
       }
     }
 
-    
+
+
     return new_automate;
   }
 
