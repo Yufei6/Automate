@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 digraph automaton {
 size = "8.5, 11";
 fontsize = 10;
@@ -29,3 +30,5 @@ fontsize = 10;
 4->4 [ label = "b" ]; 
 
 }
+=======
+>>>>>>> 59dd74a956338fb2df5f6d37c50d088807e58c6f
