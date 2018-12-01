@@ -570,16 +570,24 @@ namespace fa {
         return to_set;
     }
 
+    std::set<int> fa::Automaton::to(int state) {
+        std::set<int> from_set;
+        std::set<struct trans>::iterator trans_iter = transitions.begin();
+        while(trans_iter != transitions.end()){
+            struct trans transition = *trans_iter;
+            if (transition.to == state) {
+                from_set.insert(transition.from);
+            }
+            trans_iter++;
+        }
+        return from_set;
+    }
+
     bool fa::Automaton::depthFirstSearch(std::set<int> *visited, int current) {
         if ((*visited).find(current) != (*visited).end()) {
             return false;
         }
         std::set<int> destinations = from(current);
-        // std::cout << "From " << current << ": ";
-        // for (std::set<int>::iterator it = destinations.begin(); it != destinations.end(); it++) {
-        //     std::cout << *it << " ";
-        // }
-        // std::cout << std::endl;
         (*visited).insert(current);
         bool path_found = false;
         if ( ! destinations.empty() ) {
@@ -590,6 +598,26 @@ namespace fa {
             }
         }
         if (finalStates.find(current) != finalStates.end()) {
+            return true;
+        }
+        return path_found;
+    }
+
+    bool fa::Automaton::depthFirstSearchReversed(std::set<int> *visited, int current) {
+        if ((*visited).find(current) != (*visited).end()) {
+            return false;
+        }
+        std::set<int> origins = to(current);
+        (*visited).insert(current);
+        bool path_found = false;
+        if ( ! origins.empty() ) {
+            std::set<int>::iterator or_iter = origins.begin();
+            while (or_iter != origins.end()) {
+                path_found = depthFirstSearchReversed(visited, *or_iter) || path_found;
+                or_iter++;
+            }
+        }
+        if (initialStates.find(current) != initialStates.end()) {
             return true;
         }
         return path_found;
@@ -608,7 +636,6 @@ namespace fa {
 
     void fa::Automaton::removeNonAccessibleStates() {
         std::set<int> visited_states;
-        std::cout << std::endl;
         std::set<int>::iterator init_iter = initialStates.begin();
         while (init_iter != initialStates.end()) {
             depthFirstSearch(&visited_states, *init_iter);
@@ -623,10 +650,18 @@ namespace fa {
     }
 
     void fa::Automaton::removeNonCoAccessibleStates() {
-
+        std::set<int> visited_states;
+        std::set<int>::iterator final_iter = finalStates.begin();
+        while (final_iter != finalStates.end()) {
+            depthFirstSearchReversed(&visited_states, *final_iter);
+            final_iter++;
+        }
+        for (std::set<int>::iterator states_iter = states.begin(); states_iter != states.end(); states_iter++) {
+            if (visited_states.find(*states_iter) == visited_states.end()) {
+                removeState(*states_iter);
+                states_iter--;   //Pour éviter le saut d'indice lorsqu'un élément du set est supprimé
+            }
+        }
     }
 
-    void fa::Automaton::coAccessibleStatesFinder(std::set<int> *states, std::set<int> *co_acc_states, std::set<int> *non_co_acc_state, std::set<int> current_path, int current_position) {
-
-    }
 }

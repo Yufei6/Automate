@@ -81,8 +81,9 @@ namespace fa {
             int getTheBiggestState() const;
             int getToWithFromAndAlpha(int from, char alpha) const;
             std::set<int> from(int state);
+            std::set<int> to(int state);
             bool depthFirstSearch(std::set<int> *visited, int current);
-            void coAccessibleStatesFinder(std::set<int> *states, std::set<int> *co_acc_states, std::set<int> *non_co_acc_state, std::set<int> current_path, int current_position);
+            bool depthFirstSearchReversed(std::set<int> *visited, int current);
             static bool CompareMap(std::map<int,int> &mapSrc, std::map<int,int> &mapDst);
 
 

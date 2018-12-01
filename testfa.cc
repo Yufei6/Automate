@@ -30,25 +30,6 @@ TEST(AutomatonTest, Empty) {
   EXPECT_EQ(fa.countTransitions(), 0u);
 }
 
-<<<<<<< HEAD
-TEST(AutomatonTest, removeNonAccessibleStates) {
-    fa::Automaton non_acc;
-    non_acc.addState(0);
-    non_acc.addState(1);
-    non_acc.addState(2);
-    non_acc.addState(3);
-    non_acc.addState(4);
-    non_acc.addTransition(0, 'a', 4);
-    non_acc.addTransition(1, 'a', 2);
-    non_acc.setStateFinal(4);
-    non_acc.setStateInitial(0);
-
-    std::cout << "Before removing non-acc" << std::endl;
-    non_acc.prettyPrint(std::cout);
-    non_acc.removeNonAccessibleStates();
-    std::cout << "After removing non-acc" << std::endl;
-    non_acc.prettyPrint(std::cout);
-=======
 TEST(AutomatonTest, normal){
   std::ofstream fout("diagramme.dot");
   std::ofstream fout2("diagramme2.dot");
@@ -83,7 +64,26 @@ TEST(AutomatonTest, normal){
   automaton.dotPrint(fout);
   automaton.addTransition(4,'b',4);
   automaton.prettyPrint(std::cout);
->>>>>>> 59dd74a956338fb2df5f6d37c50d088807e58c6f
+}
+
+TEST(AutomatonTest, removeNonCoAccessibleStates) {
+    fa::Automaton non_co_acc;
+    non_co_acc.addState(0);
+    non_co_acc.addState(1);
+    non_co_acc.addState(2);
+    non_co_acc.addState(3);
+    non_co_acc.addState(4);
+    non_co_acc.addTransition(0,'b',1);
+    non_co_acc.addTransition(1,'b',2);
+    non_co_acc.addTransition(0,'b',3);
+    non_co_acc.addTransition(3,'b',4);
+    non_co_acc.setStateInitial(0);
+    non_co_acc.setStateFinal(4);
+    std::cout << "Before deleting non-co-acc : " << std::endl;
+    non_co_acc.prettyPrint(std::cout);
+    non_co_acc.removeNonCoAccessibleStates();
+    std::cout << "After deleting non-co-acc : " << std::endl;
+    non_co_acc.prettyPrint(std::cout);
 }
 
 int main(int argc, char **argv) {
@@ -99,10 +99,7 @@ int main(int argc, char **argv) {
 
 
 
-<<<<<<< HEAD
     //non_accessible_states_automaton.dotPrint(fout_non_acc);
-=======
->>>>>>> 59dd74a956338fb2df5f6d37c50d088807e58c6f
 
 
 
