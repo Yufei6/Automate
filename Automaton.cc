@@ -489,8 +489,8 @@ namespace fa {
           map1.clear();
           map3.clear();
         }
+      }
     }
-  }
 
     std::map<int,int>::iterator map2_it = map2.begin();
 
