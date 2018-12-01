@@ -18,6 +18,11 @@ namespace fa {
 	// Complexity: O(log n)
 	void fa::Automaton::removeState(int state){
 		states.erase(state);
+        for (std::set<struct trans>::iterator iter = transitions.begin(); iter != transitions.end(); iter++) {
+            if (((*iter).from == state) || (*iter).to == state) {
+                transitions.erase(iter);
+            }
+        }
 		// std::cout << "Après suppression de l'état " << state << ", l'automate possède " << states.size() << " état(s)." << std::endl;
 
 	}
