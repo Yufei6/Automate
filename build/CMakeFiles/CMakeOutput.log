@@ -1,6 +1,6 @@
-The system is: Darwin - 18.2.0 - x86_64
+The system is: Linux - 4.18.0-11-generic - x86_64
 Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
-Compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ 
+Compiler: /usr/bin/c++ 
 Build flags: 
 Id flags:  
 
@@ -10,10 +10,10 @@ The output was:
 
 Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
 
-The CXX compiler identification is AppleClang, found in "/Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles/3.12.3/CompilerIdCXX/a.out"
+The CXX compiler identification is GNU, found in "/home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/3.12.1/CompilerIdCXX/a.out"
 
 Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
-Compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc 
+Compiler: /usr/bin/cc 
 Build flags: 
 Id flags:  
 
@@ -23,34 +23,33 @@ The output was:
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
 
-The C compiler identification is AppleClang, found in "/Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles/3.12.3/CompilerIdC/a.out"
+The C compiler identification is GNU, found in "/home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/3.12.1/CompilerIdC/a.out"
 
 Determining if the CXX compiler works passed with the following output:
-Change Dir: /Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles/CMakeTmp
+Change Dir: /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp
 
-<<<<<<< HEAD
-Run Build Command:"/usr/bin/make" "cmTC_3cb13/fast"
-/usr/bin/make -f CMakeFiles/cmTC_3cb13.dir/build.make CMakeFiles/cmTC_3cb13.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_8edc3/fast"
+/usr/bin/make -f CMakeFiles/cmTC_8edc3.dir/build.make CMakeFiles/cmTC_8edc3.dir/build
 make[1] : on entre dans le répertoire « /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp »
-Building CXX object CMakeFiles/cmTC_3cb13.dir/testCXXCompiler.cxx.o
-/usr/bin/c++     -o CMakeFiles/cmTC_3cb13.dir/testCXXCompiler.cxx.o -c "/home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx"
-Linking CXX executable cmTC_3cb13
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3cb13.dir/link.txt --verbose=1
-/usr/bin/c++       -rdynamic CMakeFiles/cmTC_3cb13.dir/testCXXCompiler.cxx.o  -o cmTC_3cb13 
+Building CXX object CMakeFiles/cmTC_8edc3.dir/testCXXCompiler.cxx.o
+/usr/bin/c++     -o CMakeFiles/cmTC_8edc3.dir/testCXXCompiler.cxx.o -c "/home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx"
+Linking CXX executable cmTC_8edc3
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8edc3.dir/link.txt --verbose=1
+/usr/bin/c++       -rdynamic CMakeFiles/cmTC_8edc3.dir/testCXXCompiler.cxx.o  -o cmTC_8edc3 
 make[1] : on quitte le répertoire « /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp »
 
 
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_e7991/fast"
-/usr/bin/make -f CMakeFiles/cmTC_e7991.dir/build.make CMakeFiles/cmTC_e7991.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_ed4b3/fast"
+/usr/bin/make -f CMakeFiles/cmTC_ed4b3.dir/build.make CMakeFiles/cmTC_ed4b3.dir/build
 make[1] : on entre dans le répertoire « /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp »
-Building CXX object CMakeFiles/cmTC_e7991.dir/CMakeCXXCompilerABI.cpp.o
-/usr/bin/c++     -o CMakeFiles/cmTC_e7991.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.12/Modules/CMakeCXXCompilerABI.cpp
-Linking CXX executable cmTC_e7991
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e7991.dir/link.txt --verbose=1
-/usr/bin/c++      -v -rdynamic CMakeFiles/cmTC_e7991.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_e7991 
+Building CXX object CMakeFiles/cmTC_ed4b3.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/c++     -o CMakeFiles/cmTC_ed4b3.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.12/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTC_ed4b3
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ed4b3.dir/link.txt --verbose=1
+/usr/bin/c++      -v -rdynamic CMakeFiles/cmTC_ed4b3.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_ed4b3 
 Using built-in specs.
 COLLECT_GCC=/usr/bin/c++
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper
@@ -62,58 +61,24 @@ Thread model: posix
 gcc version 8.2.0 (Ubuntu 8.2.0-7ubuntu1) 
 COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/8/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_e7991' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
- /usr/lib/gcc/x86_64-linux-gnu/8/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/8/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper -plugin-opt=-fresolution=/tmp/ccolRzy9.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_e7991 /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/8/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/8 -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/8/../../.. CMakeFiles/cmTC_e7991.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/8/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crtn.o
-COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_e7991' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_ed4b3' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/8/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/8/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper -plugin-opt=-fresolution=/tmp/cch1dKi2.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_ed4b3 /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/8/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/8 -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/8/../../.. CMakeFiles/cmTC_ed4b3.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/8/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_ed4b3' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
 make[1] : on quitte le répertoire « /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp »
-=======
-Run Build Command:"/usr/bin/make" "cmTC_611b6/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_611b6.dir/build.make CMakeFiles/cmTC_611b6.dir/build
-Building CXX object CMakeFiles/cmTC_611b6.dir/testCXXCompiler.cxx.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk   -o CMakeFiles/cmTC_611b6.dir/testCXXCompiler.cxx.o -c /Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
-Linking CXX executable cmTC_611b6
-/usr/local/Cellar/cmake/3.12.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_611b6.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_611b6.dir/testCXXCompiler.cxx.o  -o cmTC_611b6 
-
-
-Detecting CXX compiler ABI info compiled with the following output:
-Change Dir: /Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles/CMakeTmp
-
-Run Build Command:"/usr/bin/make" "cmTC_5a168/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_5a168.dir/build.make CMakeFiles/cmTC_5a168.dir/build
-Building CXX object CMakeFiles/cmTC_5a168.dir/CMakeCXXCompilerABI.cpp.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk   -o CMakeFiles/cmTC_5a168.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/Cellar/cmake/3.12.3/share/cmake/Modules/CMakeCXXCompilerABI.cpp
-Linking CXX executable cmTC_5a168
-/usr/local/Cellar/cmake/3.12.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5a168.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_5a168.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_5a168 
-Apple LLVM version 10.0.0 (clang-1000.11.45.5)
-Target: x86_64-apple-darwin18.2.0
-Thread model: posix
-InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch x86_64 -macosx_version_min 10.14.0 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -o cmTC_5a168 -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_5a168.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/10.0.0/lib/darwin/libclang_rt.osx.a
-@(#)PROGRAM:ld  PROJECT:ld64-409.12
-BUILD 17:47:51 Sep 25 2018
-configured to support archs: armv6 armv7 armv7s arm64 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em arm64e arm64_32
-Library search paths:
-	/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/usr/lib
-Framework search paths:
-	/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/
->>>>>>> 59dd74a956338fb2df5f6d37c50d088807e58c6f
 
 
 Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp]
   ignore line: []
-<<<<<<< HEAD
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_e7991/fast"]
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_e7991.dir/build.make CMakeFiles/cmTC_e7991.dir/build]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_ed4b3/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_ed4b3.dir/build.make CMakeFiles/cmTC_ed4b3.dir/build]
   ignore line: [make[1] : on entre dans le répertoire « /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp »]
-  ignore line: [Building CXX object CMakeFiles/cmTC_e7991.dir/CMakeCXXCompilerABI.cpp.o]
-  ignore line: [/usr/bin/c++     -o CMakeFiles/cmTC_e7991.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.12/Modules/CMakeCXXCompilerABI.cpp]
-  ignore line: [Linking CXX executable cmTC_e7991]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e7991.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/c++      -v -rdynamic CMakeFiles/cmTC_e7991.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_e7991 ]
+  ignore line: [Building CXX object CMakeFiles/cmTC_ed4b3.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/bin/c++     -o CMakeFiles/cmTC_ed4b3.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.12/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTC_ed4b3]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ed4b3.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/c++      -v -rdynamic CMakeFiles/cmTC_ed4b3.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_ed4b3 ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/c++]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper]
@@ -125,13 +90,13 @@ Parsed CXX implicit link information from above output:
   ignore line: [gcc version 8.2.0 (Ubuntu 8.2.0-7ubuntu1) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/8/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_e7991' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/lib/gcc/x86_64-linux-gnu/8/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/8/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper -plugin-opt=-fresolution=/tmp/ccolRzy9.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_e7991 /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/8/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/8 -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/8/../../.. CMakeFiles/cmTC_e7991.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/8/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_ed4b3' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/8/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/8/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper -plugin-opt=-fresolution=/tmp/cch1dKi2.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_ed4b3 /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/8/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/8 -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/8/../../.. CMakeFiles/cmTC_ed4b3.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/8/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crtn.o]
     arg [/usr/lib/gcc/x86_64-linux-gnu/8/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/8/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/ccolRzy9.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/cch1dKi2.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -151,7 +116,7 @@ Parsed CXX implicit link information from above output:
     arg [-znow] ==> ignore
     arg [-zrelro] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_e7991] ==> ignore
+    arg [cmTC_ed4b3] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/Scrt1.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crti.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/8/crtbeginS.o] ==> ignore
@@ -163,7 +128,7 @@ Parsed CXX implicit link information from above output:
     arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/usr/lib/gcc/x86_64-linux-gnu/8/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/8/../../..]
-    arg [CMakeFiles/cmTC_e7991.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [CMakeFiles/cmTC_ed4b3.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
     arg [-lstdc++] ==> lib [stdc++]
     arg [-lm] ==> lib [m]
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -191,14 +156,14 @@ Parsed CXX implicit link information from above output:
 Detecting CXX [-std=c++2a] compiler features compiled with the following output:
 Change Dir: /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_9df01/fast"
-/usr/bin/make -f CMakeFiles/cmTC_9df01.dir/build.make CMakeFiles/cmTC_9df01.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_fc935/fast"
+/usr/bin/make -f CMakeFiles/cmTC_fc935.dir/build.make CMakeFiles/cmTC_fc935.dir/build
 make[1] : on entre dans le répertoire « /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp »
-Building CXX object CMakeFiles/cmTC_9df01.dir/feature_tests.cxx.o
-/usr/bin/c++    -std=c++2a -o CMakeFiles/cmTC_9df01.dir/feature_tests.cxx.o -c "/home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/feature_tests.cxx"
-Linking CXX executable cmTC_9df01
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9df01.dir/link.txt --verbose=1
-/usr/bin/c++       -rdynamic CMakeFiles/cmTC_9df01.dir/feature_tests.cxx.o  -o cmTC_9df01 
+Building CXX object CMakeFiles/cmTC_fc935.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++2a -o CMakeFiles/cmTC_fc935.dir/feature_tests.cxx.o -c "/home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/feature_tests.cxx"
+Linking CXX executable cmTC_fc935
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fc935.dir/link.txt --verbose=1
+/usr/bin/c++       -rdynamic CMakeFiles/cmTC_fc935.dir/feature_tests.cxx.o  -o cmTC_fc935 
 make[1] : on quitte le répertoire « /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp »
 
 
@@ -264,72 +229,15 @@ make[1] : on quitte le répertoire « /home/augustin/Bureau/Depot Automate/Aut
 Detecting CXX [-std=c++17] compiler features compiled with the following output:
 Change Dir: /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_d87a0/fast"
-/usr/bin/make -f CMakeFiles/cmTC_d87a0.dir/build.make CMakeFiles/cmTC_d87a0.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_92eb0/fast"
+/usr/bin/make -f CMakeFiles/cmTC_92eb0.dir/build.make CMakeFiles/cmTC_92eb0.dir/build
 make[1] : on entre dans le répertoire « /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp »
-Building CXX object CMakeFiles/cmTC_d87a0.dir/feature_tests.cxx.o
-/usr/bin/c++    -std=c++17 -o CMakeFiles/cmTC_d87a0.dir/feature_tests.cxx.o -c "/home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/feature_tests.cxx"
-Linking CXX executable cmTC_d87a0
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d87a0.dir/link.txt --verbose=1
-/usr/bin/c++       -rdynamic CMakeFiles/cmTC_d87a0.dir/feature_tests.cxx.o  -o cmTC_d87a0 
+Building CXX object CMakeFiles/cmTC_92eb0.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++17 -o CMakeFiles/cmTC_92eb0.dir/feature_tests.cxx.o -c "/home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/feature_tests.cxx"
+Linking CXX executable cmTC_92eb0
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_92eb0.dir/link.txt --verbose=1
+/usr/bin/c++       -rdynamic CMakeFiles/cmTC_92eb0.dir/feature_tests.cxx.o  -o cmTC_92eb0 
 make[1] : on quitte le répertoire « /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp »
-=======
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_5a168/fast"]
-  ignore line: [/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_5a168.dir/build.make CMakeFiles/cmTC_5a168.dir/build]
-  ignore line: [Building CXX object CMakeFiles/cmTC_5a168.dir/CMakeCXXCompilerABI.cpp.o]
-  ignore line: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk   -o CMakeFiles/cmTC_5a168.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/Cellar/cmake/3.12.3/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
-  ignore line: [Linking CXX executable cmTC_5a168]
-  ignore line: [/usr/local/Cellar/cmake/3.12.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5a168.dir/link.txt --verbose=1]
-  ignore line: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_5a168.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_5a168 ]
-  ignore line: [Apple LLVM version 10.0.0 (clang-1000.11.45.5)]
-  ignore line: [Target: x86_64-apple-darwin18.2.0]
-  ignore line: [Thread model: posix]
-  ignore line: [InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin]
-  link line: [ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch x86_64 -macosx_version_min 10.14.0 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -o cmTC_5a168 -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_5a168.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/10.0.0/lib/darwin/libclang_rt.osx.a]
-    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld] ==> ignore
-    arg [-demangle] ==> ignore
-    arg [-lto_library] ==> ignore, skip following value
-    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib] ==> skip value of -lto_library
-    arg [-dynamic] ==> ignore
-    arg [-arch] ==> ignore
-    arg [x86_64] ==> ignore
-    arg [-macosx_version_min] ==> ignore
-    arg [10.14.0] ==> ignore
-    arg [-syslibroot] ==> ignore
-    arg [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk] ==> ignore
-    arg [-o] ==> ignore
-    arg [cmTC_5a168] ==> ignore
-    arg [-search_paths_first] ==> ignore
-    arg [-headerpad_max_install_names] ==> ignore
-    arg [-v] ==> ignore
-    arg [CMakeFiles/cmTC_5a168.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
-    arg [-lc++] ==> lib [c++]
-    arg [-lSystem] ==> lib [System]
-    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/10.0.0/lib/darwin/libclang_rt.osx.a] ==> lib [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/10.0.0/lib/darwin/libclang_rt.osx.a]
-  Library search paths: [;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/usr/lib]
-  Framework search paths: [;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/]
-  remove lib [System]
-  remove lib [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/10.0.0/lib/darwin/libclang_rt.osx.a]
-  collapse library dir [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/usr/lib] ==> [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/usr/lib]
-  collapse framework dir [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/] ==> [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks]
-  implicit libs: [c++]
-  implicit dirs: [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/usr/lib]
-  implicit fwks: [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks]
-
-
-
-
-Detecting CXX [-std=c++1z] compiler features compiled with the following output:
-Change Dir: /Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles/CMakeTmp
-
-Run Build Command:"/usr/bin/make" "cmTC_a02d8/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_a02d8.dir/build.make CMakeFiles/cmTC_a02d8.dir/build
-Building CXX object CMakeFiles/cmTC_a02d8.dir/feature_tests.cxx.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk   -std=c++1z -o CMakeFiles/cmTC_a02d8.dir/feature_tests.cxx.o -c /Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_a02d8
-/usr/local/Cellar/cmake/3.12.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a02d8.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_a02d8.dir/feature_tests.cxx.o  -o cmTC_a02d8 
->>>>>>> 59dd74a956338fb2df5f6d37c50d088807e58c6f
 
 
     Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
@@ -392,27 +300,17 @@ Linking CXX executable cmTC_a02d8
 
 
 Detecting CXX [-std=c++14] compiler features compiled with the following output:
-Change Dir: /Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles/CMakeTmp
+Change Dir: /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp
 
-<<<<<<< HEAD
-Run Build Command:"/usr/bin/make" "cmTC_5f30e/fast"
-/usr/bin/make -f CMakeFiles/cmTC_5f30e.dir/build.make CMakeFiles/cmTC_5f30e.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_471da/fast"
+/usr/bin/make -f CMakeFiles/cmTC_471da.dir/build.make CMakeFiles/cmTC_471da.dir/build
 make[1] : on entre dans le répertoire « /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp »
-Building CXX object CMakeFiles/cmTC_5f30e.dir/feature_tests.cxx.o
-/usr/bin/c++    -std=c++14 -o CMakeFiles/cmTC_5f30e.dir/feature_tests.cxx.o -c "/home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/feature_tests.cxx"
-Linking CXX executable cmTC_5f30e
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5f30e.dir/link.txt --verbose=1
-/usr/bin/c++       -rdynamic CMakeFiles/cmTC_5f30e.dir/feature_tests.cxx.o  -o cmTC_5f30e 
+Building CXX object CMakeFiles/cmTC_471da.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++14 -o CMakeFiles/cmTC_471da.dir/feature_tests.cxx.o -c "/home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/feature_tests.cxx"
+Linking CXX executable cmTC_471da
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_471da.dir/link.txt --verbose=1
+/usr/bin/c++       -rdynamic CMakeFiles/cmTC_471da.dir/feature_tests.cxx.o  -o cmTC_471da 
 make[1] : on quitte le répertoire « /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp »
-=======
-Run Build Command:"/usr/bin/make" "cmTC_a12cf/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_a12cf.dir/build.make CMakeFiles/cmTC_a12cf.dir/build
-Building CXX object CMakeFiles/cmTC_a12cf.dir/feature_tests.cxx.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk   -std=c++14 -o CMakeFiles/cmTC_a12cf.dir/feature_tests.cxx.o -c /Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_a12cf
-/usr/local/Cellar/cmake/3.12.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a12cf.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_a12cf.dir/feature_tests.cxx.o  -o cmTC_a12cf 
->>>>>>> 59dd74a956338fb2df5f6d37c50d088807e58c6f
 
 
     Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
@@ -475,27 +373,17 @@ Linking CXX executable cmTC_a12cf
 
 
 Detecting CXX [-std=c++11] compiler features compiled with the following output:
-Change Dir: /Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles/CMakeTmp
+Change Dir: /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp
 
-<<<<<<< HEAD
-Run Build Command:"/usr/bin/make" "cmTC_6f46f/fast"
-/usr/bin/make -f CMakeFiles/cmTC_6f46f.dir/build.make CMakeFiles/cmTC_6f46f.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_1e5c5/fast"
+/usr/bin/make -f CMakeFiles/cmTC_1e5c5.dir/build.make CMakeFiles/cmTC_1e5c5.dir/build
 make[1] : on entre dans le répertoire « /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp »
-Building CXX object CMakeFiles/cmTC_6f46f.dir/feature_tests.cxx.o
-/usr/bin/c++    -std=c++11 -o CMakeFiles/cmTC_6f46f.dir/feature_tests.cxx.o -c "/home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/feature_tests.cxx"
-Linking CXX executable cmTC_6f46f
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6f46f.dir/link.txt --verbose=1
-/usr/bin/c++       -rdynamic CMakeFiles/cmTC_6f46f.dir/feature_tests.cxx.o  -o cmTC_6f46f 
+Building CXX object CMakeFiles/cmTC_1e5c5.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++11 -o CMakeFiles/cmTC_1e5c5.dir/feature_tests.cxx.o -c "/home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/feature_tests.cxx"
+Linking CXX executable cmTC_1e5c5
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1e5c5.dir/link.txt --verbose=1
+/usr/bin/c++       -rdynamic CMakeFiles/cmTC_1e5c5.dir/feature_tests.cxx.o  -o cmTC_1e5c5 
 make[1] : on quitte le répertoire « /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp »
-=======
-Run Build Command:"/usr/bin/make" "cmTC_76f4c/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_76f4c.dir/build.make CMakeFiles/cmTC_76f4c.dir/build
-Building CXX object CMakeFiles/cmTC_76f4c.dir/feature_tests.cxx.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk   -std=c++11 -o CMakeFiles/cmTC_76f4c.dir/feature_tests.cxx.o -c /Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_76f4c
-/usr/local/Cellar/cmake/3.12.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_76f4c.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_76f4c.dir/feature_tests.cxx.o  -o cmTC_76f4c 
->>>>>>> 59dd74a956338fb2df5f6d37c50d088807e58c6f
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
@@ -558,27 +446,17 @@ Linking CXX executable cmTC_76f4c
 
 
 Detecting CXX [-std=c++98] compiler features compiled with the following output:
-Change Dir: /Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles/CMakeTmp
+Change Dir: /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp
 
-<<<<<<< HEAD
-Run Build Command:"/usr/bin/make" "cmTC_1d352/fast"
-/usr/bin/make -f CMakeFiles/cmTC_1d352.dir/build.make CMakeFiles/cmTC_1d352.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_d96d9/fast"
+/usr/bin/make -f CMakeFiles/cmTC_d96d9.dir/build.make CMakeFiles/cmTC_d96d9.dir/build
 make[1] : on entre dans le répertoire « /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp »
-Building CXX object CMakeFiles/cmTC_1d352.dir/feature_tests.cxx.o
-/usr/bin/c++    -std=c++98 -o CMakeFiles/cmTC_1d352.dir/feature_tests.cxx.o -c "/home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/feature_tests.cxx"
-Linking CXX executable cmTC_1d352
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1d352.dir/link.txt --verbose=1
-/usr/bin/c++       -rdynamic CMakeFiles/cmTC_1d352.dir/feature_tests.cxx.o  -o cmTC_1d352 
+Building CXX object CMakeFiles/cmTC_d96d9.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++98 -o CMakeFiles/cmTC_d96d9.dir/feature_tests.cxx.o -c "/home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/feature_tests.cxx"
+Linking CXX executable cmTC_d96d9
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d96d9.dir/link.txt --verbose=1
+/usr/bin/c++       -rdynamic CMakeFiles/cmTC_d96d9.dir/feature_tests.cxx.o  -o cmTC_d96d9 
 make[1] : on quitte le répertoire « /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp »
-=======
-Run Build Command:"/usr/bin/make" "cmTC_86be5/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_86be5.dir/build.make CMakeFiles/cmTC_86be5.dir/build
-Building CXX object CMakeFiles/cmTC_86be5.dir/feature_tests.cxx.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk   -std=c++98 -o CMakeFiles/cmTC_86be5.dir/feature_tests.cxx.o -c /Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_86be5
-/usr/local/Cellar/cmake/3.12.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_86be5.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_86be5.dir/feature_tests.cxx.o  -o cmTC_86be5 
->>>>>>> 59dd74a956338fb2df5f6d37c50d088807e58c6f
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
@@ -639,31 +517,30 @@ Linking CXX executable cmTC_86be5
     Feature record: CXX_FEATURE:0cxx_variadic_macros
     Feature record: CXX_FEATURE:0cxx_variadic_templates
 Determining if the C compiler works passed with the following output:
-Change Dir: /Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles/CMakeTmp
+Change Dir: /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp
 
-<<<<<<< HEAD
-Run Build Command:"/usr/bin/make" "cmTC_3c420/fast"
-/usr/bin/make -f CMakeFiles/cmTC_3c420.dir/build.make CMakeFiles/cmTC_3c420.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_d1c1c/fast"
+/usr/bin/make -f CMakeFiles/cmTC_d1c1c.dir/build.make CMakeFiles/cmTC_d1c1c.dir/build
 make[1] : on entre dans le répertoire « /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp »
-Building C object CMakeFiles/cmTC_3c420.dir/testCCompiler.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_3c420.dir/testCCompiler.c.o   -c "/home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp/testCCompiler.c"
-Linking C executable cmTC_3c420
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3c420.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_3c420.dir/testCCompiler.c.o  -o cmTC_3c420 
+Building C object CMakeFiles/cmTC_d1c1c.dir/testCCompiler.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_d1c1c.dir/testCCompiler.c.o   -c "/home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp/testCCompiler.c"
+Linking C executable cmTC_d1c1c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d1c1c.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_d1c1c.dir/testCCompiler.c.o  -o cmTC_d1c1c 
 make[1] : on quitte le répertoire « /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp »
 
 
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_bcc31/fast"
-/usr/bin/make -f CMakeFiles/cmTC_bcc31.dir/build.make CMakeFiles/cmTC_bcc31.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_a0f79/fast"
+/usr/bin/make -f CMakeFiles/cmTC_a0f79.dir/build.make CMakeFiles/cmTC_a0f79.dir/build
 make[1] : on entre dans le répertoire « /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp »
-Building C object CMakeFiles/cmTC_bcc31.dir/CMakeCCompilerABI.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_bcc31.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.12/Modules/CMakeCCompilerABI.c
-Linking C executable cmTC_bcc31
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bcc31.dir/link.txt --verbose=1
-/usr/bin/cc     -v -rdynamic CMakeFiles/cmTC_bcc31.dir/CMakeCCompilerABI.c.o  -o cmTC_bcc31 
+Building C object CMakeFiles/cmTC_a0f79.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_a0f79.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.12/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_a0f79
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a0f79.dir/link.txt --verbose=1
+/usr/bin/cc     -v -rdynamic CMakeFiles/cmTC_a0f79.dir/CMakeCCompilerABI.c.o  -o cmTC_a0f79 
 Using built-in specs.
 COLLECT_GCC=/usr/bin/cc
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper
@@ -675,58 +552,24 @@ Thread model: posix
 gcc version 8.2.0 (Ubuntu 8.2.0-7ubuntu1) 
 COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/8/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_bcc31' '-mtune=generic' '-march=x86-64'
- /usr/lib/gcc/x86_64-linux-gnu/8/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/8/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper -plugin-opt=-fresolution=/tmp/ccaFNm9P.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_bcc31 /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/8/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/8 -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/8/../../.. CMakeFiles/cmTC_bcc31.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/8/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crtn.o
-COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_bcc31' '-mtune=generic' '-march=x86-64'
+COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_a0f79' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/8/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/8/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper -plugin-opt=-fresolution=/tmp/ccHxwvDK.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_a0f79 /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/8/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/8 -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/8/../../.. CMakeFiles/cmTC_a0f79.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/8/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_a0f79' '-mtune=generic' '-march=x86-64'
 make[1] : on quitte le répertoire « /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp »
-=======
-Run Build Command:"/usr/bin/make" "cmTC_3c89b/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_3c89b.dir/build.make CMakeFiles/cmTC_3c89b.dir/build
-Building C object CMakeFiles/cmTC_3c89b.dir/testCCompiler.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk   -o CMakeFiles/cmTC_3c89b.dir/testCCompiler.c.o   -c /Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles/CMakeTmp/testCCompiler.c
-Linking C executable cmTC_3c89b
-/usr/local/Cellar/cmake/3.12.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3c89b.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_3c89b.dir/testCCompiler.c.o  -o cmTC_3c89b 
-
-
-Detecting C compiler ABI info compiled with the following output:
-Change Dir: /Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles/CMakeTmp
-
-Run Build Command:"/usr/bin/make" "cmTC_825b2/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_825b2.dir/build.make CMakeFiles/cmTC_825b2.dir/build
-Building C object CMakeFiles/cmTC_825b2.dir/CMakeCCompilerABI.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk   -o CMakeFiles/cmTC_825b2.dir/CMakeCCompilerABI.c.o   -c /usr/local/Cellar/cmake/3.12.3/share/cmake/Modules/CMakeCCompilerABI.c
-Linking C executable cmTC_825b2
-/usr/local/Cellar/cmake/3.12.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_825b2.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_825b2.dir/CMakeCCompilerABI.c.o  -o cmTC_825b2 
-Apple LLVM version 10.0.0 (clang-1000.11.45.5)
-Target: x86_64-apple-darwin18.2.0
-Thread model: posix
-InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch x86_64 -macosx_version_min 10.14.0 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -o cmTC_825b2 -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_825b2.dir/CMakeCCompilerABI.c.o -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/10.0.0/lib/darwin/libclang_rt.osx.a
-@(#)PROGRAM:ld  PROJECT:ld64-409.12
-BUILD 17:47:51 Sep 25 2018
-configured to support archs: armv6 armv7 armv7s arm64 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em arm64e arm64_32
-Library search paths:
-	/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/usr/lib
-Framework search paths:
-	/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/
->>>>>>> 59dd74a956338fb2df5f6d37c50d088807e58c6f
 
 
 Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp]
   ignore line: []
-<<<<<<< HEAD
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_bcc31/fast"]
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_bcc31.dir/build.make CMakeFiles/cmTC_bcc31.dir/build]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_a0f79/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_a0f79.dir/build.make CMakeFiles/cmTC_a0f79.dir/build]
   ignore line: [make[1] : on entre dans le répertoire « /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp »]
-  ignore line: [Building C object CMakeFiles/cmTC_bcc31.dir/CMakeCCompilerABI.c.o]
-  ignore line: [/usr/bin/cc    -o CMakeFiles/cmTC_bcc31.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.12/Modules/CMakeCCompilerABI.c]
-  ignore line: [Linking C executable cmTC_bcc31]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bcc31.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/cc     -v -rdynamic CMakeFiles/cmTC_bcc31.dir/CMakeCCompilerABI.c.o  -o cmTC_bcc31 ]
+  ignore line: [Building C object CMakeFiles/cmTC_a0f79.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc    -o CMakeFiles/cmTC_a0f79.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.12/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTC_a0f79]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a0f79.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc     -v -rdynamic CMakeFiles/cmTC_a0f79.dir/CMakeCCompilerABI.c.o  -o cmTC_a0f79 ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/cc]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper]
@@ -738,13 +581,13 @@ Parsed C implicit link information from above output:
   ignore line: [gcc version 8.2.0 (Ubuntu 8.2.0-7ubuntu1) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/8/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_bcc31' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/lib/gcc/x86_64-linux-gnu/8/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/8/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper -plugin-opt=-fresolution=/tmp/ccaFNm9P.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_bcc31 /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/8/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/8 -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/8/../../.. CMakeFiles/cmTC_bcc31.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/8/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_a0f79' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/8/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/8/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper -plugin-opt=-fresolution=/tmp/ccHxwvDK.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_a0f79 /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/8/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/8 -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/8/../../.. CMakeFiles/cmTC_a0f79.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/8/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crtn.o]
     arg [/usr/lib/gcc/x86_64-linux-gnu/8/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/8/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/ccaFNm9P.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccHxwvDK.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -764,7 +607,7 @@ Parsed C implicit link information from above output:
     arg [-znow] ==> ignore
     arg [-zrelro] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_bcc31] ==> ignore
+    arg [cmTC_a0f79] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/Scrt1.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crti.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/8/crtbeginS.o] ==> ignore
@@ -776,7 +619,7 @@ Parsed C implicit link information from above output:
     arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/usr/lib/gcc/x86_64-linux-gnu/8/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/8/../../..]
-    arg [CMakeFiles/cmTC_bcc31.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [CMakeFiles/cmTC_a0f79.dir/CMakeCCompilerABI.c.o] ==> ignore
     arg [-lgcc] ==> lib [gcc]
     arg [--push-state] ==> ignore
     arg [--as-needed] ==> ignore
@@ -801,74 +644,22 @@ Parsed C implicit link information from above output:
   implicit libs: [gcc;gcc_s;c;gcc;gcc_s]
   implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/8;/usr/lib/x86_64-linux-gnu;/usr/lib;/lib/x86_64-linux-gnu;/lib]
   implicit fwks: []
-=======
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_825b2/fast"]
-  ignore line: [/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_825b2.dir/build.make CMakeFiles/cmTC_825b2.dir/build]
-  ignore line: [Building C object CMakeFiles/cmTC_825b2.dir/CMakeCCompilerABI.c.o]
-  ignore line: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk   -o CMakeFiles/cmTC_825b2.dir/CMakeCCompilerABI.c.o   -c /usr/local/Cellar/cmake/3.12.3/share/cmake/Modules/CMakeCCompilerABI.c]
-  ignore line: [Linking C executable cmTC_825b2]
-  ignore line: [/usr/local/Cellar/cmake/3.12.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_825b2.dir/link.txt --verbose=1]
-  ignore line: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_825b2.dir/CMakeCCompilerABI.c.o  -o cmTC_825b2 ]
-  ignore line: [Apple LLVM version 10.0.0 (clang-1000.11.45.5)]
-  ignore line: [Target: x86_64-apple-darwin18.2.0]
-  ignore line: [Thread model: posix]
-  ignore line: [InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin]
-  link line: [ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch x86_64 -macosx_version_min 10.14.0 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -o cmTC_825b2 -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_825b2.dir/CMakeCCompilerABI.c.o -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/10.0.0/lib/darwin/libclang_rt.osx.a]
-    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld] ==> ignore
-    arg [-demangle] ==> ignore
-    arg [-lto_library] ==> ignore, skip following value
-    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib] ==> skip value of -lto_library
-    arg [-dynamic] ==> ignore
-    arg [-arch] ==> ignore
-    arg [x86_64] ==> ignore
-    arg [-macosx_version_min] ==> ignore
-    arg [10.14.0] ==> ignore
-    arg [-syslibroot] ==> ignore
-    arg [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk] ==> ignore
-    arg [-o] ==> ignore
-    arg [cmTC_825b2] ==> ignore
-    arg [-search_paths_first] ==> ignore
-    arg [-headerpad_max_install_names] ==> ignore
-    arg [-v] ==> ignore
-    arg [CMakeFiles/cmTC_825b2.dir/CMakeCCompilerABI.c.o] ==> ignore
-    arg [-lSystem] ==> lib [System]
-    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/10.0.0/lib/darwin/libclang_rt.osx.a] ==> lib [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/10.0.0/lib/darwin/libclang_rt.osx.a]
-  Library search paths: [;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/usr/lib]
-  Framework search paths: [;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/]
-  remove lib [System]
-  remove lib [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/10.0.0/lib/darwin/libclang_rt.osx.a]
-  collapse library dir [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/usr/lib] ==> [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/usr/lib]
-  collapse framework dir [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/] ==> [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks]
-  implicit libs: []
-  implicit dirs: [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/usr/lib]
-  implicit fwks: [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks]
->>>>>>> 59dd74a956338fb2df5f6d37c50d088807e58c6f
 
 
 
 
 Detecting C [-std=c11] compiler features compiled with the following output:
-Change Dir: /Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles/CMakeTmp
+Change Dir: /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp
 
-<<<<<<< HEAD
-Run Build Command:"/usr/bin/make" "cmTC_ce837/fast"
-/usr/bin/make -f CMakeFiles/cmTC_ce837.dir/build.make CMakeFiles/cmTC_ce837.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_3c562/fast"
+/usr/bin/make -f CMakeFiles/cmTC_3c562.dir/build.make CMakeFiles/cmTC_3c562.dir/build
 make[1] : on entre dans le répertoire « /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp »
-Building C object CMakeFiles/cmTC_ce837.dir/feature_tests.c.o
-/usr/bin/cc   -std=c11 -o CMakeFiles/cmTC_ce837.dir/feature_tests.c.o   -c "/home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/feature_tests.c"
-Linking C executable cmTC_ce837
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ce837.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_ce837.dir/feature_tests.c.o  -o cmTC_ce837 
+Building C object CMakeFiles/cmTC_3c562.dir/feature_tests.c.o
+/usr/bin/cc   -std=c11 -o CMakeFiles/cmTC_3c562.dir/feature_tests.c.o   -c "/home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/feature_tests.c"
+Linking C executable cmTC_3c562
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3c562.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_3c562.dir/feature_tests.c.o  -o cmTC_3c562 
 make[1] : on quitte le répertoire « /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp »
-=======
-Run Build Command:"/usr/bin/make" "cmTC_728c6/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_728c6.dir/build.make CMakeFiles/cmTC_728c6.dir/build
-Building C object CMakeFiles/cmTC_728c6.dir/feature_tests.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk   -std=c11 -o CMakeFiles/cmTC_728c6.dir/feature_tests.c.o   -c /Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_728c6
-/usr/local/Cellar/cmake/3.12.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_728c6.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_728c6.dir/feature_tests.c.o  -o cmTC_728c6 
->>>>>>> 59dd74a956338fb2df5f6d37c50d088807e58c6f
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -878,27 +669,17 @@ Linking C executable cmTC_728c6
 
 
 Detecting C [-std=c99] compiler features compiled with the following output:
-Change Dir: /Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles/CMakeTmp
+Change Dir: /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp
 
-<<<<<<< HEAD
-Run Build Command:"/usr/bin/make" "cmTC_ef318/fast"
-/usr/bin/make -f CMakeFiles/cmTC_ef318.dir/build.make CMakeFiles/cmTC_ef318.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_0c1f4/fast"
+/usr/bin/make -f CMakeFiles/cmTC_0c1f4.dir/build.make CMakeFiles/cmTC_0c1f4.dir/build
 make[1] : on entre dans le répertoire « /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp »
-Building C object CMakeFiles/cmTC_ef318.dir/feature_tests.c.o
-/usr/bin/cc   -std=c99 -o CMakeFiles/cmTC_ef318.dir/feature_tests.c.o   -c "/home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/feature_tests.c"
-Linking C executable cmTC_ef318
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ef318.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_ef318.dir/feature_tests.c.o  -o cmTC_ef318 
+Building C object CMakeFiles/cmTC_0c1f4.dir/feature_tests.c.o
+/usr/bin/cc   -std=c99 -o CMakeFiles/cmTC_0c1f4.dir/feature_tests.c.o   -c "/home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/feature_tests.c"
+Linking C executable cmTC_0c1f4
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0c1f4.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_0c1f4.dir/feature_tests.c.o  -o cmTC_0c1f4 
 make[1] : on quitte le répertoire « /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp »
-=======
-Run Build Command:"/usr/bin/make" "cmTC_9fa59/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_9fa59.dir/build.make CMakeFiles/cmTC_9fa59.dir/build
-Building C object CMakeFiles/cmTC_9fa59.dir/feature_tests.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk   -std=c99 -o CMakeFiles/cmTC_9fa59.dir/feature_tests.c.o   -c /Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_9fa59
-/usr/local/Cellar/cmake/3.12.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9fa59.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_9fa59.dir/feature_tests.c.o  -o cmTC_9fa59 
->>>>>>> 59dd74a956338fb2df5f6d37c50d088807e58c6f
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -908,27 +689,17 @@ Linking C executable cmTC_9fa59
 
 
 Detecting C [-std=c90] compiler features compiled with the following output:
-Change Dir: /Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles/CMakeTmp
+Change Dir: /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp
 
-<<<<<<< HEAD
-Run Build Command:"/usr/bin/make" "cmTC_37eb1/fast"
-/usr/bin/make -f CMakeFiles/cmTC_37eb1.dir/build.make CMakeFiles/cmTC_37eb1.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_adafc/fast"
+/usr/bin/make -f CMakeFiles/cmTC_adafc.dir/build.make CMakeFiles/cmTC_adafc.dir/build
 make[1] : on entre dans le répertoire « /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp »
-Building C object CMakeFiles/cmTC_37eb1.dir/feature_tests.c.o
-/usr/bin/cc   -std=c90 -o CMakeFiles/cmTC_37eb1.dir/feature_tests.c.o   -c "/home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/feature_tests.c"
-Linking C executable cmTC_37eb1
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_37eb1.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_37eb1.dir/feature_tests.c.o  -o cmTC_37eb1 
+Building C object CMakeFiles/cmTC_adafc.dir/feature_tests.c.o
+/usr/bin/cc   -std=c90 -o CMakeFiles/cmTC_adafc.dir/feature_tests.c.o   -c "/home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/feature_tests.c"
+Linking C executable cmTC_adafc
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_adafc.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_adafc.dir/feature_tests.c.o  -o cmTC_adafc 
 make[1] : on quitte le répertoire « /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp »
-=======
-Run Build Command:"/usr/bin/make" "cmTC_db94a/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_db94a.dir/build.make CMakeFiles/cmTC_db94a.dir/build
-Building C object CMakeFiles/cmTC_db94a.dir/feature_tests.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk   -std=c90 -o CMakeFiles/cmTC_db94a.dir/feature_tests.c.o   -c /Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_db94a
-/usr/local/Cellar/cmake/3.12.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_db94a.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_db94a.dir/feature_tests.c.o  -o cmTC_db94a 
->>>>>>> 59dd74a956338fb2df5f6d37c50d088807e58c6f
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -936,69 +707,30 @@ Linking C executable cmTC_db94a
     Feature record: C_FEATURE:0c_static_assert
     Feature record: C_FEATURE:0c_variadic_macros
 Determining if the include file pthread.h exists passed with the following output:
-<<<<<<< HEAD
 Change Dir: /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_7c08b/fast"
-/usr/bin/make -f CMakeFiles/cmTC_7c08b.dir/build.make CMakeFiles/cmTC_7c08b.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_6d90d/fast"
+/usr/bin/make -f CMakeFiles/cmTC_6d90d.dir/build.make CMakeFiles/cmTC_6d90d.dir/build
 make[1] : on entre dans le répertoire « /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp »
-Building C object CMakeFiles/cmTC_7c08b.dir/CheckIncludeFile.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_7c08b.dir/CheckIncludeFile.c.o   -c "/home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c"
-Linking C executable cmTC_7c08b
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7c08b.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_7c08b.dir/CheckIncludeFile.c.o  -o cmTC_7c08b 
+Building C object CMakeFiles/cmTC_6d90d.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_6d90d.dir/CheckIncludeFile.c.o   -c "/home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c"
+Linking C executable cmTC_6d90d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6d90d.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_6d90d.dir/CheckIncludeFile.c.o  -o cmTC_6d90d 
 make[1] : on quitte le répertoire « /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp »
 
 
 Determining if the function pthread_create exists in the pthread passed with the following output:
 Change Dir: /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_b8628/fast"
-/usr/bin/make -f CMakeFiles/cmTC_b8628.dir/build.make CMakeFiles/cmTC_b8628.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_09c20/fast"
+/usr/bin/make -f CMakeFiles/cmTC_09c20.dir/build.make CMakeFiles/cmTC_09c20.dir/build
 make[1] : on entre dans le répertoire « /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp »
-Building C object CMakeFiles/cmTC_b8628.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_b8628.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.12/Modules/CheckFunctionExists.c
-Linking C executable cmTC_b8628
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b8628.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_b8628.dir/CheckFunctionExists.c.o  -o cmTC_b8628 -lpthread 
+Building C object CMakeFiles/cmTC_09c20.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_09c20.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.12/Modules/CheckFunctionExists.c
+Linking C executable cmTC_09c20
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_09c20.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_09c20.dir/CheckFunctionExists.c.o  -o cmTC_09c20 -lpthread 
 make[1] : on quitte le répertoire « /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/CMakeTmp »
 
-=======
-Change Dir: /Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles/CMakeTmp
-
-Run Build Command:"/usr/bin/make" "cmTC_ac0cd/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_ac0cd.dir/build.make CMakeFiles/cmTC_ac0cd.dir/build
-Building C object CMakeFiles/cmTC_ac0cd.dir/CheckIncludeFile.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk   -o CMakeFiles/cmTC_ac0cd.dir/CheckIncludeFile.c.o   -c /Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
-Linking C executable cmTC_ac0cd
-/usr/local/Cellar/cmake/3.12.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ac0cd.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_ac0cd.dir/CheckIncludeFile.c.o  -o cmTC_ac0cd 
-
-
-Determining if the pthread_create exist passed with the following output:
-Change Dir: /Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles/CMakeTmp
-
-Run Build Command:"/usr/bin/make" "cmTC_11426/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_11426.dir/build.make CMakeFiles/cmTC_11426.dir/build
-Building C object CMakeFiles/cmTC_11426.dir/CheckSymbolExists.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk   -o CMakeFiles/cmTC_11426.dir/CheckSymbolExists.c.o   -c /Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_11426
-/usr/local/Cellar/cmake/3.12.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_11426.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_11426.dir/CheckSymbolExists.c.o  -o cmTC_11426 
-
-File /Users/ae/Desktop/s5/TL/git/Automate/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
-/* */
-#include <pthread.h>
-
-int main(int argc, char** argv)
-{
-  (void)argv;
-#ifndef pthread_create
-  return ((int*)(&pthread_create))[argc];
-#else
-  (void)argc;
-  return 0;
-#endif
-}
->>>>>>> 59dd74a956338fb2df5f6d37c50d088807e58c6f
 
