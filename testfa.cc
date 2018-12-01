@@ -14,6 +14,25 @@ TEST(AutomatonTest, Empty) {
   EXPECT_EQ(fa.countTransitions(), 0u);
 }
 
+TEST(AutomatonTest, removeNonAccessibleStates) {
+    fa::Automaton non_acc;
+    non_acc.addState(0);
+    non_acc.addState(1);
+    non_acc.addState(2);
+    non_acc.addState(3);
+    non_acc.addState(4);
+    non_acc.addTransition(0, 'a', 4);
+    non_acc.addTransition(1, 'a', 2);
+    non_acc.setStateFinal(4);
+    non_acc.setStateInitial(0);
+
+    std::cout << "Before removing non-acc" << std::endl;
+    non_acc.prettyPrint(std::cout);
+    non_acc.removeNonAccessibleStates();
+    std::cout << "After removing non-acc" << std::endl;
+    non_acc.prettyPrint(std::cout);
+}
+
 int main(int argc, char **argv) {
   	::testing::InitGoogleTest(&argc, argv);
   	std::ofstream fout("diagramme.dot");
@@ -128,9 +147,8 @@ int main(int argc, char **argv) {
         std::cout << "OK for Intersection" << std::endl;
     }
 
-    
 
-    non_accessible_states_automaton.dotPrint(fout_non_acc);
+    //non_accessible_states_automaton.dotPrint(fout_non_acc);
 
     fa::Automaton zero_non_accessible;
     zero_non_accessible.addState(0);
