@@ -86,6 +86,30 @@ TEST(AutomatonTest, removeNonCoAccessibleStates) {
     non_co_acc.prettyPrint(std::cout);
 }
 
+
+TEST(AutomatonTest, moore){
+  fa::Automaton a1,a2;
+  a1.addState(1);
+  a1.addState(2);
+  a1.addState(3);
+  a1.addState(4);
+  a1.setStateInitial(1);
+  a1.setStateFinal(4);
+  a1.addTransition(1,'a',3);
+  a1.addTransition(1,'b',2);
+  a1.addTransition(2,'a',4);
+  a1.addTransition(2,'b',4);
+  a1.addTransition(3,'a',4);
+  a1.addTransition(3,'b',4);
+  a1.addTransition(4,'a',4);
+  a1.addTransition(4,'b',4);
+  std::cout << "This is a1! : " << std::endl;
+  a1.prettyPrint(std::cout);
+  a2 = a2.createMinimalMoore(a1);
+  std::cout << "This is a2! : " << std::endl;
+  a2.prettyPrint(std::cout);
+}
+
 int main(int argc, char **argv) {
   	::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();

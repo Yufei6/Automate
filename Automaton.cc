@@ -429,6 +429,7 @@ namespace fa {
 
 
   Automaton fa::Automaton::createMinimalMoore(const Automaton& automaton){
+    bool finish = false;
     fa::Automaton tmp_automate;
     tmp_automate = automaton;
     if(!tmp_automate.isComplete()){
@@ -449,7 +450,6 @@ namespace fa {
     std::set<int>::iterator tmp_states_iter = tmp_states.begin();
     int nbState = tmp_automate.countStates() + 1;
 
-
     while(tmp_states_iter != tmp_states.end()){
       if(automaton.isStateFinal(*tmp_states_iter)){
         map0.insert(std::pair<int,int>(*tmp_states_iter,2));
@@ -464,51 +464,93 @@ namespace fa {
 
 
 
-    while(1){
+    while(!finish){
       tmp_transtions_iter = tmp_transitions.begin();
       while(tmp_transtions_iter != tmp_transitions.end()){
         //nb_0 est la position de alpha dans automate
         //nb est multiplier pour calculer et séparer dans map1
         int nb_0 = std::distance( tmp_alphabets.begin(), std::find( tmp_alphabets.begin(), tmp_alphabets.end(),tmp_transtions_iter->alpha)) + 2;
         int nb = pow(nbState, nb_0);
-        map1.insert(std::pair<int,int>(tmp_transtions_iter->from,map1[tmp_transtions_iter->from]+map0[tmp_transtions_iter->to]*nb));
+        map1[tmp_transtions_iter->from]=map1[tmp_transtions_iter->from]+map0[tmp_transtions_iter->to]*nb;
+        // map1.insert(std::pair<int,int>(tmp_transtions_iter->from,map1[tmp_transtions_iter->from]+map0[tmp_transtions_iter->to]*nb));
         tmp_transtions_iter++;
       }
+
+
+      std::map<int,int>::iterator it11 = map1.begin();
+      while(it11!=map1.end()){
+        it11++;
+      }
+
+
       int current = 1;
       tmp_states_iter = tmp_states.begin();
       while(tmp_states_iter != tmp_states.end()){
-        if(map3.find(map1[*tmp_states_iter]) != map3.end()){
-          map2.insert(std::pair<int,int>((*tmp_states_iter),map2[*tmp_states_iter]));
+        std::map<int,int>::iterator map3_it = map3.begin();
+        std::map<int,int>::iterator map2_it = map2.begin();
+        bool hasValue = false;
+        while(map3_it != map3.end()){
+          if(map3_it->second==map1[*tmp_states_iter]){
+            hasValue=true;
+            break;
+          }
+          map3_it++;
+          map2_it++;
+        }
+        if(hasValue){
+          map2.insert(std::pair<int,int>((*tmp_states_iter),map2_it->second));
         }
         else{
           map2.insert(std::pair<int,int>(*tmp_states_iter,current));
           map3.insert(std::pair<int,int>(*tmp_states_iter, map1[*tmp_states_iter]));
           current++;
         }
-        if(CompareMap(map0,map2)){
-          break;
-        }
-        else{
-          map0=map2;
-          map2.clear();
-          map1.clear();
-          map3.clear();
-        }
+        tmp_states_iter++;
+      }
+      if(CompareMap(map0,map2)){
+        finish = true;
+        break;
+      }
+      else{
+        map0 = map2;
+        map1 = map2;
+        map2.clear();
+        map3.clear();
       }
     }
+
+
+    //le cas tmp_automate est déjà minimal au début
+    // if(map2.size() == tmp_automate.countStates()){
+    //   std::cout << "Nothing change! : " << std::endl;
+    //   return tmp_automate;
+    // }
 
     std::map<int,int>::iterator map2_it = map2.begin();
-
     while(map2_it != map2.end()){
-      new_automate.addState((*map2_it).first);
+      new_automate.addState((*map2_it).second);
       if(tmp_automate.isStateFinal((*map2_it).first)){
-        new_automate.setStateFinal((*map2_it).first);
+        new_automate.setStateFinal((*map2_it).second);
       }
       if(tmp_automate.isStateInitial((*map2_it).first)){
-        new_automate.setStateInitial((*map2_it).first);
+        new_automate.setStateInitial((*map2_it).second);
       }
+      map2_it++;
     }
 
+
+    std::map<int,int>::iterator map1_it = map1.begin();
+    while(map1_it != map1.end()){
+      std::set<char>::iterator tmp_alphabets_iter = tmp_alphabets.begin();
+      while(tmp_alphabets_iter != tmp_alphabets.end()){
+        int nb_1 = std::distance( tmp_alphabets.begin(), tmp_alphabets_iter) + 2;
+        int nb1 = pow(nbState, nb_1);
+        int stat_to = (map1_it->second/nb1)%nbState;
+        new_automate.addTransition(map1_it->first, *tmp_alphabets_iter, stat_to);
+        tmp_alphabets_iter++;
+      }
+      map1_it++;
+    }
 
     return new_automate;
   }

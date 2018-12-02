@@ -4,7 +4,7 @@
 
 #IncludeRegexComplain: ^$
 
-#IncludeRegexTransform: 
+#IncludeRegexTransform:
 
 /home/augustin/Bureau/Depot Automate/Automate/Automaton.cc
 Automaton.h
@@ -12,7 +12,7 @@ Automaton.h
 cassert
 -
 
-/home/augustin/Bureau/Depot Automate/Automate/Automaton.h
+/Users/ae/Desktop/s5/TL/git/Automate/Automaton.h
 cstddef
 -
 iostream
@@ -33,4 +33,3 @@ list
 -
 math.h
 -
-
