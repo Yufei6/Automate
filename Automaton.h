@@ -59,7 +59,8 @@ namespace fa {
             bool isLanguageEmpty();
             void removeNonAccessibleStates();
             void removeNonCoAccessibleStates();
-
+            std::set<int> readString(const std::string& word);
+            bool match(const std::string& word);
 
             //tp4
             static Automaton createProduct(const Automaton& lhs, const Automaton& rhs);
@@ -85,7 +86,7 @@ namespace fa {
             bool depthFirstSearch(std::set<int> *visited, int current);
             bool depthFirstSearchReversed(std::set<int> *visited, int current);
             static bool CompareMap(std::map<int,int> &mapSrc, std::map<int,int> &mapDst);
-
+            void readStringPartial(const std::string& word, int current, std::set<int> path, std::set<int> *derivated_states);
 
 
             // Autres déclaration d'attributs (par exemple les transitions, pour lesquelles je vous conseille de créer une autre classe "Transition")...

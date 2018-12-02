@@ -711,4 +711,44 @@ namespace fa {
         }
     }
 
+    void fa::Automaton::readStringPartial(const std::string& word, int current, std::set<int> path, std::set<int> *derivated_states) {
+
+        if (word.empty()) {
+            if (isStateFinal(current)) {
+                for (std::set<int>::iterator path_iter = path.begin(); path_iter != path.end(); path_iter++) {
+                    (*derivated_states).insert(*path_iter);
+                }
+            }
+            return;
+        }
+
+        char next = word.front();
+        for (std::set<struct trans>::iterator trans_iter = transitions.begin(); trans_iter != transitions.end(); trans_iter++) {
+            if ((*trans_iter).from == current && (*trans_iter).alpha == next) {
+                std::set<int> updated_path = std::set<int>(path);
+                updated_path.insert((*trans_iter).to);
+                readStringPartial(word.substr(1, word.length()-1), (*trans_iter).to, updated_path, derivated_states);
+            }
+            if ((*trans_iter).from > current) {
+                return;    //We leave once the area is behind
+            }
+        }
+    }
+
+    std::set<int> fa::Automaton::readString(const std::string& word)  {
+        std::set<int> path;
+        std::set<int> derivated_states;
+        for (std::set<int>::iterator iter_init = initialStates.begin(); iter_init != initialStates.end(); iter_init++) {
+            path.clear();
+            path.insert(*iter_init);
+            readStringPartial(word, *iter_init, path, &derivated_states);
+        }
+        return derivated_states;
+    }
+
+    bool fa::Automaton::match(const std::string& word)  {
+        std::set<int> traveled = readString(word);
+        return traveled.empty() ? false : true;
+    }
+
 }

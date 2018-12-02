@@ -60,10 +60,19 @@ TEST(AutomatonTest, normal){
   automaton.addTransition(3,'b',4);
   automaton.addTransition(4,'a',4);
   automaton.addTransition(4,'a',4);
+
+  if (automaton.match("abaaaba")) {
+      std::cout << "OK for match! " << std::endl;
+  }
+  else {
+      std::cout << "KO for match :(" << std::endl;
+  }
+
   automaton.prettyPrint(std::cout);
   automaton.dotPrint(fout);
   automaton.addTransition(4,'b',4);
   automaton.prettyPrint(std::cout);
+
 }
 
 TEST(AutomatonTest, removeNonCoAccessibleStates) {
@@ -108,6 +117,40 @@ TEST(AutomatonTest, moore){
   a2 = a2.createMinimalMoore(a1);
   std::cout << "This is a2! : " << std::endl;
   a2.prettyPrint(std::cout);
+}
+
+TEST(AutomatonTest, read_words) {
+    fa::Automaton word_r;
+    word_r.addState(0);
+    word_r.addState(1);
+    word_r.addState(2);
+    word_r.addState(3);
+    word_r.setStateInitial(0);
+    word_r.setStateFinal(3);
+    word_r.addTransition(0, 'a', 1);
+    word_r.addTransition(0, 'a', 2);
+    word_r.addTransition(1, 'b', 3);
+    word_r.addTransition(2, 'b', 3);
+    std::set<int> traveled_states = word_r.readString("ab");
+    std::cout << "Traveled states to recognize ab : " << std::endl;
+    for (std::set<int>::iterator iter = traveled_states.begin(); iter != traveled_states.end(); iter++) {
+        std::cout << *iter << " ";
+    }
+    std::cout << std::endl;
+}
+
+TEST(AutomatonTest, read_words_loop) {
+    fa::Automaton word_r;
+    word_r.addState(0);
+    word_r.setStateInitial(0);
+    word_r.setStateFinal(0);
+    word_r.addTransition(0, 'a', 0);
+    std::set<int> traveled_states = word_r.readString("aaaa");
+    std::cout << "Traveled states to recognize aaaa : " << std::endl;
+    for (std::set<int>::iterator iter = traveled_states.begin(); iter != traveled_states.end(); iter++) {
+        std::cout << *iter << " ";
+    }
+    std::cout << std::endl;
 }
 
 int main(int argc, char **argv) {
