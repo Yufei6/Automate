@@ -6,13 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/home/augustin/Bureau/Depot Automate/Automate/Automaton.cc
+/Users/ae/Desktop/s5/TL/git/Automate/Automaton.cc
 Automaton.h
-/home/augustin/Bureau/Depot Automate/Automate/Automaton.h
+/Users/ae/Desktop/s5/TL/git/Automate/Automaton.h
 cassert
 -
 
-/home/augustin/Bureau/Depot Automate/Automate/Automaton.h
+/Users/ae/Desktop/s5/TL/git/Automate/Automaton.h
 cstddef
 -
 iostream
@@ -34,3 +34,10 @@ list
 math.h
 -
 
+<<<<<<< HEAD
+=======
+/Users/ae/Desktop/s5/TL/git/Automate/fa.cc
+Automaton.h
+/Users/ae/Desktop/s5/TL/git/Automate/Automaton.h
+
+>>>>>>> 93e343d15165f789da7dd4b659adef8ce68d6b5f
