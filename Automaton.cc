@@ -556,6 +556,22 @@ namespace fa {
   }
 
 
+
+
+
+
+  Automaton fa::Automaton::createWithoutEpsilon(const Automaton& automaton){
+    Automaton new_automate = automaton;
+
+    return new_automaton;
+  }
+
+
+
+
+  //----------------------------------------------fin de TP6--------------------------------------------
+
+
 	std::set<int> fa::Automaton::getStates() const{
 		return states;
 	}

@@ -68,6 +68,7 @@ namespace fa {
 
             //tp6
             static Automaton createMinimalMoore(const Automaton& automaton);
+            static Automaton createWithoutEpsilon(const Automaton& automaton);
 
 
 
