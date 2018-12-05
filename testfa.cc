@@ -117,6 +117,12 @@ TEST(AutomatonTest, moore){
   a2 = a2.createMinimalMoore(a1);
   std::cout << "This is a2! : " << std::endl;
   a2.prettyPrint(std::cout);
+  if (a1.match("abaaaa") && a2.match("abaaaa")) {
+      std::cout << "OK for match the same word" << std::endl;
+  }
+  else {
+      std::cout << "KO for match the same word" << std::endl;
+  }
 }
 
 TEST(AutomatonTest, read_words) {
