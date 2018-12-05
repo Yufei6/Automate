@@ -75,25 +75,25 @@ TEST(AutomatonTest, normal){
 
 }
 
-TEST(AutomatonTest, removeNonCoAccessibleStates) {
-    fa::Automaton non_co_acc;
-    non_co_acc.addState(0);
-    non_co_acc.addState(1);
-    non_co_acc.addState(2);
-    non_co_acc.addState(3);
-    non_co_acc.addState(4);
-    non_co_acc.addTransition(0,'b',1);
-    non_co_acc.addTransition(1,'b',2);
-    non_co_acc.addTransition(0,'b',3);
-    non_co_acc.addTransition(3,'b',4);
-    non_co_acc.setStateInitial(0);
-    non_co_acc.setStateFinal(4);
-    std::cout << "Before deleting non-co-acc : " << std::endl;
-    non_co_acc.prettyPrint(std::cout);
-    non_co_acc.removeNonCoAccessibleStates();
-    std::cout << "After deleting non-co-acc : " << std::endl;
-    non_co_acc.prettyPrint(std::cout);
-}
+// TEST(AutomatonTest, removeNonCoAccessibleStates) {
+//     fa::Automaton non_co_acc;
+//     non_co_acc.addState(0);
+//     non_co_acc.addState(1);
+//     non_co_acc.addState(2);
+//     non_co_acc.addState(3);
+//     non_co_acc.addState(4);
+//     non_co_acc.addTransition(0,'b',1);
+//     non_co_acc.addTransition(1,'b',2);
+//     non_co_acc.addTransition(0,'b',3);
+//     non_co_acc.addTransition(3,'b',4);
+//     non_co_acc.setStateInitial(0);
+//     non_co_acc.setStateFinal(4);
+//     std::cout << "Before deleting non-co-acc : " << std::endl;
+//     non_co_acc.prettyPrint(std::cout);
+//     non_co_acc.removeNonCoAccessibleStates();
+//     std::cout << "After deleting non-co-acc : " << std::endl;
+//     non_co_acc.prettyPrint(std::cout);
+// }
 
 
 TEST(AutomatonTest, moore){
@@ -112,12 +112,34 @@ TEST(AutomatonTest, moore){
   a1.addTransition(3,'b',4);
   a1.addTransition(4,'a',4);
   a1.addTransition(4,'b',4);
-  std::cout << "This is a1! : " << std::endl;
+  std::cout << "This is Moore a1! : " << std::endl;
   a1.prettyPrint(std::cout);
   a2 = a2.createMinimalMoore(a1);
-  std::cout << "This is a2! : " << std::endl;
+  std::cout << "This is Moore a2! : " << std::endl;
   a2.prettyPrint(std::cout);
 }
+
+TEST(AutomatonTest, epsilon){
+  fa::Automaton a1,a2;
+  a1.addState(1);
+  a1.addState(2);
+  a1.addState(3);
+  a1.setStateFinal(3);
+  a1.setStateInitial(1);
+  a1.addTransition(1,'a',1);
+  a1.addTransition(1,'\0',2);
+  a1.addTransition(2,'b',2);
+  a1.addTransition(2,'\0',3);
+  a1.addTransition(3,'c',3);
+  std::cout << "This is Epsilon a1! : " << std::endl;
+  a1.prettyPrint(std::cout);
+  a2 = a2.createWithoutEpsilon(a1);
+  std::cout << "This is Epsilon a2! : " << std::endl;
+  a2.prettyPrint(std::cout);
+}
+
+
+
 
 TEST(AutomatonTest, read_words) {
     fa::Automaton word_r;
@@ -156,6 +178,8 @@ TEST(AutomatonTest, read_words_loop) {
 int main(int argc, char **argv) {
   	::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
+
+
 
 
 

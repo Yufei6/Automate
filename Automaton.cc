@@ -102,7 +102,7 @@ namespace fa {
         trans trans_to_delete;
         trans_to_delete.from = from;
         trans_to_delete.to = to;
-        trans_to_delete.from = from;
+        trans_to_delete.alpha = alpha;
  		transitions.erase(trans_to_delete);
 	}
 
@@ -519,13 +519,6 @@ namespace fa {
       }
     }
 
-
-    //le cas tmp_automate est déjà minimal au début
-    // if(map2.size() == tmp_automate.countStates()){
-    //   std::cout << "Nothing change! : " << std::endl;
-    //   return tmp_automate;
-    // }
-
     std::map<int,int>::iterator map2_it = map2.begin();
     while(map2_it != map2.end()){
       new_automate.addState((*map2_it).second);
@@ -537,7 +530,6 @@ namespace fa {
       }
       map2_it++;
     }
-
 
     std::map<int,int>::iterator map1_it = map1.begin();
     while(map1_it != map1.end()){
@@ -561,8 +553,46 @@ namespace fa {
 
 
   Automaton fa::Automaton::createWithoutEpsilon(const Automaton& automaton){
-    Automaton new_automate = automaton;
+    Automaton new_automaton = automaton;
+    std::set<trans> new_transitions = new_automaton.getTransitions();
+    std::set<trans>::iterator new_transitions_it = new_transitions.begin();
+    while(new_transitions_it != new_transitions.end()){
+      bool yes=false;
+      if(new_transitions_it->alpha == '\0'){
+        std::cout << "Etape1: " <<new_transitions_it->from <<new_transitions_it->alpha << new_transitions_it->to<< std::endl;
+        std::set<trans>::iterator new_transitions_it2 = new_transitions.begin();
+        while(new_transitions_it2 != new_transitions.end()){
+          if(new_transitions_it2->from == new_transitions_it->to){
+            if(automaton.isStateFinal(new_transitions_it2->to)){
+              new_automaton.setStateFinal(new_transitions_it->from);
+            }
+            new_automaton.addTransition(new_transitions_it->from,new_transitions_it2->alpha,new_transitions_it2->to);
+            std::cout << "Etape2: " << new_transitions_it->from << new_transitions_it2->alpha << new_transitions_it2->to << std::endl;
+            if(new_transitions_it2->alpha == '\0'){
+              yes = true;
+            }
+          }
+          new_transitions_it2++;
+        }
+        std::cout << "Before: " << new_automaton.countTransitions() << std::endl;
+        new_automaton.removeTransition(new_transitions_it->from,new_transitions_it->alpha,new_transitions_it->to);
+        std::cout << "After: " << new_automaton.countTransitions() << std::endl;
+        std::cout << "Etape3: " << new_transitions_it->from << new_transitions_it->alpha << new_transitions_it->to << std::endl;
 
+
+        std::set<trans>::iterator new_transitions_it3 = new_transitions.begin();
+        while(new_transitions_it3!=new_transitions.end()){
+          std::cout << "Etape4: " << new_transitions_it3->from << new_transitions_it3->alpha << new_transitions_it3->to << std::endl;
+          new_transitions_it3++;
+        }
+        // if(yes){
+        //   new_transitions_it = new_transitions.begin();
+        // }
+      }
+      // if(!yes){
+        new_transitions_it++;
+      // }
+    }
     return new_automaton;
   }
 
