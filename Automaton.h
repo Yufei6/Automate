@@ -72,6 +72,12 @@ namespace fa {
 
 
 
+            // n'oublie pas de vérifier qu'on ne peut pas utiliser dans nos tests
+            std::set<struct trans> * getTransitionsPointer();
+            // n'oublie pas de vérifier qu'on ne peut pas utiliser dans nos tests
+
+
+
         private:
             // Ici, on place les déclarations d'attributs, par exemple :
             std::string name; // Le nom de l'automate si nécessaire (simplement à titre d'exemple)
@@ -88,6 +94,7 @@ namespace fa {
             bool depthFirstSearchReversed(std::set<int> *visited, int current);
             static bool CompareMap(std::map<int,int> &mapSrc, std::map<int,int> &mapDst);
             void readStringPartial(const std::string& word, int current, std::set<int> path, std::set<int> *derivated_states);
+
 
 
             // Autres déclaration d'attributs (par exemple les transitions, pour lesquelles je vous conseille de créer une autre classe "Transition")...

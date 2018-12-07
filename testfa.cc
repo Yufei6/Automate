@@ -8,7 +8,7 @@
 
 
 class testfa : public ::testing::Test {
-  protected:
+  public:
     virtual void SetUp() {
       std::ofstream fout("diagramme.dot");
       std::ofstream fout2("diagramme2.dot");
@@ -22,6 +22,46 @@ class testfa : public ::testing::Test {
     }
 
 };
+
+TEST(AutomatonTest, addState){
+  fa::Automaton fa;
+  EXPECT_EQ(fa.countStates(),0);
+  fa.addState(1);
+  EXPECT_EQ(fa.countStates(),1);
+  fa.addState(2);
+  EXPECT_EQ(fa.countStates(),2);
+  fa.addState(3);
+  EXPECT_EQ(fa.countStates(),3);
+  fa.addState(3);
+  EXPECT_EQ(fa.countStates(),3);
+  fa.addState(4);
+  EXPECT_EQ(fa.countStates(),4);
+  fa.addState(6);
+  EXPECT_EQ(fa.countStates(),5);
+  fa.addState(4);
+  EXPECT_EQ(fa.countStates(),5);
+}
+
+
+TEST(AutomatonTest, removeState){
+  fa::Automaton fa;
+  EXPECT_EQ(fa.countStates(),0);
+  fa.removeState(2);
+  EXPECT_EQ(fa.countStates(),0);
+  fa.addState(1);
+  EXPECT_EQ(fa.countStates(),1);
+  fa.addState(2);
+  EXPECT_EQ(fa.countStates(),2);
+  fa.addState(3);
+  EXPECT_EQ(fa.countStates(),3);
+  fa.removeState(4);
+  EXPECT_EQ(fa.countStates(),3);
+  fa.removeState(3);
+  EXPECT_EQ(fa.countStates(),2);
+  fa.removeState(3);
+  EXPECT_EQ(fa.countStates(),2);
+
+}
 
 
 TEST(AutomatonTest, Empty) {
@@ -136,6 +176,7 @@ TEST(AutomatonTest, epsilon){
   a2 = a2.createWithoutEpsilon(a1);
   std::cout << "This is Epsilon a2! : " << std::endl;
   a2.prettyPrint(std::cout);
+  a1.prettyPrint(std::cout);
 }
 
 

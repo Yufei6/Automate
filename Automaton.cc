@@ -444,8 +444,8 @@ namespace fa {
     std::map<int,int> map0,map1;
     std::map<int,int> map2, map3;
     std::set<char> tmp_alphabets = tmp_automate.getAlphabets();
-    std::set<trans> tmp_transitions = tmp_automate.getTransitions();
-    std::set<trans>::iterator tmp_transtions_iter;
+    std::set<struct trans> tmp_transitions = tmp_automate.getTransitions();
+    std::set<struct trans>::iterator tmp_transtions_iter;
     std::set<int> tmp_states = tmp_automate.getStates();
     std::set<int>::iterator tmp_states_iter = tmp_states.begin();
     int nbState = tmp_automate.countStates() + 1;
@@ -548,40 +548,44 @@ namespace fa {
   }
 
 
-
+  std::set<struct trans> * fa::Automaton::getTransitionsPointer(){
+    return &transitions;
+  }
 
 
 
   Automaton fa::Automaton::createWithoutEpsilon(const Automaton& automaton){
     Automaton new_automaton = automaton;
-    std::set<trans> new_transitions = new_automaton.getTransitions();
-    std::set<trans>::iterator new_transitions_it = new_transitions.begin();
-    while(new_transitions_it != new_transitions.end()){
-      bool yes=false;
+    std::set<struct trans> *new_transitions = new_automaton.getTransitionsPointer();
+    std::set<struct trans>::iterator new_transitions_it = new_transitions->begin();
+    while(new_transitions_it != new_transitions->end()){
+      // bool yes=false;
       if(new_transitions_it->alpha == '\0'){
         std::cout << "Etape1: " <<new_transitions_it->from <<new_transitions_it->alpha << new_transitions_it->to<< std::endl;
-        std::set<trans>::iterator new_transitions_it2 = new_transitions.begin();
-        while(new_transitions_it2 != new_transitions.end()){
+        std::set<struct trans>::iterator new_transitions_it2 = new_transitions->begin();
+        while(new_transitions_it2 != new_transitions->end()){
           if(new_transitions_it2->from == new_transitions_it->to){
             if(automaton.isStateFinal(new_transitions_it2->to)){
               new_automaton.setStateFinal(new_transitions_it->from);
             }
             new_automaton.addTransition(new_transitions_it->from,new_transitions_it2->alpha,new_transitions_it2->to);
             std::cout << "Etape2: " << new_transitions_it->from << new_transitions_it2->alpha << new_transitions_it2->to << std::endl;
-            if(new_transitions_it2->alpha == '\0'){
-              yes = true;
-            }
+            // if(new_transitions_it2->alpha == '\0'){
+            //   yes = true;
+            // }
           }
           new_transitions_it2++;
         }
         std::cout << "Before: " << new_automaton.countTransitions() << std::endl;
+        // new_transitions_it = new_transitions.erase(new_transitions_it);
         new_automaton.removeTransition(new_transitions_it->from,new_transitions_it->alpha,new_transitions_it->to);
         std::cout << "After: " << new_automaton.countTransitions() << std::endl;
         std::cout << "Etape3: " << new_transitions_it->from << new_transitions_it->alpha << new_transitions_it->to << std::endl;
 
-
-        std::set<trans>::iterator new_transitions_it3 = new_transitions.begin();
-        while(new_transitions_it3!=new_transitions.end()){
+        new_transitions = NULL;
+        new_transitions = new_automaton.getTransitionsPointer();
+        std::set<struct trans>::iterator new_transitions_it3 = new_transitions->begin();
+        while(new_transitions_it3!=new_transitions->end()){
           std::cout << "Etape4: " << new_transitions_it3->from << new_transitions_it3->alpha << new_transitions_it3->to << std::endl;
           new_transitions_it3++;
         }
