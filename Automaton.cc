@@ -663,7 +663,7 @@ namespace fa {
         return to;
     }
 
-    std::set<int> fa::Automaton::from(int state) {
+    std::set<int> fa::Automaton::from(int state) const {
         std::set<int> to_set;
         std::set<struct trans>::iterator trans_iter = transitions.begin();
         while(trans_iter != transitions.end()){
@@ -689,7 +689,7 @@ namespace fa {
         return from_set;
     }
 
-    bool fa::Automaton::depthFirstSearch(std::set<int> *visited, int current) {
+    bool fa::Automaton::depthFirstSearch(std::set<int> *visited, int current) const {
         if ((*visited).find(current) != (*visited).end()) {
             return false;
         }
@@ -729,7 +729,7 @@ namespace fa {
         return path_found;
     }
 
-    bool fa::Automaton::isLanguageEmpty() {   // ! const
+    bool fa::Automaton::isLanguageEmpty() const {   // ! const
         std::set<int> visited_states;
         bool path_found = false;
         std::set<int>::iterator init_iter = initialStates.begin();
@@ -770,7 +770,7 @@ namespace fa {
         }
     }
 
-    void fa::Automaton::readStringPartial(const std::string& word, int current, std::set<int> path, std::set<int> *derivated_states) {
+    void fa::Automaton::readStringPartial(const std::string& word, int current, std::set<int> path, std::set<int> *derivated_states) const {
 
         if (word.empty()) {
             //if (isStateFinal(current)) {
@@ -795,7 +795,7 @@ namespace fa {
         }
     }
 
-    std::set<int> fa::Automaton::readString(const std::string& word)  {
+    std::set<int> fa::Automaton::readString(const std::string& word) const {
         std::set<int> path;
         std::set<int> derivated_states;
         for (std::set<int>::iterator iter_init = initialStates.begin(); iter_init != initialStates.end(); iter_init++) {
@@ -806,7 +806,7 @@ namespace fa {
         return derivated_states;
     }
 
-    bool fa::Automaton::match(const std::string& word)  {
+    bool fa::Automaton::match(const std::string& word) const {
         std::set<int> derivated = readString(word);
         for (std::set<int>::iterator der_iter = derivated.begin(); der_iter != derivated.end(); der_iter++) {
             if (isStateFinal(*der_iter)) {
@@ -868,7 +868,8 @@ namespace fa {
         return determinist;
     }
 
-        Automaton fa::Automaton::createDeterministic(Automaton& automaton) {
-            return automaton.createDeterministic();
+        Automaton fa::Automaton::createDeterministic(const Automaton& automaton) {
+            Automaton auto_cpy = automaton;
+            return auto_cpy.createDeterministic();
         }
 }

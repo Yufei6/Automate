@@ -56,12 +56,12 @@ namespace fa {
 
             void makeComplete();
             void makeComplement();
-            bool isLanguageEmpty();
+            bool isLanguageEmpty() const;
             void removeNonAccessibleStates();
             void removeNonCoAccessibleStates();
-            std::set<int> readString(const std::string& word);
-            bool match(const std::string& word);
-            static Automaton createDeterministic(Automaton& automaton);
+            std::set<int> readString(const std::string& word) const;
+            bool match(const std::string& word) const;
+            static Automaton createDeterministic(const Automaton& automaton);
 
             //tp4
             static Automaton createProduct(const Automaton& lhs, const Automaton& rhs);
@@ -89,12 +89,12 @@ namespace fa {
             std::set<char> alphabets;
             int getTheBiggestState() const;
             int getToWithFromAndAlpha(int from, char alpha) const;
-            std::set<int> from(int state);
+            std::set<int> from(int state) const;
             std::set<int> to(int state);
-            bool depthFirstSearch(std::set<int> *visited, int current);
+            bool depthFirstSearch(std::set<int> *visited, int current) const;
             bool depthFirstSearchReversed(std::set<int> *visited, int current);
             static bool CompareMap(std::map<int,int> &mapSrc, std::map<int,int> &mapDst);
-            void readStringPartial(const std::string& word, int current, std::set<int> path, std::set<int> *derivated_states);
+            void readStringPartial(const std::string& word, int current, std::set<int> path, std::set<int> *derivated_states) const;
             std::set<int> getToSetWithFromAndAlpha(int from, char alpa) const;
             void deterministicRecProcess(std::set<int> new_step, std::map<std::set<int>,std::map<char,std::set<int>>> *process_board);
             Automaton createDeterministic();
