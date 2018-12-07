@@ -148,31 +148,20 @@ TEST(AutomatonTest, read_words) {
     word_r.addState(2);
     word_r.addState(3);
     word_r.setStateInitial(0);
+    word_r.setStateInitial(3);
     word_r.setStateFinal(3);
+    word_r.setStateFinal(0);
     word_r.addTransition(0, 'a', 1);
     word_r.addTransition(0, 'a', 2);
     word_r.addTransition(1, 'b', 3);
     word_r.addTransition(2, 'b', 3);
-    std::set<int> traveled_states = word_r.readString("ab");
-    std::cout << "Traveled states to recognize ab : " << std::endl;
-    for (std::set<int>::iterator iter = traveled_states.begin(); iter != traveled_states.end(); iter++) {
-        std::cout << *iter << " ";
+    word_r.addTransition(3, 'c', 0);
+    if (word_r.match("")) {
+        std::cout << "Recognized !" << std::endl;
     }
-    std::cout << std::endl;
-}
-
-TEST(AutomatonTest, read_words_loop) {
-    fa::Automaton word_r;
-    word_r.addState(0);
-    word_r.setStateInitial(0);
-    word_r.setStateFinal(0);
-    word_r.addTransition(0, 'a', 0);
-    std::set<int> traveled_states = word_r.readString("aaaa");
-    std::cout << "Traveled states to recognize aaaa : " << std::endl;
-    for (std::set<int>::iterator iter = traveled_states.begin(); iter != traveled_states.end(); iter++) {
-        std::cout << *iter << " ";
+    else {
+        std::cout << "Not recognized..." << std::endl;
     }
-    std::cout << std::endl;
 }
 
 int main(int argc, char **argv) {

@@ -760,11 +760,12 @@ namespace fa {
     void fa::Automaton::readStringPartial(const std::string& word, int current, std::set<int> path, std::set<int> *derivated_states) {
 
         if (word.empty()) {
-            if (isStateFinal(current)) {
-                for (std::set<int>::iterator path_iter = path.begin(); path_iter != path.end(); path_iter++) {
-                    (*derivated_states).insert(*path_iter);
-                }
-            }
+            //if (isStateFinal(current)) {
+               // for (std::set<int>::iterator path_iter = path.begin(); path_iter != path.end(); path_iter++) {
+                  //  (*derivated_states).insert(*path_iter);
+               // }
+           // }
+            (*derivated_states).insert(current);    //l'état à la fin du mot est ajouté
             return;
         }
 
@@ -793,8 +794,13 @@ namespace fa {
     }
 
     bool fa::Automaton::match(const std::string& word)  {
-        std::set<int> traveled = readString(word);
-        return traveled.empty() ? false : true;
+        std::set<int> derivated = readString(word);
+        for (std::set<int>::iterator der_iter = derivated.begin(); der_iter != derivated.end(); der_iter++) {
+            if (isStateFinal(*der_iter)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }
