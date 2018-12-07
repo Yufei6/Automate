@@ -94,6 +94,7 @@ namespace fa {
             bool depthFirstSearchReversed(std::set<int> *visited, int current);
             static bool CompareMap(std::map<int,int> &mapSrc, std::map<int,int> &mapDst);
             void readStringPartial(const std::string& word, int current, std::set<int> path, std::set<int> *derivated_states);
+            bool haveAndOnlyHaveOneStateInitial() const;
 
 
 

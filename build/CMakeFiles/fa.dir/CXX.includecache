@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -6,13 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/afs/deptinfo-st.univ-fcomte.fr/users/abordy2/Bureau/TL/Automate/Automaton.cc
+/Users/ae/Desktop/s5/TL/git/Automate/Automaton.cc
 Automaton.h
-/afs/deptinfo-st.univ-fcomte.fr/users/abordy2/Bureau/TL/Automate/Automaton.h
+/Users/ae/Desktop/s5/TL/git/Automate/Automaton.h
 cassert
 -
 
-/afs/deptinfo-st.univ-fcomte.fr/users/abordy2/Bureau/TL/Automate/Automaton.h
+/Users/ae/Desktop/s5/TL/git/Automate/Automaton.h
 cstddef
 -
 iostream
@@ -33,8 +33,4 @@ list
 -
 math.h
 -
-
-/afs/deptinfo-st.univ-fcomte.fr/users/abordy2/Bureau/TL/Automate/fa.cc
-Automaton.h
-/afs/deptinfo-st.univ-fcomte.fr/users/abordy2/Bureau/TL/Automate/Automaton.h
 
