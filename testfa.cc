@@ -73,6 +73,10 @@ TEST(AutomatonTest, normal){
   automaton.addTransition(4,'b',4);
   automaton.prettyPrint(std::cout);
 
+  fa::Automaton determinist = automaton.createDeterministic(automaton);
+  std::cout << "Deterministic version : " << std::endl;
+  determinist.prettyPrint(std::cout);
+
 }
 
 TEST(AutomatonTest, removeNonCoAccessibleStates) {

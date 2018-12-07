@@ -560,11 +560,11 @@ namespace fa {
 
 
 
-  Automaton fa::Automaton::createWithoutEpsilon(const Automaton& automaton){
+  /*Automaton fa::Automaton::createWithoutEpsilon(const Automaton& automaton){
     Automaton new_automate = automaton;
 
     return new_automaton;
-  }
+}*/
 
 
 
@@ -617,8 +617,18 @@ namespace fa {
 
     }
 
-
-
+    std::set<int> fa::Automaton::getToSetWithFromAndAlpha(int from, char alpha) const {
+        std::set<int> to;
+        for (std::set<struct trans>::iterator trans_iter = transitions.begin(); trans_iter != transitions.end(); trans_iter++) {
+            if ((*trans_iter).from == from && (*trans_iter).alpha == alpha) {
+                to.insert((*trans_iter).to);
+            }
+            if ((*trans_iter).from > from) {
+                break;
+            }
+        }
+        return to;
+    }
 
     std::set<int> fa::Automaton::from(int state) {
         std::set<int> to_set;
@@ -767,4 +777,56 @@ namespace fa {
         return traveled.empty() ? false : true;
     }
 
+    void fa::Automaton::deterministicRecProcess(std::set<int> new_step, std::map<std::set<int>,std::map<char,std::set<int>>> *process_board) {
+        if ((*process_board).find(new_step) != (*process_board).end()) {
+            return;
+        }
+        std::map<char,std::set<int>> to_map;
+        (*process_board).insert(std::pair<std::set<int>,std::map<char,std::set<int>>>(new_step, to_map));
+        for (std::set<int>::iterator step_iter = new_step.begin(); step_iter != new_step.end(); step_iter++) {
+            for (std::set<char>::iterator alpha_iter = alphabets.begin(); alpha_iter != alphabets.end(); alpha_iter++) {
+                std::set<int> to_set = getToSetWithFromAndAlpha(*step_iter, *alpha_iter);
+                to_map.insert(std::pair<char,std::set<int>>(*alpha_iter, to_set));
+                deterministicRecProcess(to_set, process_board);
+            }
+        }
+    }
+
+    Automaton fa::Automaton::createDeterministic() {
+        std::map<std::set<int>,std::map<char,std::set<int>>> process_board;
+        deterministicRecProcess(getInitialStates(),&process_board);
+        std::map<std::set<int>,int> new_nbs_map;
+        int max_state_value = 0;
+        Automaton determinist;
+        for (std::map<std::set<int>,std::map<char,std::set<int>>>::iterator line_iter = process_board.begin(); line_iter != process_board.end(); line_iter++) {
+            new_nbs_map.insert(std::pair<std::set<int>,int>((*line_iter).first, max_state_value));
+            determinist.addState(max_state_value);
+            bool is_init = true;
+            for (std::set<int>::iterator it = ((*line_iter).first).begin(); it != ((*line_iter).first).end(); it++) {
+                if (isStateFinal(*it)) {
+                    determinist.setStateFinal(max_state_value);
+                }
+                if (!isStateInitial(*it)) {
+                    is_init = false;
+                }
+            }
+            if (is_init) {
+                determinist.setStateInitial(max_state_value);
+            }
+            max_state_value++;
+        }
+        for (std::map<std::set<int>,std::map<char,std::set<int>>>::iterator line_iter = process_board.begin(); line_iter != process_board.end(); line_iter++) {
+            for (std::map<char,std::set<int>>::iterator alpha_iter = ((*line_iter).second).begin(); alpha_iter != ((*line_iter).second).end(); alpha_iter++) {
+                int new_from = (*(new_nbs_map.find((*line_iter).first))).second;
+                int new_to = (*(new_nbs_map.find((*alpha_iter).second))).second;
+                char alpha = (*alpha_iter).first;
+                determinist.addTransition(new_from, alpha, new_to);
+            }
+        }
+        return determinist;
+    }
+
+        Automaton fa::Automaton::createDeterministic(Automaton& automaton) {
+            return automaton.createDeterministic();
+        }
 }

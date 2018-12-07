@@ -61,6 +61,7 @@ namespace fa {
             void removeNonCoAccessibleStates();
             std::set<int> readString(const std::string& word);
             bool match(const std::string& word);
+            static Automaton createDeterministic(Automaton& automaton);
 
             //tp4
             static Automaton createProduct(const Automaton& lhs, const Automaton& rhs);
@@ -88,6 +89,9 @@ namespace fa {
             bool depthFirstSearchReversed(std::set<int> *visited, int current);
             static bool CompareMap(std::map<int,int> &mapSrc, std::map<int,int> &mapDst);
             void readStringPartial(const std::string& word, int current, std::set<int> path, std::set<int> *derivated_states);
+            std::set<int> getToSetWithFromAndAlpha(int from, char alpa) const;
+            void deterministicRecProcess(std::set<int> new_step, std::map<std::set<int>,std::map<char,std::set<int>>> *process_board);
+            Automaton createDeterministic();
 
 
             // Autres déclaration d'attributs (par exemple les transitions, pour lesquelles je vous conseille de créer une autre classe "Transition")...
