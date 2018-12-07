@@ -553,12 +553,6 @@ namespace fa {
   }
 
 
-
-<<<<<<< HEAD
-  /*Automaton fa::Automaton::createWithoutEpsilon(const Automaton& automaton){
-    Automaton new_automate = automaton;
-
-=======
   Automaton fa::Automaton::createWithoutEpsilon(const Automaton& automaton){
     Automaton new_automaton = automaton;
     std::set<struct trans> *new_transitions = new_automaton.getTransitionsPointer();
@@ -602,9 +596,8 @@ namespace fa {
         new_transitions_it++;
       // }
     }
->>>>>>> 69e3364bf130ed31652e0c692140bba56ae22e13
     return new_automaton;
-}*/
+}
 
 
 
@@ -828,11 +821,11 @@ namespace fa {
             return;
         }
         std::map<char,std::set<int>> to_map;
-        (*process_board).insert(std::pair<std::set<int>,std::map<char,std::set<int>>>(new_step, to_map));
+        std::pair<std::map<std::set<int>,std::map<char,std::set<int>>>::iterator,bool> new_line = (*process_board).insert(std::pair<std::set<int>,std::map<char,std::set<int>>>(new_step, to_map));
         for (std::set<int>::iterator step_iter = new_step.begin(); step_iter != new_step.end(); step_iter++) {
             for (std::set<char>::iterator alpha_iter = alphabets.begin(); alpha_iter != alphabets.end(); alpha_iter++) {
                 std::set<int> to_set = getToSetWithFromAndAlpha(*step_iter, *alpha_iter);
-                to_map.insert(std::pair<char,std::set<int>>(*alpha_iter, to_set));
+                ((*(new_line.first)).second).insert(std::pair<char,std::set<int>>(*alpha_iter, to_set));
                 deterministicRecProcess(to_set, process_board);
             }
         }
@@ -845,6 +838,9 @@ namespace fa {
         int max_state_value = 0;
         Automaton determinist;
         for (std::map<std::set<int>,std::map<char,std::set<int>>>::iterator line_iter = process_board.begin(); line_iter != process_board.end(); line_iter++) {
+            if (((*line_iter).first).empty())  {
+                continue;
+            }
             new_nbs_map.insert(std::pair<std::set<int>,int>((*line_iter).first, max_state_value));
             determinist.addState(max_state_value);
             bool is_init = true;

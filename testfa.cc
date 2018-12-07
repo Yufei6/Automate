@@ -117,6 +117,13 @@ TEST(AutomatonTest, normal){
   std::cout << "Deterministic version : " << std::endl;
   determinist.prettyPrint(std::cout);
 
+  if (determinist.match("abaaaba")) {
+      std::cout << "OK for determinist match! " << std::endl;
+  }
+  else {
+      std::cout << "KO for determinist match :(" << std::endl;
+  }
+
 }
 
 // TEST(AutomatonTest, removeNonCoAccessibleStates) {

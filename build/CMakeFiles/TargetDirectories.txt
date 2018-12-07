@@ -1,11 +1,4 @@
-<<<<<<< HEAD
 /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/rebuild_cache.dir
 /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/edit_cache.dir
 /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/testfa.dir
 /home/augustin/Bureau/Depot Automate/Automate/build/CMakeFiles/fa.dir
-=======
-/afs/deptinfo-st.univ-fcomte.fr/users/abordy2/Bureau/TL/Automate/build/CMakeFiles/edit_cache.dir
-/afs/deptinfo-st.univ-fcomte.fr/users/abordy2/Bureau/TL/Automate/build/CMakeFiles/rebuild_cache.dir
-/afs/deptinfo-st.univ-fcomte.fr/users/abordy2/Bureau/TL/Automate/build/CMakeFiles/fa.dir
-/afs/deptinfo-st.univ-fcomte.fr/users/abordy2/Bureau/TL/Automate/build/CMakeFiles/testfa.dir
->>>>>>> 69e3364bf130ed31652e0c692140bba56ae22e13
