@@ -73,6 +73,12 @@ namespace fa {
 
 
 
+            // n'oublie pas de vérifier qu'on ne peut pas utiliser dans nos tests
+            std::set<struct trans> * getTransitionsPointer();
+            // n'oublie pas de vérifier qu'on ne peut pas utiliser dans nos tests
+
+
+
         private:
             // Ici, on place les déclarations d'attributs, par exemple :
             std::string name; // Le nom de l'automate si nécessaire (simplement à titre d'exemple)
@@ -92,6 +98,7 @@ namespace fa {
             std::set<int> getToSetWithFromAndAlpha(int from, char alpa) const;
             void deterministicRecProcess(std::set<int> new_step, std::map<std::set<int>,std::map<char,std::set<int>>> *process_board);
             Automaton createDeterministic();
+
 
 
             // Autres déclaration d'attributs (par exemple les transitions, pour lesquelles je vous conseille de créer une autre classe "Transition")...

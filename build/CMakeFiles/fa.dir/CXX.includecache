@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -6,6 +6,7 @@
 
 #IncludeRegexTransform: 
 
+<<<<<<< HEAD
 /home/augustin/Bureau/Depot Automate/Automate/Automaton.cc
 Automaton.h
 /home/augustin/Bureau/Depot Automate/Automate/Automaton.h
@@ -13,6 +14,15 @@ cassert
 -
 
 /home/augustin/Bureau/Depot Automate/Automate/Automaton.h
+=======
+/afs/deptinfo-st.univ-fcomte.fr/users/abordy2/Bureau/TL/Automate/Automaton.cc
+Automaton.h
+/afs/deptinfo-st.univ-fcomte.fr/users/abordy2/Bureau/TL/Automate/Automaton.h
+cassert
+-
+
+/afs/deptinfo-st.univ-fcomte.fr/users/abordy2/Bureau/TL/Automate/Automaton.h
+>>>>>>> 69e3364bf130ed31652e0c692140bba56ae22e13
 cstddef
 -
 iostream
@@ -34,7 +44,13 @@ list
 math.h
 -
 
+<<<<<<< HEAD
 /home/augustin/Bureau/Depot Automate/Automate/fa.cc
 Automaton.h
 /home/augustin/Bureau/Depot Automate/Automate/Automaton.h
+=======
+/afs/deptinfo-st.univ-fcomte.fr/users/abordy2/Bureau/TL/Automate/fa.cc
+Automaton.h
+/afs/deptinfo-st.univ-fcomte.fr/users/abordy2/Bureau/TL/Automate/Automaton.h
+>>>>>>> 69e3364bf130ed31652e0c692140bba56ae22e13
 

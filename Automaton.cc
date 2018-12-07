@@ -102,7 +102,7 @@ namespace fa {
         trans trans_to_delete;
         trans_to_delete.from = from;
         trans_to_delete.to = to;
-        trans_to_delete.from = from;
+        trans_to_delete.alpha = alpha;
  		transitions.erase(trans_to_delete);
 	}
 
@@ -444,8 +444,8 @@ namespace fa {
     std::map<int,int> map0,map1;
     std::map<int,int> map2, map3;
     std::set<char> tmp_alphabets = tmp_automate.getAlphabets();
-    std::set<trans> tmp_transitions = tmp_automate.getTransitions();
-    std::set<trans>::iterator tmp_transtions_iter;
+    std::set<struct trans> tmp_transitions = tmp_automate.getTransitions();
+    std::set<struct trans>::iterator tmp_transtions_iter;
     std::set<int> tmp_states = tmp_automate.getStates();
     std::set<int>::iterator tmp_states_iter = tmp_states.begin();
     int nbState = tmp_automate.countStates() + 1;
@@ -519,13 +519,6 @@ namespace fa {
       }
     }
 
-
-    //le cas tmp_automate est déjà minimal au début
-    // if(map2.size() == tmp_automate.countStates()){
-    //   std::cout << "Nothing change! : " << std::endl;
-    //   return tmp_automate;
-    // }
-
     std::map<int,int>::iterator map2_it = map2.begin();
     while(map2_it != map2.end()){
       new_automate.addState((*map2_it).second);
@@ -537,7 +530,6 @@ namespace fa {
       }
       map2_it++;
     }
-
 
     std::map<int,int>::iterator map1_it = map1.begin();
     while(map1_it != map1.end()){
@@ -556,13 +548,61 @@ namespace fa {
   }
 
 
+  std::set<struct trans> * fa::Automaton::getTransitionsPointer(){
+    return &transitions;
+  }
 
 
 
-
+<<<<<<< HEAD
   /*Automaton fa::Automaton::createWithoutEpsilon(const Automaton& automaton){
     Automaton new_automate = automaton;
 
+=======
+  Automaton fa::Automaton::createWithoutEpsilon(const Automaton& automaton){
+    Automaton new_automaton = automaton;
+    std::set<struct trans> *new_transitions = new_automaton.getTransitionsPointer();
+    std::set<struct trans>::iterator new_transitions_it = new_transitions->begin();
+    while(new_transitions_it != new_transitions->end()){
+      // bool yes=false;
+      if(new_transitions_it->alpha == '\0'){
+        std::cout << "Etape1: " <<new_transitions_it->from <<new_transitions_it->alpha << new_transitions_it->to<< std::endl;
+        std::set<struct trans>::iterator new_transitions_it2 = new_transitions->begin();
+        while(new_transitions_it2 != new_transitions->end()){
+          if(new_transitions_it2->from == new_transitions_it->to){
+            if(automaton.isStateFinal(new_transitions_it2->to)){
+              new_automaton.setStateFinal(new_transitions_it->from);
+            }
+            new_automaton.addTransition(new_transitions_it->from,new_transitions_it2->alpha,new_transitions_it2->to);
+            std::cout << "Etape2: " << new_transitions_it->from << new_transitions_it2->alpha << new_transitions_it2->to << std::endl;
+            // if(new_transitions_it2->alpha == '\0'){
+            //   yes = true;
+            // }
+          }
+          new_transitions_it2++;
+        }
+        std::cout << "Before: " << new_automaton.countTransitions() << std::endl;
+        // new_transitions_it = new_transitions.erase(new_transitions_it);
+        new_automaton.removeTransition(new_transitions_it->from,new_transitions_it->alpha,new_transitions_it->to);
+        std::cout << "After: " << new_automaton.countTransitions() << std::endl;
+        std::cout << "Etape3: " << new_transitions_it->from << new_transitions_it->alpha << new_transitions_it->to << std::endl;
+
+        new_transitions = NULL;
+        new_transitions = new_automaton.getTransitionsPointer();
+        std::set<struct trans>::iterator new_transitions_it3 = new_transitions->begin();
+        while(new_transitions_it3!=new_transitions->end()){
+          std::cout << "Etape4: " << new_transitions_it3->from << new_transitions_it3->alpha << new_transitions_it3->to << std::endl;
+          new_transitions_it3++;
+        }
+        // if(yes){
+        //   new_transitions_it = new_transitions.begin();
+        // }
+      }
+      // if(!yes){
+        new_transitions_it++;
+      // }
+    }
+>>>>>>> 69e3364bf130ed31652e0c692140bba56ae22e13
     return new_automaton;
 }*/
 
@@ -740,11 +780,12 @@ namespace fa {
     void fa::Automaton::readStringPartial(const std::string& word, int current, std::set<int> path, std::set<int> *derivated_states) {
 
         if (word.empty()) {
-            if (isStateFinal(current)) {
-                for (std::set<int>::iterator path_iter = path.begin(); path_iter != path.end(); path_iter++) {
-                    (*derivated_states).insert(*path_iter);
-                }
-            }
+            //if (isStateFinal(current)) {
+               // for (std::set<int>::iterator path_iter = path.begin(); path_iter != path.end(); path_iter++) {
+                  //  (*derivated_states).insert(*path_iter);
+               // }
+           // }
+            (*derivated_states).insert(current);    //l'état à la fin du mot est ajouté
             return;
         }
 
@@ -773,8 +814,13 @@ namespace fa {
     }
 
     bool fa::Automaton::match(const std::string& word)  {
-        std::set<int> traveled = readString(word);
-        return traveled.empty() ? false : true;
+        std::set<int> derivated = readString(word);
+        for (std::set<int>::iterator der_iter = derivated.begin(); der_iter != derivated.end(); der_iter++) {
+            if (isStateFinal(*der_iter)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     void fa::Automaton::deterministicRecProcess(std::set<int> new_step, std::map<std::set<int>,std::map<char,std::set<int>>> *process_board) {

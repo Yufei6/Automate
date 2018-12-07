@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Install script for directory: /home/augustin/Bureau/Depot Automate/Automate
+=======
+# Install script for directory: /afs/deptinfo-st.univ-fcomte.fr/users/abordy2/Bureau/TL/Automate
+>>>>>>> 69e3364bf130ed31652e0c692140bba56ae22e13
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -30,11 +34,14 @@ endif()
 # Install shared libraries without execute permission?
 if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
   set(CMAKE_INSTALL_SO_NO_EXE "1")
+<<<<<<< HEAD
 endif()
 
 # Is this installation the result of a crosscompile?
 if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
+=======
+>>>>>>> 69e3364bf130ed31652e0c692140bba56ae22e13
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -45,5 +52,9 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
+<<<<<<< HEAD
 file(WRITE "/home/augustin/Bureau/Depot Automate/Automate/build/${CMAKE_INSTALL_MANIFEST}"
+=======
+file(WRITE "/afs/deptinfo-st.univ-fcomte.fr/users/abordy2/Bureau/TL/Automate/build/${CMAKE_INSTALL_MANIFEST}"
+>>>>>>> 69e3364bf130ed31652e0c692140bba56ae22e13
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
