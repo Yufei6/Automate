@@ -34,3 +34,16 @@ list
 math.h
 -
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+/home/augustin/Bureau/Depot Automate/Automate/fa.cc
+Automaton.h
+/home/augustin/Bureau/Depot Automate/Automate/Automaton.h
+=======
+/Users/ae/Desktop/s5/TL/git/Automate/fa.cc
+Automaton.h
+/Users/ae/Desktop/s5/TL/git/Automate/Automaton.h
+>>>>>>> a3dc5b06024b72b56f665b465576cdc7d93288f8
+
+>>>>>>> e4104a746198155e3bf5c02440ed05b5de2dda9b

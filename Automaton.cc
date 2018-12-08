@@ -692,7 +692,7 @@ namespace fa {
         return to;
     }
 
-    std::set<int> fa::Automaton::from(int state) {
+    std::set<int> fa::Automaton::from(int state) const {
         std::set<int> to_set;
         std::set<struct trans>::iterator trans_iter = transitions.begin();
         while(trans_iter != transitions.end()){
@@ -718,7 +718,7 @@ namespace fa {
         return from_set;
     }
 
-    bool fa::Automaton::depthFirstSearch(std::set<int> *visited, int current) {
+    bool fa::Automaton::depthFirstSearch(std::set<int> *visited, int current) const {
         if ((*visited).find(current) != (*visited).end()) {
             return false;
         }
@@ -758,7 +758,7 @@ namespace fa {
         return path_found;
     }
 
-    bool fa::Automaton::isLanguageEmpty() {   // ! const
+    bool fa::Automaton::isLanguageEmpty() const {   // ! const
         std::set<int> visited_states;
         bool path_found = false;
         std::set<int>::iterator init_iter = initialStates.begin();
@@ -799,7 +799,7 @@ namespace fa {
         }
     }
 
-    void fa::Automaton::readStringPartial(const std::string& word, int current, std::set<int> path, std::set<int> *derivated_states) {
+    void fa::Automaton::readStringPartial(const std::string& word, int current, std::set<int> path, std::set<int> *derivated_states) const {
 
         if (word.empty()) {
             //if (isStateFinal(current)) {
@@ -824,7 +824,7 @@ namespace fa {
         }
     }
 
-    std::set<int> fa::Automaton::readString(const std::string& word)  {
+    std::set<int> fa::Automaton::readString(const std::string& word) const {
         std::set<int> path;
         std::set<int> derivated_states;
         for (std::set<int>::iterator iter_init = initialStates.begin(); iter_init != initialStates.end(); iter_init++) {
@@ -835,7 +835,7 @@ namespace fa {
         return derivated_states;
     }
 
-    bool fa::Automaton::match(const std::string& word)  {
+    bool fa::Automaton::match(const std::string& word) const {
         std::set<int> derivated = readString(word);
         for (std::set<int>::iterator der_iter = derivated.begin(); der_iter != derivated.end(); der_iter++) {
             if (isStateFinal(*der_iter)) {
@@ -851,12 +851,21 @@ namespace fa {
         }
         std::map<char,std::set<int>> to_map;
         std::pair<std::map<std::set<int>,std::map<char,std::set<int>>>::iterator,bool> new_line = (*process_board).insert(std::pair<std::set<int>,std::map<char,std::set<int>>>(new_step, to_map));
-        for (std::set<int>::iterator step_iter = new_step.begin(); step_iter != new_step.end(); step_iter++) {
+        /*for (std::set<int>::iterator step_iter = new_step.begin(); step_iter != new_step.end(); step_iter++) {
             for (std::set<char>::iterator alpha_iter = alphabets.begin(); alpha_iter != alphabets.end(); alpha_iter++) {
                 std::set<int> to_set = getToSetWithFromAndAlpha(*step_iter, *alpha_iter);
                 ((*(new_line.first)).second).insert(std::pair<char,std::set<int>>(*alpha_iter, to_set));
                 deterministicRecProcess(to_set, process_board);
             }
+        }*/
+        for (std::set<char>::iterator alpha_iter = alphabets.begin(); alpha_iter != alphabets.end(); alpha_iter++) {
+            std::set<int> to_alpha_accumulated;
+            for (std::set<int>::iterator step_iter = new_step.begin(); step_iter != new_step.end(); step_iter++) {
+                std::set<int> to_alpha = getToSetWithFromAndAlpha(*step_iter, *alpha_iter);
+                to_alpha_accumulated.insert(to_alpha.begin(), to_alpha.end());
+            }
+            ((*(new_line.first)).second).insert(std::pair<char,std::set<int>>(*alpha_iter, to_alpha_accumulated));
+            deterministicRecProcess(to_alpha_accumulated, process_board);
         }
     }
 
@@ -886,8 +895,20 @@ namespace fa {
             }
             max_state_value++;
         }
+
+        for (std::map<std::set<int>,int>::iterator iter = new_nbs_map.begin(); iter != new_nbs_map.end(); iter++) {
+            std::cout << "[";
+                for (std::set<int>::iterator set_iter = ((*iter).first).begin(); set_iter != ((*iter).first).end(); set_iter++) {
+                    std::cout << " " << *set_iter;
+                }
+            std::cout << " ] -> " << (*iter).second << std::endl;
+        }
+
         for (std::map<std::set<int>,std::map<char,std::set<int>>>::iterator line_iter = process_board.begin(); line_iter != process_board.end(); line_iter++) {
             for (std::map<char,std::set<int>>::iterator alpha_iter = ((*line_iter).second).begin(); alpha_iter != ((*line_iter).second).end(); alpha_iter++) {
+                if (((*alpha_iter).second).empty()) {
+                    continue;
+                }
                 int new_from = (*(new_nbs_map.find((*line_iter).first))).second;
                 int new_to = (*(new_nbs_map.find((*alpha_iter).second))).second;
                 char alpha = (*alpha_iter).first;
@@ -897,7 +918,14 @@ namespace fa {
         return determinist;
     }
 
-        Automaton fa::Automaton::createDeterministic(Automaton& automaton) {
-            return automaton.createDeterministic();
+        Automaton fa::Automaton::createDeterministic(const Automaton& automaton) {
+            Automaton auto_cpy = automaton;
+            return auto_cpy.createDeterministic();
+        }
+
+        bool fa::Automaton::isIncludedIn(const Automaton& other) const {
+            Automaton other_cpy = other;
+            other_cpy.makeComplement();
+            return hasEmptyIntersectionWith(other_cpy);
         }
 }
