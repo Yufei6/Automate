@@ -96,7 +96,12 @@ namespace fa {
             bool depthFirstSearch(std::set<int> *visited, int current) const;
             bool depthFirstSearchReversed(std::set<int> *visited, int current);
             static bool CompareMap(std::map<int,int> &mapSrc, std::map<int,int> &mapDst);
+<<<<<<< HEAD
             void readStringPartial(const std::string& word, int current, std::set<int> path, std::set<int> *derivated_states) const;
+=======
+            void readStringPartial(const std::string& word, int current, std::set<int> path, std::set<int> *derivated_states);
+            bool haveAndOnlyHaveOneStateInitial() const;
+>>>>>>> a3dc5b06024b72b56f665b465576cdc7d93288f8
             std::set<int> getToSetWithFromAndAlpha(int from, char alpa) const;
             void deterministicRecProcess(std::set<int> new_step, std::map<std::set<int>,std::map<char,std::set<int>>> *process_board);
             Automaton createDeterministic();

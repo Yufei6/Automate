@@ -282,9 +282,18 @@ gtest/internal/gtest-port.h
 cxxabi.h
 -
 acxx_demangle.h
+<<<<<<< HEAD
+=======
 -
 
-/home/augustin/Bureau/Depot Automate/Automate/Automaton.h
+/Users/ae/Desktop/s5/TL/git/Automate/Automaton.cc
+Automaton.h
+/Users/ae/Desktop/s5/TL/git/Automate/Automaton.h
+cassert
+>>>>>>> a3dc5b06024b72b56f665b465576cdc7d93288f8
+-
+
+/Users/ae/Desktop/s5/TL/git/Automate/Automaton.h
 cstddef
 -
 iostream
@@ -306,7 +315,11 @@ list
 math.h
 -
 
+<<<<<<< HEAD
 /home/augustin/Bureau/Depot Automate/Automate/testfa.cc
+=======
+/Users/ae/Desktop/s5/TL/git/Automate/testfa.cc
+>>>>>>> a3dc5b06024b72b56f665b465576cdc7d93288f8
 iostream
 -
 iomanip
@@ -314,7 +327,13 @@ iomanip
 fstream
 -
 gtest/gtest.h
+<<<<<<< HEAD
 /home/augustin/Bureau/Depot Automate/Automate/gtest/gtest.h
 Automaton.h
 /home/augustin/Bureau/Depot Automate/Automate/Automaton.h
+=======
+/Users/ae/Desktop/s5/TL/git/Automate/gtest/gtest.h
+Automaton.h
+/Users/ae/Desktop/s5/TL/git/Automate/Automaton.h
+>>>>>>> a3dc5b06024b72b56f665b465576cdc7d93288f8
 
