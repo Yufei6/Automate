@@ -77,6 +77,8 @@ namespace fa {
             std::set<struct trans> * getTransitionsPointer();
             // n'oublie pas de vérifier qu'on ne peut pas utiliser dans nos tests
 
+            bool isIncludedIn(const Automaton& other) const;
+
 
 
         private:

@@ -822,12 +822,21 @@ namespace fa {
         }
         std::map<char,std::set<int>> to_map;
         std::pair<std::map<std::set<int>,std::map<char,std::set<int>>>::iterator,bool> new_line = (*process_board).insert(std::pair<std::set<int>,std::map<char,std::set<int>>>(new_step, to_map));
-        for (std::set<int>::iterator step_iter = new_step.begin(); step_iter != new_step.end(); step_iter++) {
+        /*for (std::set<int>::iterator step_iter = new_step.begin(); step_iter != new_step.end(); step_iter++) {
             for (std::set<char>::iterator alpha_iter = alphabets.begin(); alpha_iter != alphabets.end(); alpha_iter++) {
                 std::set<int> to_set = getToSetWithFromAndAlpha(*step_iter, *alpha_iter);
                 ((*(new_line.first)).second).insert(std::pair<char,std::set<int>>(*alpha_iter, to_set));
                 deterministicRecProcess(to_set, process_board);
             }
+        }*/
+        for (std::set<char>::iterator alpha_iter = alphabets.begin(); alpha_iter != alphabets.end(); alpha_iter++) {
+            std::set<int> to_alpha_accumulated;
+            for (std::set<int>::iterator step_iter = new_step.begin(); step_iter != new_step.end(); step_iter++) {
+                std::set<int> to_alpha = getToSetWithFromAndAlpha(*step_iter, *alpha_iter);
+                to_alpha_accumulated.insert(to_alpha.begin(), to_alpha.end());
+            }
+            ((*(new_line.first)).second).insert(std::pair<char,std::set<int>>(*alpha_iter, to_alpha_accumulated));
+            deterministicRecProcess(to_alpha_accumulated, process_board);
         }
     }
 
@@ -857,8 +866,20 @@ namespace fa {
             }
             max_state_value++;
         }
+
+        for (std::map<std::set<int>,int>::iterator iter = new_nbs_map.begin(); iter != new_nbs_map.end(); iter++) {
+            std::cout << "[";
+                for (std::set<int>::iterator set_iter = ((*iter).first).begin(); set_iter != ((*iter).first).end(); set_iter++) {
+                    std::cout << " " << *set_iter;
+                }
+            std::cout << " ] -> " << (*iter).second << std::endl;
+        }
+
         for (std::map<std::set<int>,std::map<char,std::set<int>>>::iterator line_iter = process_board.begin(); line_iter != process_board.end(); line_iter++) {
             for (std::map<char,std::set<int>>::iterator alpha_iter = ((*line_iter).second).begin(); alpha_iter != ((*line_iter).second).end(); alpha_iter++) {
+                if (((*alpha_iter).second).empty()) {
+                    continue;
+                }
                 int new_from = (*(new_nbs_map.find((*line_iter).first))).second;
                 int new_to = (*(new_nbs_map.find((*alpha_iter).second))).second;
                 char alpha = (*alpha_iter).first;
@@ -871,5 +892,11 @@ namespace fa {
         Automaton fa::Automaton::createDeterministic(const Automaton& automaton) {
             Automaton auto_cpy = automaton;
             return auto_cpy.createDeterministic();
+        }
+
+        bool fa::Automaton::isIncludedIn(const Automaton& other) const {
+            Automaton other_cpy = other;
+            other_cpy.makeComplement();
+            return hasEmptyIntersectionWith(other_cpy);
         }
 }
