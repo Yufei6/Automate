@@ -692,6 +692,35 @@ TEST(AutomatonTest, makeCompleteOK2){
 }
 
 
+TEST(AutomatonTest, Produit){
+  fa::Automaton a1;
+  a1.addState(1);
+  a1.addState(2);
+  a1.setStateFinal(2);
+  a1.setStateInitial(1);
+  a1.addTransition(1,'a',2);
+  a1.addTransition(2,'b',2);
+  a1.addTransition(2,'a',2);
+  a1.prettyPrint(std::cout);
+
+
+  fa::Automaton a2;
+  a2.addState(3);
+  a2.addState(4);
+  a2.setStateFinal(4);
+  a2.setStateInitial(3);
+  a2.addTransition(3,'a',3);
+  a2.addTransition(3,'b',4);
+  a2.addTransition(4,'b',4);
+  a2.addTransition(4,'a',3);
+  a2.prettyPrint(std::cout);
+
+  fa::Automaton a3;
+  a3 = a3.createProduct(a1,a2);
+  a3.prettyPrint(std::cout);
+
+}
+
 
 
 
@@ -906,35 +935,7 @@ int main(int argc, char **argv) {
 //
 //
 // // Test Produit
-//     fa::Automaton a1;
-//     a1.addState(1);
-//     a1.addState(2);
-//     a1.setStateFinal(2);
-//     a1.setStateInitial(1);
-//     a1.addTransition(1,'a',2);
-//     a1.addTransition(2,'b',2);
-//     a1.addTransition(2,'a',2);
-//     a1.prettyPrint(std::cout);
-//
-//
-//     fa::Automaton a2;
-//     a2.addState(3);
-//     a2.addState(4);
-//     a2.setStateFinal(4);
-//     a2.setStateInitial(3);
-//     a2.addTransition(3,'a',3);
-//     a2.addTransition(3,'b',4);
-//     a2.addTransition(4,'b',4);
-//     a2.addTransition(4,'a',3);
-//     a2.prettyPrint(std::cout);
-//
-//     fa::Automaton a3;
-//     a3 = a3.createProduct(a1,a2);
-//     a3.prettyPrint(std::cout);
-//
-//     if(!a1.hasEmptyIntersectionWith(a2)){
-//         std::cout << "OK for Intersection" << std::endl;
-//     }
+
 //
 //
 //

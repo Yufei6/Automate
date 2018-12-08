@@ -379,8 +379,8 @@ namespace fa {
 		//create init states
 		while(left_initStates != lhs_init.end()){
 			while(right_initStates != rhs_init.end()){
+        new_automaton.addState((*left_initStates * n2) + (*right_initStates));
 				new_automaton.setStateInitial((*left_initStates * n2) + (*right_initStates));
-				new_automaton.addState((*left_initStates * n2) + (*right_initStates));
 				right_initStates++;
 			}
 			left_initStates++;
