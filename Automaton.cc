@@ -424,7 +424,9 @@ namespace fa {
 
 	bool fa::Automaton::hasEmptyIntersectionWith(const Automaton& other) const{
 		fa::Automaton new_automate = createProduct(*this,other);
-		return new_automate.getAlphabetSize()==0 || new_automate.countTransitions() ==0 || new_automate.countStates() ==0;
+        std::cout << "alphabet : " << new_automate.getAlphabetSize() << ", transitions : " << new_automate.countTransitions() << ", states : " << new_automate.countStates() << std::endl;
+        new_automate.prettyPrint(std::cout);
+        return new_automate.getAlphabetSize()==0 || new_automate.countTransitions() ==0 || new_automate.countStates() ==0 || new_automate.getInitialStates().empty();
 	}
 
 

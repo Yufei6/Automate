@@ -208,7 +208,7 @@ TEST(AutomatonTest, isIncludedIn) {
     b.setStateInitial(0);
     b.setStateFinal(2);
 
-    if (a.isIncludedIn(b)) {
+    if (b.isIncludedIn(a)) {
         std::cout << "OK for isIncludedIn!" << std::endl;
     }
     else {
