@@ -216,6 +216,41 @@ TEST(AutomatonTest, isIncludedIn) {
     }
 }
 
+TEST(AutomatonTest, isIncludedIn2) {
+    std::cout << ">>>>>>>>>>>>>>>yufei>>>>>>>>>>>>>>>>"  << std::endl;
+    fa::Automaton a;
+    a.addState(1);
+    a.addState(2);
+    a.addState(3);
+    a.addTransition(1, 'a', 2);
+    a.addTransition(2, 'b', 3);
+    a.setStateInitial(1);
+    a.setStateFinal(3);
+
+    fa::Automaton b;
+    b.addState(1);
+    b.addState(2);
+    b.addState(3);
+    b.addTransition(1, 'a', 2);
+    b.addTransition(2, 'b', 3);
+    b.addTransition(1, 'c', 3);
+    b.setStateInitial(1);
+    b.setStateFinal(3);
+
+    fa::Automaton c = c.createProduct(a,b);
+    c.prettyPrint(std::cout);
+    std::cout << ">>>>>>>>>>>>>>>yufei>>>>>>>>>>>>>>>>"  << std::endl;
+
+
+
+    // if (a.isIncludedIn(b)) {
+    //     std::cout << "OK for isIncludedIn!" << std::endl;
+    // }
+    // else {
+    //     std::cout << "KO for isIncludedIn..." << std::endl;
+    // }
+}
+
 TEST(AutomatonTest, determine) {
     fa::Automaton a;
     a.addState(0);

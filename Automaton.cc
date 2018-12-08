@@ -375,6 +375,8 @@ namespace fa {
 
 
 		std::size_t n2 = rhs.getTheBiggestState() + 1;
+    std::cout << "n2 : " << n2  << std::endl;
+
 
 		//create init states
 		while(left_initStates != lhs_init.end()){
@@ -409,7 +411,19 @@ namespace fa {
 					if (!new_automaton.hasState(new_state)){
 						new_automaton.addState(new_state);
 						new_automaton.addTransition(*iter_new_States, *iter_alpha, new_state);
+            std::cout << "Left : " <<res_l << "  Right:" << res_r  << std::endl;
+
+
+            if(lhs.isStateFinal(res_l)){
+              std::cout << "Left OK" <<std::endl;
+            }
+            if(rhs.isStateFinal(res_r)){
+              std::cout << "Right OK" <<std::endl;
+            }
+
 						if(lhs.isStateFinal(res_l) && rhs.isStateFinal(res_r)){
+              std::cout << "Leftjifaowjhf！！！！！: " <<res_l << "  Right:" << res_r  << std::endl;
+
 							new_automaton.setStateFinal(new_state);
 						}
 					}
@@ -423,7 +437,7 @@ namespace fa {
 	}
 
 	bool fa::Automaton::hasEmptyIntersectionWith(const Automaton& other) const{
-		fa::Automaton new_automate = createProduct(*this,other);
+		fa::Automaton new_automate = createProduct(*this, other);
         std::cout << "alphabet : " << new_automate.getAlphabetSize() << ", transitions : " << new_automate.countTransitions() << ", states : " << new_automate.countStates() << std::endl;
         new_automate.prettyPrint(std::cout);
         return new_automate.getAlphabetSize()==0 || new_automate.countTransitions() ==0 || new_automate.countStates() ==0 || new_automate.getInitialStates().empty();
