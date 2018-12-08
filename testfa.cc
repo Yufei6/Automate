@@ -195,6 +195,8 @@ TEST(AutomatonTest, isIncludedIn) {
     a.addState(3);
     a.addTransition(1, 'a', 2);
     a.addTransition(2, 'b', 3);
+    a.addTransition(1, 'b', 3);
+
     a.setStateInitial(1);
     a.setStateFinal(3);
 
@@ -204,7 +206,6 @@ TEST(AutomatonTest, isIncludedIn) {
     b.addState(3);
     b.addTransition(1, 'a', 2);
     b.addTransition(2, 'b', 3);
-    b.addTransition(1, 'c', 3);
     b.setStateInitial(1);
     b.setStateFinal(3);
 
