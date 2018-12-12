@@ -6,10 +6,12 @@
 namespace fa {
 	// Complexity: O(log n)
   	void fa::Automaton::addState(int state){
+      if(state>0){
 	    // Ici, on écrit le code pour ajouter un état à l'automate
 	    // La méthode "addState" doit naturellement ajouter un état à l'automate
 	    // On ajoute donc l'état "state" à l'ensemble des états de l'automate (donc à l'attribut "states"):
-	    states.insert(state);
+	       states.insert(state);
+       }
 	    // Pour débugger plus facilement, vous pouvez afficher le nombre d'états dans l'automate après insertion :
 	    // std::cout << "Après insertion de l'état " << state << ", l'automate possède " << states.size() << " état(s)." << std::endl;
 	}
@@ -17,16 +19,18 @@ namespace fa {
 
 	// Complexity: O(log n)
 	void fa::Automaton::removeState(int state){
-		states.erase(state);
-    std::set<struct trans>::iterator iter = transitions.begin();
-    while(iter != transitions.end()){
-      if (((*iter).from == state) || (*iter).to == state) {
-        iter = transitions.erase(iter);
-      }
-      else{
-        iter ++;
-      }
-    }
+        if(state > 0){
+    		states.erase(state);
+            std::set<struct trans>::iterator iter = transitions.begin();
+            while(iter != transitions.end()){
+                if (((*iter).from == state) || (*iter).to == state) {
+                    iter = transitions.erase(iter);
+                }
+                else{
+                    iter ++;
+                }
+            }
+        }
 		// std::cout << "Après suppression de l'état " << state << ", l'automate possède " << states.size() << " état(s)." << std::endl;
 
 	}
@@ -34,15 +38,17 @@ namespace fa {
 
 	// Complexity: O(log n)
 	bool fa::Automaton::hasState(int state) const{
-		std::set<int>::iterator iter;
-		iter=states.find(state);
-		if(iter!=states.end()){
-			return true;
-		}
-		else{
-			return false;
-		}
-
+        if(state < 0){
+            return false;
+        }
+        std::set<int>::iterator iter;
+        iter=states.find(state);
+        if(iter!=states.end()){
+            return true;
+        }
+        else{
+            return false;
+        }
 	}
 
 
@@ -54,15 +60,20 @@ namespace fa {
 
 	// Complexity: O(log n)
 	void fa::Automaton::setStateInitial(int state){
-    if(hasState(state)){
-		    initialStates.insert(state);
-    }
+        if(state > 0){
+            if(hasState(state)){
+        		initialStates.insert(state);
+            }
+        }
 		// std::cout << "Set initial state: " << state << "!!" <<std::endl;
 	}
 
 
 	// Complexity: O(log n)
 	bool fa::Automaton::isStateInitial(int state) const{
+        if(state < 0){
+            return false;
+        }
 		std::set<int>::iterator iter;
 		iter=initialStates.find(state);
 		return iter!=initialStates.end();
@@ -71,15 +82,20 @@ namespace fa {
 
 	// Complexity: O(log n)
 	void fa::Automaton::setStateFinal(int state){
-    if(hasState(state)){
-		    finalStates.insert(state);
-    }
+        if(state > 0){
+            if(hasState(state)){
+        		finalStates.insert(state);
+            }
+        }
 		// std::cout << "Set final state: " << state << "!!" <<std::endl;
 
 	}
 
 	// Complexity: O(log n)
 	bool fa::Automaton::isStateFinal(int state) const{
+        if(state < 0){
+            return false;
+        }
 		std::set<int>::iterator iter;
 		iter=finalStates.find(state);
 		return iter!=finalStates.end();
@@ -94,39 +110,39 @@ namespace fa {
 
     // Complexity: O
 	void fa::Automaton::addTransition(int from, char alpha, int to){
-    if(hasState(from) && hasState(to)){
-  		alphabets.insert(alpha);
-  		if(!hasTransition(from, alpha, to)){
-      	struct trans new_transition;
-      	new_transition.from = from;
-      	new_transition.alpha = alpha;
-      	new_transition.to = to;
-      	transitions.insert(new_transition);
-  		}
-    }
+        if(hasState(from) && hasState(to)){
+      		alphabets.insert(alpha);
+      		if(!hasTransition(from, alpha, to)){
+          	struct trans new_transition;
+          	new_transition.from = from;
+          	new_transition.alpha = alpha;
+          	new_transition.to = to;
+          	transitions.insert(new_transition);
+      		}
+        }
 	}
 
 
 	// Complexity:
 	void fa::Automaton::removeTransition(int from, char alpha, int to){
-    trans trans_to_delete;
-    trans_to_delete.from = from;
-    trans_to_delete.to = to;
-    trans_to_delete.alpha = alpha;
+        trans trans_to_delete;
+        trans_to_delete.from = from;
+        trans_to_delete.to = to;
+        trans_to_delete.alpha = alpha;
  		transitions.erase(trans_to_delete);
 	}
 
 
 
 	bool fa::Automaton::hasTransition(int from, char alpha, int to) const{
-    if(!hasState(from) || !hasState(to)){
-      return false;
-    }
-    trans trans_to_search;
-    trans_to_search.from = from;
-    trans_to_search.to = to;
-    trans_to_search.alpha = alpha;
-    return transitions.find(trans_to_search) != transitions.end() ;
+        if(!hasState(from) || !hasState(to)){
+          return false;
+        }
+        trans trans_to_search;
+        trans_to_search.from = from;
+        trans_to_search.to = to;
+        trans_to_search.alpha = alpha;
+        return transitions.find(trans_to_search) != transitions.end() ;
 	}
 
 
@@ -233,23 +249,23 @@ namespace fa {
 	}
 
 
-  bool fa::Automaton::haveAndOnlyHaveOneStateInitial() const{
-    int nbStateInitial = 0;
-    std::set<int>::iterator initStates_it = initialStates.begin();
-    while(initStates_it != initialStates.end()){
-      if(isStateInitial(*initStates_it)){
-        nbStateInitial++;
-      }
-      initStates_it++;
+      bool fa::Automaton::haveAndOnlyHaveOneStateInitial() const{
+        int nbStateInitial = 0;
+        std::set<int>::iterator initStates_it = initialStates.begin();
+        while(initStates_it != initialStates.end()){
+          if(isStateInitial(*initStates_it)){
+            nbStateInitial++;
+          }
+          initStates_it++;
+        }
+        return nbStateInitial == 1;
     }
-    return nbStateInitial == 1;
-  }
 
 
 	bool fa::Automaton::isDeterministic() const{
-    if(countStates()<1 || !haveAndOnlyHaveOneStateInitial()){
-      return false;
-    }
+        if(countStates()<1 || !haveAndOnlyHaveOneStateInitial()){
+          return false;
+        }
 		std::set<int>::iterator iter_all_state;
 		iter_all_state=states.begin();
 		int count_to=0;
@@ -272,8 +288,8 @@ namespace fa {
 					count_to=0;
 				}
 			}
-      iter_all_state++;
-		}
+            iter_all_state++;
+	  }
 		return true;
 	}
 
@@ -380,7 +396,7 @@ namespace fa {
 		//create init states
 		while(left_initStates != lhs_init.end()){
 			while(right_initStates != rhs_init.end()){
-        new_automaton.addState((*left_initStates * n2) + (*right_initStates));
+                new_automaton.addState((*left_initStates * n2) + (*right_initStates));
 				new_automaton.setStateInitial((*left_initStates * n2) + (*right_initStates));
 				right_initStates++;
 			}
@@ -423,6 +439,9 @@ namespace fa {
 		}
 		return new_automaton;
 	}
+
+
+    
 
 	bool fa::Automaton::hasEmptyIntersectionWith(const Automaton& other) const{
 		fa::Automaton new_automate = createProduct(*this, other);
@@ -640,7 +659,7 @@ namespace fa {
   //----------------------------------------------fin de TP6--------------------------------------------
 
 
-  std::set<int> fa::Automaton::getStates() const{
+    std::set<int> fa::Automaton::getStates() const{
 		return states;
 	}
 
