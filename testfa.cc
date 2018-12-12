@@ -7,27 +7,21 @@
 #include "Automaton.h"
 
 
-class AutomatonTest : public testing::Test
-{
+
+class AutomatonTest : public testing::Test{
 protected:
-    virtual void SetUp()
-    {
+    void SetUp() override{
         fa1.addState(1);
         fa1.addState(2);
         std::cout << "Foo FooEnvironment SetUP" << std::endl;
     }
-    // virtual void TearDown()
-    // {
-    //     m_foo.Finalize();
-    // }
 
     fa::Automaton fa1;
 };
 
-
-
 // *********************************** Partie Yufei **************************
 TEST(AutomatonTest, Empty) {
+  // AutomatonTest::fa1.prettyPrint(std::cout);
   fa::Automaton fa;
   EXPECT_EQ(fa.countStates(), 0u);
   EXPECT_EQ(fa.countTransitions(), 0u);
@@ -653,6 +647,11 @@ TEST(AutomatonTest, Produit){
 
 
 
+
+
+
+
+
 // ************************ Partie Augustin ************************************
 TEST(AutomatonTest, simpledetermine) {
     fa::Automaton s;
@@ -669,14 +668,13 @@ TEST(AutomatonTest, simpledetermine) {
 }
 
 TEST(AutomatonTest, isIncludedIn) {
+    std::cout << "TestSpecial!" << std::endl;
     fa::Automaton a;
     a.addState(1);
     a.addState(2);
     a.addState(3);
     a.addTransition(1, 'a', 2);
     a.addTransition(2, 'b', 3);
-    a.addTransition(1, 'b', 3);
-
     a.setStateInitial(1);
     a.setStateFinal(3);
 
@@ -688,8 +686,10 @@ TEST(AutomatonTest, isIncludedIn) {
     b.addTransition(2, 'b', 3);
     b.setStateInitial(1);
     b.setStateFinal(3);
+    b.addTransition(1, 'c', 3);
 
-    if (a.isIncludedIn(b)) {
+
+    if (b.isIncludedIn(a)) {
         std::cout << "OK for isIncludedIn!" << std::endl;
     }
     else {
