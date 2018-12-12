@@ -930,6 +930,7 @@ namespace fa {
         bool fa::Automaton::isIncludedIn(const Automaton& other) const {
             Automaton other_cpy = other;
             other_cpy.makeComplement();
+            other_cpy.makeComplete();
             return hasEmptyIntersectionWith(other_cpy);
         }
 }
