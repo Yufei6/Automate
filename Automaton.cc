@@ -932,11 +932,7 @@ namespace fa {
         bool fa::Automaton::isIncludedIn(const Automaton& other) const {
             Automaton other_cpy = other;
             other_cpy.makeComplement();
-<<<<<<< HEAD
             other_cpy.makeComplete();
-=======
-            other_cpy.prettyPrint(std::cout);
->>>>>>> 1aaaa6b6bcaf41aa2c53f1914b426c82fd58fb89
             return hasEmptyIntersectionWith(other_cpy);
         }
 }
