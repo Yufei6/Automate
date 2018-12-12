@@ -25,6 +25,8 @@ protected:
 };
 
 
+
+// *********************************** Partie Yufei **************************
 TEST(AutomatonTest, Empty) {
   fa::Automaton fa;
   EXPECT_EQ(fa.countStates(), 0u);
@@ -172,82 +174,6 @@ TEST(AutomatonTest, hasStateKO1){
   fa.addState(3);
   ASSERT_TRUE(fa.hasState(3));
   ASSERT_FALSE(fa.hasState(2));
-}
-
-TEST(AutomatonTest, simpledetermine) {
-    fa::Automaton s;
-    s.addState(0);
-    s.addState(1);
-    s.addState(2);
-    s.setStateInitial(0);
-    s.setStateFinal(1);
-    s.addTransition(0, 'a', 1);
-    s.addTransition(0, 'a', 2);
-    s.addTransition(2, 'b', 1);
-    fa::Automaton d = fa::Automaton::createDeterministic(s);
-    d.prettyPrint(std::cout);
-}
-
-TEST(AutomatonTest, isIncludedIn) {
-    fa::Automaton a;
-    a.addState(1);
-    a.addState(2);
-    a.addState(3);
-    a.addTransition(1, 'a', 2);
-    a.addTransition(2, 'b', 3);
-    a.addTransition(1, 'b', 3);
-
-    a.setStateInitial(1);
-    a.setStateFinal(3);
-
-    fa::Automaton b;
-    b.addState(1);
-    b.addState(2);
-    b.addState(3);
-    b.addTransition(1, 'a', 2);
-    b.addTransition(2, 'b', 3);
-    b.setStateInitial(1);
-    b.setStateFinal(3);
-
-    if (a.isIncludedIn(b)) {
-        std::cout << "OK for isIncludedIn!" << std::endl;
-    }
-    else {
-        std::cout << "KO for isIncludedIn..." << std::endl;
-    }
-}
-
-
-
-TEST(AutomatonTest, determine) {
-    fa::Automaton a;
-    a.addState(0);
-    a.addState(1);
-    a.addState(2);
-    a.addState(3);
-    a.addState(4);
-    a.setStateInitial(0);
-    a.setStateFinal(4);
-    a.addTransition(0, 'b', 1);
-    a.addTransition(0, 'a', 2);
-    a.addTransition(0, 'b', 2);
-    a.addTransition(0, 'a', 3);
-    a.addTransition(2, 'b', 1);
-    a.addTransition(2, 'a', 2);
-    a.addTransition(2, 'b', 2);
-    a.addTransition(2, 'a', 3);
-    a.addTransition(1, 'b', 4);
-    a.addTransition(3, 'a', 4);
-    a.addTransition(4, 'a', 4);
-    a.addTransition(4, 'b', 4);
-    fa::Automaton b = fa::Automaton::createDeterministic(a);
-    if (b.match("abb")) {
-        std::cout << ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> OK for match after make-determinist!" << std::endl;
-    }
-    else {
-        std::cout << ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> KO for match after make-determinist..." << std::endl;
-    }
-    b.prettyPrint(std::cout);
 }
 
 
@@ -723,6 +649,87 @@ TEST(AutomatonTest, Produit){
   a3.prettyPrint(std::cout);
 
 }
+
+
+
+
+// ************************ Partie Augustin ************************************
+TEST(AutomatonTest, simpledetermine) {
+    fa::Automaton s;
+    s.addState(0);
+    s.addState(1);
+    s.addState(2);
+    s.setStateInitial(0);
+    s.setStateFinal(1);
+    s.addTransition(0, 'a', 1);
+    s.addTransition(0, 'a', 2);
+    s.addTransition(2, 'b', 1);
+    fa::Automaton d = fa::Automaton::createDeterministic(s);
+    d.prettyPrint(std::cout);
+}
+
+TEST(AutomatonTest, isIncludedIn) {
+    fa::Automaton a;
+    a.addState(1);
+    a.addState(2);
+    a.addState(3);
+    a.addTransition(1, 'a', 2);
+    a.addTransition(2, 'b', 3);
+    a.addTransition(1, 'b', 3);
+
+    a.setStateInitial(1);
+    a.setStateFinal(3);
+
+    fa::Automaton b;
+    b.addState(1);
+    b.addState(2);
+    b.addState(3);
+    b.addTransition(1, 'a', 2);
+    b.addTransition(2, 'b', 3);
+    b.setStateInitial(1);
+    b.setStateFinal(3);
+
+    if (a.isIncludedIn(b)) {
+        std::cout << "OK for isIncludedIn!" << std::endl;
+    }
+    else {
+        std::cout << "KO for isIncludedIn..." << std::endl;
+    }
+}
+
+
+
+TEST(AutomatonTest, determine) {
+    fa::Automaton a;
+    a.addState(0);
+    a.addState(1);
+    a.addState(2);
+    a.addState(3);
+    a.addState(4);
+    a.setStateInitial(0);
+    a.setStateFinal(4);
+    a.addTransition(0, 'b', 1);
+    a.addTransition(0, 'a', 2);
+    a.addTransition(0, 'b', 2);
+    a.addTransition(0, 'a', 3);
+    a.addTransition(2, 'b', 1);
+    a.addTransition(2, 'a', 2);
+    a.addTransition(2, 'b', 2);
+    a.addTransition(2, 'a', 3);
+    a.addTransition(1, 'b', 4);
+    a.addTransition(3, 'a', 4);
+    a.addTransition(4, 'a', 4);
+    a.addTransition(4, 'b', 4);
+    fa::Automaton b = fa::Automaton::createDeterministic(a);
+    if (b.match("abb")) {
+        std::cout << ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> OK for match after make-determinist!" << std::endl;
+    }
+    else {
+        std::cout << ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> KO for match after make-determinist..." << std::endl;
+    }
+    b.prettyPrint(std::cout);
+}
+
 
 
 
