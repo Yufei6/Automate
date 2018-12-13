@@ -785,7 +785,7 @@ namespace fa {
         for (std::set<int>::iterator states_iter = states.begin(); states_iter != states.end(); states_iter++) {
             if (visited_states.find(*states_iter) == visited_states.end()) {
                 removeState(*states_iter);
-                states_iter--;   //Pour éviter le saut d'indice lorsqu'un élément du set est supprimé
+                if (!visited_states.empty()) { states_iter--; }   //Pour éviter le saut d'indice lorsqu'un élément du set est supprimé
             }
         }
     }
@@ -800,7 +800,7 @@ namespace fa {
         for (std::set<int>::iterator states_iter = states.begin(); states_iter != states.end(); states_iter++) {
             if (visited_states.find(*states_iter) == visited_states.end()) {
                 removeState(*states_iter);
-                states_iter--;   //Pour éviter le saut d'indice lorsqu'un élément du set est supprimé
+                if (!visited_states.empty()) { states_iter--; }   //Pour éviter le saut d'indice lorsqu'un élément du set est supprimé
             }
         }
     }
@@ -819,7 +819,7 @@ namespace fa {
 
         char next = word.front();
         for (std::set<struct trans>::iterator trans_iter = transitions.begin(); trans_iter != transitions.end(); trans_iter++) {
-            if ((*trans_iter).from == current && (*trans_iter).alpha == next) {
+            if ((*trans_iter).from == current && ((*trans_iter).alpha == next || (*trans_iter).alpha == '\0')) {
                 std::set<int> updated_path = std::set<int>(path);
                 updated_path.insert((*trans_iter).to);
                 readStringPartial(word.substr(1, word.length()-1), (*trans_iter).to, updated_path, derivated_states);
