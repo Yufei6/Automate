@@ -12,7 +12,7 @@ Automaton.h
 cassert
 -
 
-/home/augustin/Bureau/Depot Automate/Automate/Automaton.h
+/Users/ae/Desktop/s5/TL/git/Automate/Automaton.h
 cstddef
 -
 iostream
@@ -34,3 +34,18 @@ list
 math.h
 -
 
+<<<<<<< HEAD
+=======
+/Users/ae/Desktop/s5/TL/git/Automate/testfa.cc
+iostream
+-
+iomanip
+-
+fstream
+-
+gtest/gtest.h
+/Users/ae/Desktop/s5/TL/git/Automate/gtest/gtest.h
+Automaton.h
+/Users/ae/Desktop/s5/TL/git/Automate/Automaton.h
+
+>>>>>>> 26f23ed1474bd455b9e7e2dd99efda7b4712b32b
