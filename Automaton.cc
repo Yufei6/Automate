@@ -360,22 +360,22 @@ namespace fa {
 
 	// Complexity:
 	void fa::Automaton::makeComplement(){
-    if(!isComplete()){
-      makeComplete();
-    }
-    // if(!Deterministic()){
-    //   this=createDeterministic(this);
-    // }
-		std::set<int>::iterator iter=states.begin();
-		while(iter != states.end()){
-			if(isStateFinal(*iter)){
-				finalStates.erase(*iter);
-			}
-			else{
-				finalStates.insert(*iter);
-			}
-			iter++ ;
-		}
+        if(!isComplete()){
+          makeComplete();
+        }
+        // if(!isDeterministic()){
+        //   this=this.createDeterministic();
+        // }
+    	std::set<int>::iterator iter=states.begin();
+    	while(iter != states.end()){
+    		if(isStateFinal(*iter)){
+    			finalStates.erase(*iter);
+    		}
+    		else{
+    			finalStates.insert(*iter);
+    		}
+    		iter++ ;
+    	}
 	}
 
 
@@ -441,7 +441,7 @@ namespace fa {
 	}
 
 
-    
+
 
 	bool fa::Automaton::hasEmptyIntersectionWith(const Automaton& other) const{
 		fa::Automaton new_automate = createProduct(*this, other);
@@ -488,9 +488,9 @@ namespace fa {
     if(!tmp_automate.isComplete()){
       tmp_automate.makeComplete();
     }
-    // if(!tmp_automate.isDeterministic()){
-    //   tmp_automate.Deterministic();
-    // }
+    if(!tmp_automate.isDeterministic()){
+      tmp_automate=tmp_automate.createDeterministic();
+    }
 
 
     fa::Automaton new_automate;

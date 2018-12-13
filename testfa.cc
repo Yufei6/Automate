@@ -879,7 +879,7 @@ TEST(AutomatonTest,hasEmptyIntersectionWithKO1){
 }
 
 
-TEST(AutomatonTest,createMinimalMooreOK1){
+TEST(AutomatonTest,createMinimalMooreWithCompleAndDeterministOK1){
       fa::Automaton a1,a2;
       a1.addState(1);
       a1.addState(2);
@@ -916,8 +916,128 @@ TEST(AutomatonTest,createMinimalMooreOK1){
 }
 
 
+TEST(AutomatonTest,createMinimalMooreWithCompleNoDeterministeOK2){
+      fa::Automaton a1,a2;
+      a1.addState(1);
+      a1.addState(2);
+      a1.addState(3);
+      a1.addState(4);
+      a1.setStateInitial(1);
+      a1.setStateFinal(4);
+      a1.addTransition(1,'a',3);
+      a1.addTransition(1,'a',4);
+      a1.addTransition(1,'b',2);
+      a1.addTransition(2,'a',4);
+      a1.addTransition(2,'b',4);
+      a1.addTransition(3,'a',4);
+      a1.addTransition(3,'b',4);
+      a1.addTransition(4,'a',4);
+      a1.addTransition(4,'b',4);
+      ASSERT_TRUE(a1.match("a"));
+      ASSERT_TRUE(a1.match("aa"));
+      ASSERT_TRUE(a1.match("aaa"));
+      ASSERT_TRUE(a1.match("bb"));
+      ASSERT_TRUE(a1.match("bbb"));
+      ASSERT_TRUE(a1.match("aabababa"));
+      ASSERT_TRUE(a1.match("aabababa"));
+      ASSERT_TRUE(a1.match("bbbababa"));
 
-TEST(AutomatonTest, epsilon){
+
+      a2 = a2.createMinimalMoore(a1);
+      ASSERT_TRUE(a2.match("a"));
+      ASSERT_TRUE(a2.match("aa"));
+      ASSERT_TRUE(a2.match("aaa"));
+      ASSERT_TRUE(a2.match("bb"));
+      ASSERT_TRUE(a2.match("bbb"));
+      ASSERT_TRUE(a2.match("aabababa"));
+      ASSERT_TRUE(a2.match("aabababa"));
+      ASSERT_TRUE(a2.match("bbbababa"));
+      ASSERT_TRUE(a2.countStates()<=a1.countStates());
+}
+
+
+TEST(AutomatonTest,createMinimalMooreWithNoCompleAndDeterministeOK2){
+      fa::Automaton a1,a2;
+      a1.addState(1);
+      a1.addState(2);
+      a1.addState(3);
+      a1.addState(4);
+      a1.setStateInitial(1);
+      a1.setStateFinal(4);
+      a1.addTransition(1,'a',3);
+      a1.addTransition(2,'a',4);
+      a1.addTransition(2,'b',4);
+      a1.addTransition(3,'a',4);
+      a1.addTransition(3,'b',4);
+      a1.addTransition(4,'b',4);
+      ASSERT_TRUE(a1.match("ab"));
+      ASSERT_TRUE(a1.match("aa"));
+      ASSERT_FALSE(a1.match("aaa"));
+      ASSERT_FALSE(a1.match("aabababa"));
+      ASSERT_TRUE(a1.match("aabbbb"));
+      ASSERT_TRUE(a1.match("abbbbb"));
+
+
+      a2 = a2.createMinimalMoore(a1);
+      ASSERT_TRUE(a1.match("ab"));
+      ASSERT_TRUE(a1.match("aa"));
+      ASSERT_FALSE(a1.match("aaa"));
+      ASSERT_FALSE(a1.match("aabababa"));
+      ASSERT_TRUE(a1.match("aabbbb"));
+      ASSERT_TRUE(a1.match("abbbbb"));
+      ASSERT_TRUE(a2.countStates()<=a1.countStates());
+}
+
+
+
+TEST(AutomatonTest,createMinimalMooreWithNoCompleNoDeterministeOK3){
+      fa::Automaton a1,a2;
+      a1.addState(1);
+      a1.addState(2);
+      a1.addState(3);
+      a1.addState(4);
+      a1.setStateInitial(1);
+      a1.setStateFinal(4);
+      a1.addTransition(1,'a',3);
+      a1.addTransition(1,'a',4);
+      a1.addTransition(1,'b',2);
+      a1.addTransition(2,'a',4);
+      a1.addTransition(2,'b',4);
+      a1.addTransition(3,'a',4);
+      a1.addTransition(3,'b',4);
+      a1.addTransition(4,'b',4);
+      ASSERT_TRUE(a1.match("a"));
+      ASSERT_TRUE(a1.match("ab"));
+      ASSERT_TRUE(a1.match("aa"));
+      ASSERT_TRUE(a1.match("bb"));
+      ASSERT_FALSE(a1.match("aaa"));
+      ASSERT_FALSE(a1.match("aabababa"));
+      ASSERT_TRUE(a1.match("aabbbb"));
+      ASSERT_TRUE(a1.match("abbbbb"));
+      ASSERT_TRUE(a1.match("bab"));
+      ASSERT_TRUE(a1.match("babbbbb"));
+      ASSERT_TRUE(a1.match("bbbbbb"));
+      ASSERT_TRUE(a1.match("bbb"));
+
+
+      a2 = a2.createMinimalMoore(a1);
+      ASSERT_TRUE(a1.match("a"));
+      ASSERT_TRUE(a1.match("ab"));
+      ASSERT_TRUE(a1.match("aa"));
+      ASSERT_TRUE(a1.match("bb"));
+      ASSERT_FALSE(a1.match("aaa"));
+      ASSERT_FALSE(a1.match("aabababa"));
+      ASSERT_TRUE(a1.match("aabbbb"));
+      ASSERT_TRUE(a1.match("abbbbb"));
+      ASSERT_TRUE(a1.match("bab"));
+      ASSERT_TRUE(a1.match("babbbbb"));
+      ASSERT_TRUE(a1.match("bbbbbb"));
+      ASSERT_TRUE(a1.match("bbb"));
+      ASSERT_TRUE(a2.countStates()<=a1.countStates());
+}
+
+
+TEST(AutomatonTest, createWithoutEpsilonOK1){
      fa::Automaton a1,a2;
      a1.addState(1);
      a1.addState(2);
