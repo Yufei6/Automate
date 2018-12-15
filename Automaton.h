@@ -69,12 +69,12 @@ namespace fa {
 
             //tp6
             static Automaton createMinimalMoore(const Automaton& automaton);
-            static Automaton createWithoutEpsilon(const Automaton& automaton);
+            //static Automaton createWithoutEpsilon(const Automaton& automaton);
 
 
 
             // n'oublie pas de vérifier qu'on ne peut pas utiliser dans nos tests
-            std::set<struct trans> * getTransitionsPointer();
+            //std::set<struct trans> * getTransitionsPointer();
             // n'oublie pas de vérifier qu'on ne peut pas utiliser dans nos tests
 
             bool isIncludedIn(const Automaton& other) const;

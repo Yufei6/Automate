@@ -601,13 +601,13 @@ namespace fa {
   }
 
 
-  std::set<struct trans> * fa::Automaton::getTransitionsPointer(){
+  /*std::set<struct trans> * fa::Automaton::getTransitionsPointer(){
     return &transitions;
-  }
+}*/
 
 
 
-  Automaton fa::Automaton::createWithoutEpsilon(const Automaton& automaton){
+  /*Automaton fa::Automaton::createWithoutEpsilon(const Automaton& automaton){
     Automaton new_automaton = automaton;
     std::set<struct trans> *new_transitions = new_automaton.getTransitionsPointer();
     std::set<struct trans>::iterator new_transitions_it = new_transitions->begin();
@@ -651,7 +651,7 @@ namespace fa {
       // }
     }
     return new_automaton;
-  }
+}*/
 
 
 
@@ -826,6 +826,9 @@ namespace fa {
 
     void fa::Automaton::readStringPartial(const std::string& word, int current, std::set<int> path, std::set<int> *derivated_states) const {
 
+        bool empty_word = false;
+        char next;
+
         if (word.empty()) {
             //if (isStateFinal(current)) {
                // for (std::set<int>::iterator path_iter = path.begin(); path_iter != path.end(); path_iter++) {
@@ -833,15 +836,19 @@ namespace fa {
                // }
            // }
             (*derivated_states).insert(current);    //l'état à la fin du mot est ajouté
-            return;
+            empty_word = true;
+            //return;
+        }
+        else {
+            next = word.front();
         }
 
-        char next = word.front();
         for (std::set<struct trans>::iterator trans_iter = transitions.begin(); trans_iter != transitions.end(); trans_iter++) {
-            if ((*trans_iter).from == current && ((*trans_iter).alpha == next || (*trans_iter).alpha == '\0')) {
+            if ((*trans_iter).from == current && (((!empty_word) && ((*trans_iter).alpha == next)) || ((*trans_iter).alpha == '\0'))) {
+                int move = ((*trans_iter).alpha == '\0') ? 0 : 1;
                 std::set<int> updated_path = std::set<int>(path);
                 updated_path.insert((*trans_iter).to);
-                readStringPartial(word.substr(1, word.length()-1), (*trans_iter).to, updated_path, derivated_states);
+                readStringPartial(word.substr(move, word.length()), (*trans_iter).to, updated_path, derivated_states);
             }
             if ((*trans_iter).from > current) {
                 return;    //We leave once the area is behind
