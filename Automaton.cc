@@ -445,12 +445,8 @@ namespace fa {
 
 	bool fa::Automaton::hasEmptyIntersectionWith(const Automaton& other) const{
 		fa::Automaton new_automate = createProduct(*this, other);
-        std::cout << "alphabet : " << new_automate.getAlphabetSize() << ", transitions : " << new_automate.countTransitions() << ", states : " << new_automate.countStates() << std::endl;
-        new_automate.prettyPrint(std::cout);
         return new_automate.getAlphabetSize()==0 || new_automate.countTransitions() ==0 || new_automate.countStates() ==0 || new_automate.getInitialStates().empty() || new_automate.getFinalStates().empty();
 	}
-
-
 
 
   //********************************************** fin de TP4 ***********************************
@@ -602,20 +598,25 @@ namespace fa {
   }
 
 
-  /*std::set<struct trans> * fa::Automaton::getTransitionsPointer(){
+  std::set<struct trans> * fa::Automaton::getTransitionsPointer(){
     return &transitions;
-}*/
+  }
 
 
 
-  /*Automaton fa::Automaton::createWithoutEpsilon(const Automaton& automaton){
+  Automaton fa::Automaton::createWithoutEpsilon(const Automaton& automaton){
     Automaton new_automaton = automaton;
+    if((new_automaton.getAlphabetSize() == 1) && (new_automaton.getAlphabets().find('\0') != new_automaton.getAlphabets().end())){
+      Automaton unite_automate;
+      unite_automate.addState(1);
+      unite_automate.setStateFinal(1);
+      unite_automate.setStateInitial(1);
+      return unite_automate;
+    }
     std::set<struct trans> *new_transitions = new_automaton.getTransitionsPointer();
     std::set<struct trans>::iterator new_transitions_it = new_transitions->begin();
     while(new_transitions_it != new_transitions->end()){
-      // bool yes=false;
       if(new_transitions_it->alpha == '\0'){
-        std::cout << "Etape1: " <<new_transitions_it->from <<new_transitions_it->alpha << new_transitions_it->to<< std::endl;
         std::set<struct trans>::iterator new_transitions_it2 = new_transitions->begin();
         while(new_transitions_it2 != new_transitions->end()){
           if(new_transitions_it2->from == new_transitions_it->to){
@@ -623,36 +624,22 @@ namespace fa {
               new_automaton.setStateFinal(new_transitions_it->from);
             }
             new_automaton.addTransition(new_transitions_it->from,new_transitions_it2->alpha,new_transitions_it2->to);
-            std::cout << "Etape2: " << new_transitions_it->from << new_transitions_it2->alpha << new_transitions_it2->to << std::endl;
-            // if(new_transitions_it2->alpha == '\0'){
-            //   yes = true;
-            // }
           }
           new_transitions_it2++;
         }
-        std::cout << "Before: " << new_automaton.countTransitions() << std::endl;
-        // new_transitions_it = new_transitions.erase(new_transitions_it);
         new_automaton.removeTransition(new_transitions_it->from,new_transitions_it->alpha,new_transitions_it->to);
-        std::cout << "After: " << new_automaton.countTransitions() << std::endl;
-        std::cout << "Etape3: " << new_transitions_it->from << new_transitions_it->alpha << new_transitions_it->to << std::endl;
 
         new_transitions = NULL;
         new_transitions = new_automaton.getTransitionsPointer();
         std::set<struct trans>::iterator new_transitions_it3 = new_transitions->begin();
         while(new_transitions_it3!=new_transitions->end()){
-          std::cout << "Etape4: " << new_transitions_it3->from << new_transitions_it3->alpha << new_transitions_it3->to << std::endl;
           new_transitions_it3++;
         }
-        // if(yes){
-        //   new_transitions_it = new_transitions.begin();
-        // }
       }
-      // if(!yes){
-        new_transitions_it++;
-      // }
+      new_transitions_it++;
     }
     return new_automaton;
-}*/
+}
 
 
 
