@@ -12,6 +12,9 @@ class AutomatonTestFixture : public ::testing::Test{
 protected:
     void SetUp() override{
         init();
+        init_NonCoAccessibleStatesAndCoAccessibleStates();
+        init_OnlyNonAccessibleStates();
+        init_NonAccessibleStatesAndAccessibleStates();
         std::cout << "Foo FooEnvironment SetUP" << std::endl;
     }
 
@@ -21,6 +24,46 @@ protected:
     }
 
     fa::Automaton fa1;
+
+    fa::Automaton OnlyNonAccessibleStates;
+    fa::Automaton NonAccessibleStatesAndAccessibleStates;
+
+    fa::Automaton NonCoAccessibleStatesAndCoAccessibleStates;
+
+    void init_OnlyNonAccessibleStates() {
+        OnlyNonAccessibleStates.addState(1);
+        OnlyNonAccessibleStates.addState(2);
+        OnlyNonAccessibleStates.addState(3);
+        OnlyNonAccessibleStates.addState(4);
+        OnlyNonAccessibleStates.setStateInitial(1);
+        OnlyNonAccessibleStates.setStateFinal(4);
+        OnlyNonAccessibleStates.addTransition(2,'a',3);
+    }
+
+    void init_NonAccessibleStatesAndAccessibleStates() {
+        NonAccessibleStatesAndAccessibleStates.addState(1);
+        NonAccessibleStatesAndAccessibleStates.addState(2);
+        NonAccessibleStatesAndAccessibleStates.addState(3);
+        NonAccessibleStatesAndAccessibleStates.setStateInitial(1);
+        NonAccessibleStatesAndAccessibleStates.setStateFinal(3);
+        NonAccessibleStatesAndAccessibleStates.addTransition(1, 'f', 3);
+    }
+
+    void init_NonCoAccessibleStatesAndCoAccessibleStates() {
+
+        NonCoAccessibleStatesAndCoAccessibleStates.addState(1);
+        NonCoAccessibleStatesAndCoAccessibleStates.addState(2);
+        NonCoAccessibleStatesAndCoAccessibleStates.addState(3);
+        NonCoAccessibleStatesAndCoAccessibleStates.addState(4);
+        NonCoAccessibleStatesAndCoAccessibleStates.addState(5);
+        NonCoAccessibleStatesAndCoAccessibleStates.setStateInitial(1);
+        NonCoAccessibleStatesAndCoAccessibleStates.setStateFinal(5);
+        NonCoAccessibleStatesAndCoAccessibleStates.addTransition(1,'a',2);
+        NonCoAccessibleStatesAndCoAccessibleStates.addTransition(2,'b',3);
+        NonCoAccessibleStatesAndCoAccessibleStates.addTransition(1,'a',4);
+        NonCoAccessibleStatesAndCoAccessibleStates.addTransition(4,'c',5);
+    }
+
 };
 
 // *********************************** Partie Yufei **************************
@@ -1036,7 +1079,7 @@ TEST(AutomatonTest,createMinimalMooreWithNoCompleNoDeterministeOK3){
 }
 
 
-TEST(AutomatonTest, createWithoutEpsilonOK1){
+/*TEST(AutomatonTest, createWithoutEpsilonOK1){
      fa::Automaton a1,a2;
      a1.addState(1);
      a1.addState(2);
@@ -1068,7 +1111,7 @@ TEST(AutomatonTest, createWithoutEpsilonOK1){
      ASSERT_TRUE(a2.match("bbbbbcc"));
      ASSERT_TRUE(a2.match("bc"));
      ASSERT_TRUE(a2.match("bcccc"));
-}
+}*/
 
 
 
@@ -1082,6 +1125,18 @@ TEST(AutomatonTest, createWithoutEpsilonOK1){
 
 
 // ************************ Partie Augustin ************************************
+
+TEST(AutomatonTest, consomme) {
+    fa::Automaton a;
+    a.addState(1);
+    a.addState(2);
+    a.setStateInitial(1);
+    a.setStateFinal(2);
+    a.addTransition(1, '\0', 2);
+    a.addTransition(2, 'a', 2);
+    ASSERT_TRUE(a.match("a") && a.match("aa") && !a.match("b") && !a.match("ab") && !a.match("aba"));
+}
+
 TEST(AutomatonTest, simpledetermine) {
     fa::Automaton s;
     s.addState(0);
@@ -1160,14 +1215,82 @@ TEST(AutomatonTest, determine) {
 }
 
 
+/// [ isLanguageEmpty - Tests ] ///
 
+TEST(AutomatonTest, empty_without_states) {
+    fa::Automaton a;
+    ASSERT_TRUE(a.isLanguageEmpty());
+}
 
+TEST(AutomatonTest, empty_without_initial) {
+    fa::Automaton a;
+    a.addState(1);
+    a.setStateFinal(1);
+    ASSERT_TRUE(a.isLanguageEmpty());
+}
 
+TEST(AutomatonTest, empty_without_final) {
+    fa::Automaton a;
+    a.addState(1);
+    a.setStateInitial(1);
+    ASSERT_TRUE(a.isLanguageEmpty());
+}
 
+TEST(AutomatonTest, empty_with_initial_and_final) {
+    fa::Automaton a;
+    a.addState(1);
+    a.addState(2);
+    a.addState(3);
+    a.addTransition(1,'a',2);
+    a.setStateInitial(1);
+    a.setStateFinal(3);
+    ASSERT_TRUE(a.isLanguageEmpty());
+}
 
+TEST(AutomatonTest, not_empty_with_one_state) {
+    fa::Automaton a;
+    a.addState(1);
+    a.setStateInitial(1);
+    a.setStateFinal(1);
+    ASSERT_FALSE(a.isLanguageEmpty());
+}
 
+TEST_F(AutomatonTestFixture, not_empty_with_dead_ends) {
+    ASSERT_FALSE(NonCoAccessibleStatesAndCoAccessibleStates.isLanguageEmpty());
+}
 
+TEST(AutomatonTest, not_empty_casual) {
+    fa::Automaton a;
+    a.addState(1);
+    a.addState(2);
+    a.setStateInitial(1);
+    a.setStateFinal(2);
+    a.addTransition(1,'b',2);
+    ASSERT_FALSE(a.isLanguageEmpty());
+}
 
+/// [ removeNonAccessibleStates - Tests ] ///
+
+    TEST(AutomatonTest, non_accessible_no_initial_state) {
+        fa::Automaton a;
+        a.addState(1);
+        a.addState(2);
+        a.addTransition(1, 'c', 2);
+        a.removeNonAccessibleStates();
+        ASSERT_EQ(a.countStates(), 0);
+    }
+
+    TEST_F(AutomatonTestFixture, non_accessible_partially) {
+        NonAccessibleStatesAndAccessibleStates.removeNonAccessibleStates();
+        ASSERT_EQ(NonAccessibleStatesAndAccessibleStates.countStates(), 2);
+        ASSERT_FALSE(NonAccessibleStatesAndAccessibleStates.hasState(2));
+    }
+
+    TEST_F(AutomatonTestFixture, non_accessible_only_initial) {
+        OnlyNonAccessibleStates.removeNonAccessibleStates();
+        ASSERT_EQ(OnlyNonAccessibleStates.countStates(), 1);
+        ASSERT_TRUE(OnlyNonAccessibleStates.hasState(1));
+    }
 
 
 
