@@ -801,10 +801,12 @@ namespace fa {
             depthFirstSearch(&visited_states, *init_iter);
             init_iter++;
         }
-        for (std::set<int>::iterator states_iter = states.begin(); states_iter != states.end(); states_iter++) {
+        std::set<int> states_copy (states.begin(), states.end());
+        for (std::set<int>::iterator states_iter = states_copy.begin(); states_iter != states_copy.end(); states_iter++) {
             if (visited_states.find(*states_iter) == visited_states.end()) {
+                std::cout << "Etat supprimé : " << *states_iter << std::endl;
                 removeState(*states_iter);
-                if (!visited_states.empty()) { states_iter--; }   //Pour éviter le saut d'indice lorsqu'un élément du set est supprimé
+                //if (!visited_states.empty()) { states_iter--; }   //Pour éviter le saut d'indice lorsqu'un élément du set est supprimé
             }
         }
     }
@@ -816,10 +818,11 @@ namespace fa {
             depthFirstSearchReversed(&visited_states, *final_iter);
             final_iter++;
         }
-        for (std::set<int>::iterator states_iter = states.begin(); states_iter != states.end(); states_iter++) {
+        std::set<int> states_copy (states.begin(), states.end());
+        for (std::set<int>::iterator states_iter = states_copy.begin(); states_iter != states_copy.end(); states_iter++) {
             if (visited_states.find(*states_iter) == visited_states.end()) {
                 removeState(*states_iter);
-                if (!visited_states.empty()) { states_iter--; }   //Pour éviter le saut d'indice lorsqu'un élément du set est supprimé
+                //if (!visited_states.empty()) { states_iter--; }   //Pour éviter le saut d'indice lorsqu'un élément du set est supprimé
             }
         }
     }
