@@ -6,7 +6,7 @@
 namespace fa {
 	// Complexity: O(log n)
   	void fa::Automaton::addState(int state){
-      if(state>0){
+      if(state>=0){
 	    // Ici, on écrit le code pour ajouter un état à l'automate
 	    // La méthode "addState" doit naturellement ajouter un état à l'automate
 	    // On ajoute donc l'état "state" à l'ensemble des états de l'automate (donc à l'attribut "states"):
@@ -19,7 +19,7 @@ namespace fa {
 
 	// Complexity: O(log n)
 	void fa::Automaton::removeState(int state){
-        if(state > 0){
+        if(state >= 0){
     		states.erase(state);
             std::set<struct trans>::iterator iter = transitions.begin();
             while(iter != transitions.end()){
@@ -60,7 +60,7 @@ namespace fa {
 
 	// Complexity: O(log n)
 	void fa::Automaton::setStateInitial(int state){
-        if(state > 0){
+        if(state >= 0){
             if(hasState(state)){
         		initialStates.insert(state);
             }
@@ -82,7 +82,7 @@ namespace fa {
 
 	// Complexity: O(log n)
 	void fa::Automaton::setStateFinal(int state){
-        if(state > 0){
+        if(state >= 0){
             if(hasState(state)){
         		finalStates.insert(state);
             }
@@ -363,11 +363,11 @@ namespace fa {
         if(!isComplete()){
           makeComplete();
         }
-        // if(!isDeterministic()){
-        //   this=this.createDeterministic();
-        // }
-    	std::set<int>::iterator iter=states.begin();
-    	while(iter != states.end()){
+        if(!isDeterministic()){
+          createDeterministic();
+        }
+      	std::set<int>::iterator iter=states.begin();
+      	while(iter != states.end()){
     		if(isStateFinal(*iter)){
     			finalStates.erase(*iter);
     		}
@@ -445,12 +445,8 @@ namespace fa {
 
 	bool fa::Automaton::hasEmptyIntersectionWith(const Automaton& other) const{
 		fa::Automaton new_automate = createProduct(*this, other);
-        std::cout << "alphabet : " << new_automate.getAlphabetSize() << ", transitions : " << new_automate.countTransitions() << ", states : " << new_automate.countStates() << std::endl;
-        new_automate.prettyPrint(std::cout);
         return new_automate.getAlphabetSize()==0 || new_automate.countTransitions() ==0 || new_automate.countStates() ==0 || new_automate.getInitialStates().empty() || new_automate.getFinalStates().empty();
 	}
-
-
 
 
   //********************************************** fin de TP4 ***********************************
@@ -491,6 +487,7 @@ namespace fa {
     if(!tmp_automate.isDeterministic()){
       tmp_automate=tmp_automate.createDeterministic();
     }
+
 
 
     fa::Automaton new_automate;
@@ -601,20 +598,25 @@ namespace fa {
   }
 
 
-  /*std::set<struct trans> * fa::Automaton::getTransitionsPointer(){
+  std::set<struct trans> * fa::Automaton::getTransitionsPointer(){
     return &transitions;
-}*/
+  }
 
 
 
-  /*Automaton fa::Automaton::createWithoutEpsilon(const Automaton& automaton){
+  Automaton fa::Automaton::createWithoutEpsilon(const Automaton& automaton){
     Automaton new_automaton = automaton;
+    if((new_automaton.getAlphabetSize() == 1) && (new_automaton.getAlphabets().find('\0') != new_automaton.getAlphabets().end())){
+      Automaton unite_automate;
+      unite_automate.addState(1);
+      unite_automate.setStateFinal(1);
+      unite_automate.setStateInitial(1);
+      return unite_automate;
+    }
     std::set<struct trans> *new_transitions = new_automaton.getTransitionsPointer();
     std::set<struct trans>::iterator new_transitions_it = new_transitions->begin();
     while(new_transitions_it != new_transitions->end()){
-      // bool yes=false;
       if(new_transitions_it->alpha == '\0'){
-        std::cout << "Etape1: " <<new_transitions_it->from <<new_transitions_it->alpha << new_transitions_it->to<< std::endl;
         std::set<struct trans>::iterator new_transitions_it2 = new_transitions->begin();
         while(new_transitions_it2 != new_transitions->end()){
           if(new_transitions_it2->from == new_transitions_it->to){
@@ -622,36 +624,22 @@ namespace fa {
               new_automaton.setStateFinal(new_transitions_it->from);
             }
             new_automaton.addTransition(new_transitions_it->from,new_transitions_it2->alpha,new_transitions_it2->to);
-            std::cout << "Etape2: " << new_transitions_it->from << new_transitions_it2->alpha << new_transitions_it2->to << std::endl;
-            // if(new_transitions_it2->alpha == '\0'){
-            //   yes = true;
-            // }
           }
           new_transitions_it2++;
         }
-        std::cout << "Before: " << new_automaton.countTransitions() << std::endl;
-        // new_transitions_it = new_transitions.erase(new_transitions_it);
         new_automaton.removeTransition(new_transitions_it->from,new_transitions_it->alpha,new_transitions_it->to);
-        std::cout << "After: " << new_automaton.countTransitions() << std::endl;
-        std::cout << "Etape3: " << new_transitions_it->from << new_transitions_it->alpha << new_transitions_it->to << std::endl;
 
         new_transitions = NULL;
         new_transitions = new_automaton.getTransitionsPointer();
         std::set<struct trans>::iterator new_transitions_it3 = new_transitions->begin();
         while(new_transitions_it3!=new_transitions->end()){
-          std::cout << "Etape4: " << new_transitions_it3->from << new_transitions_it3->alpha << new_transitions_it3->to << std::endl;
           new_transitions_it3++;
         }
-        // if(yes){
-        //   new_transitions_it = new_transitions.begin();
-        // }
       }
-      // if(!yes){
-        new_transitions_it++;
-      // }
+      new_transitions_it++;
     }
     return new_automaton;
-}*/
+}
 
 
 
@@ -908,7 +896,7 @@ namespace fa {
         std::map<std::set<int>,std::map<char,std::set<int>>> process_board;
         deterministicRecProcess(getInitialStates(),&process_board);
         std::map<std::set<int>,int> new_nbs_map;
-        int max_state_value = 0;
+        int max_state_value = 1;
         Automaton determinist;
         for (std::map<std::set<int>,std::map<char,std::set<int>>>::iterator line_iter = process_board.begin(); line_iter != process_board.end(); line_iter++) {
             if (((*line_iter).first).empty())  {
@@ -931,13 +919,13 @@ namespace fa {
             max_state_value++;
         }
 
-        for (std::map<std::set<int>,int>::iterator iter = new_nbs_map.begin(); iter != new_nbs_map.end(); iter++) {
-            std::cout << "[";
-                for (std::set<int>::iterator set_iter = ((*iter).first).begin(); set_iter != ((*iter).first).end(); set_iter++) {
-                    std::cout << " " << *set_iter;
-                }
-            std::cout << " ] -> " << (*iter).second << std::endl;
-        }
+        // for (std::map<std::set<int>,int>::iterator iter = new_nbs_map.begin(); iter != new_nbs_map.end(); iter++) {
+        //     std::cout << "[";
+        //         for (std::set<int>::iterator set_iter = ((*iter).first).begin(); set_iter != ((*iter).first).end(); set_iter++) {
+        //             std::cout << " " << *set_iter;
+        //         }
+        //     std::cout << " ] -> " << (*iter).second << std::endl;
+        // }
 
         for (std::map<std::set<int>,std::map<char,std::set<int>>>::iterator line_iter = process_board.begin(); line_iter != process_board.end(); line_iter++) {
             for (std::map<char,std::set<int>>::iterator alpha_iter = ((*line_iter).second).begin(); alpha_iter != ((*line_iter).second).end(); alpha_iter++) {

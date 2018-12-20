@@ -45,13 +45,13 @@ namespace fa {
             bool isDeterministic() const;
             bool isComplete() const;
             void addTransition(int from, char alpha, int to);   // <-
-   			void removeTransition(int from, char alpha, int to);   // <-
-   			bool hasTransition(int from, char alpha, int to) const;     // <-
-   			std::size_t countTransitions() const;
+       			void removeTransition(int from, char alpha, int to);   // <-
+       			bool hasTransition(int from, char alpha, int to) const;     // <-
+       			std::size_t countTransitions() const;
 
 
-        	std::size_t getAlphabetSize() const;
-        	void prettyPrint(std::ostream& os) const;
+          	std::size_t getAlphabetSize() const;
+          	void prettyPrint(std::ostream& os) const;
             void dotPrint(std::ostream& os) const;
 
             void makeComplete();
@@ -69,12 +69,12 @@ namespace fa {
 
             //tp6
             static Automaton createMinimalMoore(const Automaton& automaton);
-            //static Automaton createWithoutEpsilon(const Automaton& automaton);
+            static Automaton createWithoutEpsilon(const Automaton& automaton);
 
 
 
             // n'oublie pas de vérifier qu'on ne peut pas utiliser dans nos tests
-            //std::set<struct trans> * getTransitionsPointer();
+            std::set<struct trans> * getTransitionsPointer();
             // n'oublie pas de vérifier qu'on ne peut pas utiliser dans nos tests
 
             bool isIncludedIn(const Automaton& other) const;
