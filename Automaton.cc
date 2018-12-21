@@ -125,13 +125,13 @@ namespace fa {
 
 	// Complexity:
 	void fa::Automaton::removeTransition(int from, char alpha, int to){
-        if(hasTransition(from,alpha,to)){
+        //if(hasTransition(from,alpha,to)){
             trans trans_to_delete;
             trans_to_delete.from = from;
             trans_to_delete.to = to;
             trans_to_delete.alpha = alpha;
             transitions.erase(trans_to_delete);
-        }
+        //}
 	}
 
 
@@ -618,6 +618,9 @@ namespace fa {
     std::set<struct trans> *new_transitions = new_automaton.getTransitionsPointer();
     std::set<struct trans>::iterator new_transitions_it = new_transitions->begin();
     while(new_transitions_it != new_transitions->end()){
+        int from = -1;
+        char alpha = 'a';
+        int to = -1;
       if(new_transitions_it->alpha == '\0'){
         std::set<struct trans>::iterator new_transitions_it2 = new_transitions->begin();
         while(new_transitions_it2 != new_transitions->end()){
@@ -629,7 +632,12 @@ namespace fa {
           }
           new_transitions_it2++;
         }
-        new_automaton.removeTransition(new_transitions_it->from,new_transitions_it->alpha,new_transitions_it->to);
+
+
+        //new_automaton.removeTransition(new_transitions_it->from,new_transitions_it->alpha,new_transitions_it->to);
+        from = new_transitions_it->from;
+        alpha = new_transitions_it->alpha;
+        to = new_transitions_it->to;
 
         new_transitions = NULL;
         new_transitions = new_automaton.getTransitionsPointer();
@@ -639,6 +647,7 @@ namespace fa {
         }
       }
       new_transitions_it++;
+      new_automaton.removeTransition(from,alpha,to);
     }
     return new_automaton;
 }
@@ -944,6 +953,9 @@ namespace fa {
     }
 
         Automaton fa::Automaton::createDeterministic(const Automaton& automaton) {
+            if (automaton.isDeterministic()) {
+                return automaton;
+            }
             Automaton auto_cpy = automaton;
             return auto_cpy.createDeterministic();
         }
