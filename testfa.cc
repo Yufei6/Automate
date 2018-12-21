@@ -15,6 +15,7 @@ protected:
         init_NonCoAccessibleStatesAndCoAccessibleStates();
         init_OnlyNonAccessibleStates();
         init_NonAccessibleStatesAndAccessibleStates();
+        init_withLoop();
     }
 
     void init() {
@@ -28,6 +29,21 @@ protected:
     fa::Automaton NonAccessibleStatesAndAccessibleStates;
 
     fa::Automaton NonCoAccessibleStatesAndCoAccessibleStates;
+
+    fa::Automaton withLoop;
+
+    void init_withLoop() {
+        withLoop.addState(1);
+        withLoop.addState(2);
+        withLoop.addState(3);
+        withLoop.addState(4);
+        withLoop.setStateInitial(1);
+        withLoop.setStateFinal(4);
+        withLoop.addTransition(1,'a',2);
+        withLoop.addTransition(2,'b',3);
+        withLoop.addTransition(3,'c',2);
+        withLoop.addTransition(3,'d',4);
+    }
 
     void init_OnlyNonAccessibleStates() {
         OnlyNonAccessibleStates.addState(1);
@@ -1590,14 +1606,14 @@ TEST(AutomatonTest, not_empty_casual) {
 /// [ removeNonAccessibleStates - Tests ] ///
 
 
-    // TEST(AutomatonTest, non_accessible_no_initial_state) {
-    //     fa::Automaton a;
-    //     a.addState(1);
-    //     a.addState(2);
-    //     a.addTransition(1, 'c', 2);
-    //     a.removeNonAccessibleStates();
-    //     ASSERT_EQ(a.countStates(), 0);
-    // }
+    TEST(AutomatonTest, non_accessible_no_initial_state) {
+        fa::Automaton a;
+        a.addState(1);
+        a.addState(2);
+        a.addTransition(1, 'c', 2);
+        a.removeNonAccessibleStates();
+        ASSERT_EQ(a.countStates(), 0);
+    }
 
     TEST_F(AutomatonTestFixture, non_accessible_partially) {
         NonAccessibleStatesAndAccessibleStates.removeNonAccessibleStates();
@@ -1605,14 +1621,233 @@ TEST(AutomatonTest, not_empty_casual) {
         ASSERT_FALSE(NonAccessibleStatesAndAccessibleStates.hasState(2));
     }
 
-    // TEST_F(AutomatonTestFixture, non_accessible_only_initial) {
-    //     OnlyNonAccessibleStates.removeNonAccessibleStates();
-    //     ASSERT_EQ(OnlyNonAccessibleStates.countStates(), 1);
-    //     ASSERT_TRUE(OnlyNonAccessibleStates.hasState(1));
-    // }
+    TEST_F(AutomatonTestFixture, non_accessible_only_initial) {
+        OnlyNonAccessibleStates.removeNonAccessibleStates();
+        ASSERT_EQ(OnlyNonAccessibleStates.countStates(), 1);
+        ASSERT_TRUE(OnlyNonAccessibleStates.hasState(1));
+    }
 
+    TEST(AutomatonTest, all_accessible_one_state) {
+        fa::Automaton a;
+        a.addState(1);
+        a.setStateInitial(1);
+        a.setStateFinal(1);
+        a.removeNonAccessibleStates();
+        ASSERT_EQ(a.countStates(), 1);
+    }
 
+    TEST(AutomatonTest, non_accessible_multiple_initial_states) {
+        fa::Automaton a;
+        a.addState(1);
+        a.addState(2);
+        a.addState(3);
+        a.setStateInitial(1);
+        a.setStateInitial(2);
+        a.removeNonAccessibleStates();
+        ASSERT_EQ(a.countStates(), 2);
+    }
 
+/// [ removeNonCoAccessibleStates - Tests ] ///
+
+    TEST_F(AutomatonTestFixture, non_co_accessible_partially) {
+        NonCoAccessibleStatesAndCoAccessibleStates.removeNonCoAccessibleStates();
+        ASSERT_EQ(NonCoAccessibleStatesAndCoAccessibleStates.countStates(), 3);
+    }
+
+    TEST(AutomatonTest, non_co_accessible_no_final_state) {
+        fa::Automaton a;
+        a.addState(1);
+        a.addState(2);
+        a.addTransition(1, 'c', 2);
+        a.removeNonCoAccessibleStates();
+        ASSERT_EQ(a.countStates(), 0);
+    }
+
+    TEST(AutomatonTest, non_co_accessible_only_final) {
+        fa::Automaton a;
+        a.addState(1);
+        a.addState(2);
+        a.addState(3);
+        a.setStateInitial(1);
+        a.setStateFinal(3);
+        a.addTransition(1,'a',2);
+        a.removeNonCoAccessibleStates();
+        ASSERT_EQ(a.countStates(), 1);
+        ASSERT_TRUE(a.hasState(3));
+    }
+
+    TEST(AutomatonTest, all_co_accessible_one_state) {
+        fa::Automaton a;
+        a.addState(1);
+        a.setStateInitial(1);
+        a.setStateFinal(1);
+        a.removeNonCoAccessibleStates();
+        ASSERT_EQ(a.countStates(), 1);
+    }
+
+    TEST(AutomatonTest, non_co_accessible_multiple_final_states) {
+        fa::Automaton a;
+        a.addState(1);
+        a.addState(2);
+        a.addState(3);
+        a.setStateFinal(1);
+        a.setStateFinal(2);
+        a.removeNonCoAccessibleStates();
+        ASSERT_EQ(a.countStates(), 2);
+    }
+
+/// [ readString - Tests ] ///
+
+    TEST(AutomatonTest, readstring_normal) {
+        fa::Automaton a;
+        a.addState(1);
+        a.addState(2);
+        a.addState(3);
+        a.setStateInitial(1);
+        a.setStateFinal(3);
+        a.addTransition(1, 'a', 2);
+        a.addTransition(2, 'b', 3);
+        std::set<int> final = a.readString("ab");
+        ASSERT_EQ(final.size(), 1);
+        ASSERT_TRUE(final.find(3) != final.end());
+        std::set<int> final_2 = a.readString("a");
+        ASSERT_EQ(final_2.size(), 1);
+        ASSERT_TRUE(final_2.find(2) != final_2.end());
+        std::set<int> final_3 = a.readString("abc");
+        ASSERT_EQ(final_3.size(), 0);
+        std::set<int> final_4 = a.readString("");
+        ASSERT_EQ(final_4.size(), 1);
+        ASSERT_TRUE(final_4.find(1) != final_4.end());
+        std::set<int> final_5 = a.readString("d");
+        ASSERT_EQ(final_5.size(), 0);
+    }
+
+    TEST(AutomatonTest, readstring_multiple_ending) {
+        fa::Automaton a;
+        a.addState(1);
+        a.addState(2);
+        a.addState(3);
+        a.setStateInitial(1);
+        a.addTransition(1, 'a', 2);
+        a.addTransition(1, 'a', 3);
+        std::set<int> final = a.readString("a");
+        ASSERT_EQ(final.size(), 2);
+        ASSERT_TRUE(final.find(2) != final.end());
+        ASSERT_TRUE(final.find(3) != final.end());
+    }
+
+    TEST_F(AutomatonTestFixture, readstring_loop) {
+        std::set<int> final = withLoop.readString("abcbcbcbcbcbcbc");
+        ASSERT_EQ(final.size(), 1);
+        ASSERT_TRUE(final.find(2) != final.end());
+    }
+
+    TEST(AutomatonTest, readstring_final_loop) {
+        fa::Automaton a;
+        a.addState(1);
+        a.addState(2);
+        a.setStateInitial(1);
+        a.setStateFinal(2);
+        a.addTransition(1, 'a', 2);
+        a.addTransition(2, 'b', 2);
+        std::set<int> final = a.readString("abbbbbb");
+        ASSERT_EQ(final.size(), 1);
+        ASSERT_TRUE(final.find(2) != final.end());
+    }
+
+    TEST(AutomatonTest, readstring_multiple_initial) {
+        fa::Automaton a;
+        a.addState(1);
+        a.addState(2);
+        a.addState(3);
+        a.addState(4);
+        a.setStateInitial(1);
+        a.setStateInitial(2);
+        a.addTransition(1, 'b', 3);
+        a.addTransition(2, 'b', 4);
+        std::set<int> final = a.readString("b");
+        ASSERT_EQ(final.size(), 2);
+        ASSERT_TRUE(final.find(3) != final.end());
+        ASSERT_TRUE(final.find(4) != final.end());
+    }
+
+    TEST(AutomatonTest, readstring_no_state) {
+        fa::Automaton a;
+        std::set<int> final = a.readString("a");
+        ASSERT_EQ(final.size(), 0);
+    }
+
+    TEST(AutomatonTest, readstring_no_initial) {
+        fa::Automaton a;
+        a.addState(1);
+        a.addState(2);
+        a.addTransition(1, 'a', 2);
+        std::set<int> final = a.readString("a");
+        ASSERT_EQ(final.size(), 0);
+    }
+
+/// [ match - Tests ] ///
+
+    TEST(AutomatonTest, match_normal) {
+        fa::Automaton a;
+        a.addState(1);
+        a.addState(2);
+        a.addState(3);
+        a.setStateInitial(1);
+        a.setStateFinal(3);
+        a.addTransition(1, 'a', 2);
+        a.addTransition(2, 'b', 3);
+        ASSERT_TRUE(a.match("ab"));
+        ASSERT_FALSE(a.match("a"));
+        ASSERT_FALSE(a.match("abb"));
+        ASSERT_FALSE(a.match(""));
+        ASSERT_FALSE(a.match("f"));
+    }
+
+    TEST_F(AutomatonTestFixture, match_loop) {
+        ASSERT_TRUE(withLoop.match("abd"));
+        ASSERT_TRUE(withLoop.match("abcbd"));
+        ASSERT_TRUE(withLoop.match("abcbcbd"));
+        ASSERT_FALSE(withLoop.match("ab"));
+        ASSERT_FALSE(withLoop.match("abc"));
+        ASSERT_FALSE(withLoop.match("d"));
+    }
+
+    TEST(AutomatonTest, match_loop_one_state) {
+        fa::Automaton a;
+        a.addState(1);
+        a.setStateInitial(1);
+        a.setStateFinal(1);
+        a.addTransition(1, 'a', 1);
+        ASSERT_TRUE(a.match(""));
+        ASSERT_TRUE(a.match("a"));
+        ASSERT_TRUE(a.match("aa"));
+        ASSERT_TRUE(a.match("aaaaa"));
+        ASSERT_FALSE(a.match("d"));
+    }
+
+    TEST(AutomatonTest, match_with_epsilons) {
+        fa::Automaton a;
+        a.addState(1);
+        a.addState(2);
+        a.addState(3);
+        a.setStateInitial(1);
+        a.setStateFinal(3);
+        a.addTransition(1, 'a', 2);
+        a.addTransition(2, 'b', 3);
+        a.addTransition(3, 'c', 3);
+        a.addTransition(1, '\0', 3);
+        ASSERT_TRUE(a.match("abccc"));
+        ASSERT_TRUE(a.match("cccc"));
+        ASSERT_TRUE(a.match("c"));
+        ASSERT_TRUE(a.match(""));
+        ASSERT_FALSE(a.match("a"));
+        //ASSERT_FALSE(a.match("\0"));
+    }
+
+    /// [ createDeterministic - Tests ] ///
+
+    
 
 
 
@@ -1656,25 +1891,25 @@ TEST(AutomatonTest, not_empty_casual) {
 //
 // }
 
-// TEST(AutomatonTest, removeNonCoAccessibleStates) {
-//     fa::Automaton non_co_acc;
-//     non_co_acc.addState(0);
-//     non_co_acc.addState(1);
-//     non_co_acc.addState(2);
-//     non_co_acc.addState(3);
-//     non_co_acc.addState(4);
-//     non_co_acc.addTransition(0,'b',1);
-//     non_co_acc.addTransition(1,'b',2);
-//     non_co_acc.addTransition(0,'b',3);
-//     non_co_acc.addTransition(3,'b',4);
-//     non_co_acc.setStateInitial(0);
-//     non_co_acc.setStateFinal(4);
-//     std::cout << "Before deleting non-co-acc : " << std::endl;
-//     non_co_acc.prettyPrint(std::cout);
-//     non_co_acc.removeNonCoAccessibleStates();
-//     std::cout << "After deleting non-co-acc : " << std::endl;
-//     non_co_acc.prettyPrint(std::cout);
-// }
+TEST(AutomatonTest, removeNonCoAccessibleStates) {
+    fa::Automaton non_co_acc;
+    non_co_acc.addState(0);
+    non_co_acc.addState(1);
+    non_co_acc.addState(2);
+    non_co_acc.addState(3);
+    non_co_acc.addState(4);
+    non_co_acc.addTransition(0,'b',1);
+    non_co_acc.addTransition(1,'b',2);
+    non_co_acc.addTransition(0,'b',3);
+    non_co_acc.addTransition(3,'b',4);
+    non_co_acc.setStateInitial(0);
+    non_co_acc.setStateFinal(4);
+    std::cout << "Before deleting non-co-acc : " << std::endl;
+    non_co_acc.prettyPrint(std::cout);
+    non_co_acc.removeNonCoAccessibleStates();
+    std::cout << "After deleting non-co-acc : " << std::endl;
+    non_co_acc.prettyPrint(std::cout);
+}
 
 
 // TEST(AutomatonTest, moore){

@@ -125,11 +125,13 @@ namespace fa {
 
 	// Complexity:
 	void fa::Automaton::removeTransition(int from, char alpha, int to){
-        trans trans_to_delete;
-        trans_to_delete.from = from;
-        trans_to_delete.to = to;
-        trans_to_delete.alpha = alpha;
- 		transitions.erase(trans_to_delete);
+        if(hasTransition(from,alpha,to)){
+            trans trans_to_delete;
+            trans_to_delete.from = from;
+            trans_to_delete.to = to;
+            trans_to_delete.alpha = alpha;
+            transitions.erase(trans_to_delete);
+        }
 	}
 
 
