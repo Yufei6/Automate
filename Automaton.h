@@ -79,6 +79,8 @@ namespace fa {
 
             bool isIncludedIn(const Automaton& other) const;
 
+            void addAlpha(char alpha);
+
 
 
         private:

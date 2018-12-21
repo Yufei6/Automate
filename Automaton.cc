@@ -962,7 +962,15 @@ namespace fa {
 
         bool fa::Automaton::isIncludedIn(const Automaton& other) const {
             Automaton other_cpy = other;
+            for (std::set<char>::iterator it = alphabets.begin(); it != alphabets.end(); it++) {
+                other_cpy.addAlpha(*it);
+            }
+            other_cpy.makeComplete();
             other_cpy.makeComplement();
             return hasEmptyIntersectionWith(other_cpy);
+        }
+
+        void fa::Automaton::addAlpha(char alpha) {
+            alphabets.insert(alpha);
         }
 }
